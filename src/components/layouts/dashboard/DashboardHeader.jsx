@@ -1,0 +1,39 @@
+import { Link } from "react-router-dom";
+import Logo from "../../../assets/svgs/Logo";
+import { Menu, Search } from "lucide-react";
+
+function DashboardHeader() {
+  return (
+    <header className="fixed w-full z-20 ">
+      <div className="px-16 flex items-center justify-between gap-8 py-4 ">
+        <Link to="/">
+          <Logo />
+        </Link>
+
+        <nav className="flex items-center gap-2">
+          <Link
+            to="/dashboard/search"
+            className="bg-white h-full border p-3 border-zinc-300"
+          >
+            <Search color="black" size={20} />
+          </Link>
+
+          <Link
+            className="bg-white text-black px-5 py-3 border border-zinc-300"
+            to="/dashboard/create"
+          >
+            <p className="text-[0.9rem]">
+              <span className="pr-2">+</span> Create short Link
+            </p>
+          </Link>
+
+          <div className="bg-white h-full border p-3 border-zinc-300">
+            <Menu color="black" size={20} />
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+export default DashboardHeader;
