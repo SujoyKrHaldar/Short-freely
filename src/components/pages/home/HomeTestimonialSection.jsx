@@ -6,7 +6,7 @@ import { decoratorThree as decorator } from "../../../utils/imageUrls";
 function HomeTestimonialSection() {
   return (
     <section className="py-10 bg-white sm:py-16 lg:py-24">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-12 space-y-16">
+      <div className="container space-y-16">
         <div className="max-w-3xl mx-auto text-center space-y-4">
           <img src={decorator} className="w-10 mx-auto" />
           <p className="uppercase tracking-[0.5rem]">Testimonials</p>
@@ -23,7 +23,7 @@ function HomeTestimonialSection() {
           </p>
         </div>
 
-        <div className=" grid grid-cols-1 gap-1 px-4 sm:px-0 xl:grid-cols-4 sm:grid-cols-2">
+        <div className="px-12 grid grid-cols-1 gap-1 xl:grid-cols-4 sm:grid-cols-2">
           {testimonials.map((testimonial, id) => (
             <TestimonialCard key={id} testimonial={testimonial} />
           ))}
