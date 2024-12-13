@@ -41,7 +41,6 @@ function LoginForm({ className }) {
 
       sessionStorage.setItem("isLoggedin", true);
     } catch (error) {
-      console.log({ error });
       setError(true);
 
       if (error?.type === responseErrorType.GENERAL_RATE_LIMIT_EXEED) {
