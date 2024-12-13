@@ -38,7 +38,8 @@ export default HomeTestimonialSection;
 const TestimonialCard = ({ testimonial }) => {
   return (
     <div
-      className="overflow-hidden bg-zinc-100 hover:bg-white border border-zinc-50 hover:border-zinc-500 duration-150 hover:scale-105 cursor-auto z-10 hover:z-30 hover:odd:rotate-2 hover:even:-rotate-2 hover:shadow-xl [&:nth-child(7)]:scale-105 [&:nth-child(7)]:bg-white [&:nth-child(7)]:shadow-md hover:[&:nth-child(7)]:shadow-xl [&:nth-child(7)]:border-zinc-500 [&:nth-child(7)]:z-20 [&:nth-child(7)]:-rotate-2"
+      className="overflow-hidden bg-zinc-100 hover:bg-white border border-zinc-50 hover:border-zinc-500 duration-150 hover:scale-105 cursor-auto z-10 hover:z-30 hover:odd:rotate-2 hover:even:-rotate-2 hover:shadow-xl [&:nth-child(7)]:scale-105 [&:nth-child(7)]:bg-white [&:nth-child(7)]:shadow-md hover:[&:nth-child(7)]:shadow-xl [&:nth-child(7)]:border-zinc-500 [&:nth-child(7)]:z-20 [&:nth-child(7)]:-rotate-2 
+      [&:nth-child(2)]:scale-105 [&:nth-child(2)]:bg-white [&:nth-child(2)]:shadow-md hover:[&:nth-child(2)]:shadow-xl [&:nth-child(2)]:border-zinc-500 [&:nth-child(2)]:z-20 [&:nth-child(2)]:rotate-2"
     >
       <div className="px-5 py-6">
         <div className="flex items-center justify-between">
