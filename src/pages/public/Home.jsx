@@ -6,6 +6,7 @@ import {
   HomeFeatureSection,
   HomeTestimonialSection,
   HomeFaqSection,
+  HomeProductUsedBySection,
 } from "../../components/pages/home";
 
 function Home() {
@@ -21,6 +22,7 @@ function Home() {
       <HomeAboutSection />
       <HomeFeatureSection />
       <HomeTestimonialSection />
+      <HomeProductUsedBySection />
       <HomeFaqSection />
       <HomeFooterSection />
     </>

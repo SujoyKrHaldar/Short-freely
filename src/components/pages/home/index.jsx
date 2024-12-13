@@ -4,6 +4,7 @@ import HomeFeatureSection from "./HomeFeatureSection";
 import HomeFooterSection from "./HomeFooterSection";
 import HomeLandingSection from "./HomeLandingSection";
 import HomeTestimonialSection from "./HomeTestimonialSection";
+import HomeProductUsedBySection from "./HomeProductUsedBySection";
 
 export {
   HomeLandingSection,
@@ -12,4 +13,5 @@ export {
   HomeFeatureSection,
   HomeFaqSection,
   HomeTestimonialSection,
+  HomeProductUsedBySection,
 };
