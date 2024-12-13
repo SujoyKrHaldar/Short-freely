@@ -82,8 +82,8 @@ function SignupForm({ className }) {
   };
 
   const handleClick = () => {
-    if (error) {
-      setError(false);
+    if (errorPopup) {
+      setErrorPopup(false);
       return;
     }
   };
