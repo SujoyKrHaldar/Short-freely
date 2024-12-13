@@ -1,8 +1,11 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "./Input";
+import { responseStatus, responseErrorType } from "../../../utils/constants";
+import { loginUser } from "../../../api/authService";
+import { useAuth, useNotification } from "../../../hooks";
 
-// eslint-disable-next-line react/prop-types
 function LoginForm({ className }) {
   const {
     register,
@@ -10,40 +13,51 @@ function LoginForm({ className }) {
     formState: { errors },
   } = useForm();
 
-  const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { login: saveUserDataToClient } = useAuth();
+  const notify = useNotification();
 
   const loginEvent = async (data) => {
     setError(false);
     setLoading(true);
 
-    console.log(data);
+    const { email, name, password } = data;
+
     try {
-      // const session = await authService.login(data);
-      // if (session) {
-      //   const { userData, profileData } = await authService.getCurrentUser();
-      //   if (userData) {
-      //     profileData
-      //       ? dispatch(ACTIVATE_PROFILE(profileData))
-      //       : dispatch(DISABLE_PROFILE());
-      //     dispatch(LOGIN(userData));
-      //     dispatch(
-      //       SHOW_NOTIFICATION({
-      //         message: `Welcome back ${userData.name} ✌️`,
-      //         type: "SUCCESS",
-      //       })
-      //     );
-      //     sessionStorage.setItem("isLoggedin", true);
-      //   }
-      // }
+      const { currentUserData } = await loginUser({
+        email,
+        name,
+        password,
+      });
+
+      saveUserDataToClient(currentUserData);
+
+      notify({
+        message: `Login successfull. Welcome ${currentUserData?.name}.`,
+        type: responseStatus.SUCCESS,
+        timeout: 5000,
+      });
+
+      sessionStorage.setItem("isLoggedin", true);
     } catch (error) {
-      setError(error);
-      // dispatch(
-      //   SHOW_NOTIFICATION({
-      //     message: "Login failed.",
-      //     type: "ERROR",
-      //   })
-      // );
+      console.log({ error });
+      setError(true);
+
+      if (error?.type === responseErrorType.GENERAL_RATE_LIMIT_EXEED) {
+        notify({
+          message: "Too Many Requests! Please try again after some time.",
+          type: responseStatus.ERROR,
+          timeout: 5000,
+        });
+        return;
+      }
+
+      notify({
+        message: error.message,
+        type: responseStatus.ERROR,
+        timeout: 5000,
+      });
     } finally {
       setLoading(false);
     }
@@ -97,28 +111,7 @@ function LoginForm({ className }) {
             <p>Login to Dashboard</p>
           )}
         </button>
-
-        {/* <p className="text-center">or</p> */}
-        {/* <div className="w-full border-t border-zinc-600 border-dashed"></div>
-
-        <div className="space-y-2">
-          <div className="flex items-center justify-center gap-4 py-3 px-6 border border-black text-white hover:bg-orange-300 bg-orange-500">
-            <p>Continue with Google</p>
-          </div>
-          <div className="flex items-center justify-center gap-4 py-3 px-6 border border-black hover:bg-blue-600 bg-blue-800 text-white">
-            <p>Continue with Facebook</p>
-          </div>
-          <div className="flex items-center justify-center gap-4 py-3 px-6 border border-black hover:bg-zinc-600 bg-zinc-700 text-white">
-            <p>Continue with Github</p>
-          </div>
-        </div> */}
       </form>
-
-      {/* <ShowError
-          error={error}
-          errorMessage={error}
-          closeError={() => setError("")}
-        /> */}
     </div>
   );
 }

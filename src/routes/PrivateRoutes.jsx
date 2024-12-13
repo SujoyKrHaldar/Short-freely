@@ -1,21 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import { DashboardLayout } from "../components/layouts";
-// import { useSelector } from "react-redux";
+import { useAuth } from "../hooks";
 
 function PrivateRoutes() {
-  // const { authStatus, user } = useSelector((state) => state.auth);
-  // const { pathname } = useLocation();
-
-  // const user = false;
-
-  // if (!user)
-  //   return (
-  //     <Navigate
-  //       to={
-  //         pathname !== "" ? `/login?redirectTo=${pathname.slice(1)}` : "/login"
-  //       }
-  //     />
-  //   );
+  const { authStatus } = useAuth();
+  if (!authStatus) return <Navigate to="/login" />;
 
   return (
     <DashboardLayout>

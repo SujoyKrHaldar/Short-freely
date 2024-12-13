@@ -1,7 +1,20 @@
 import { ID } from "appwrite";
 import { databases } from "./initServer";
+import config from "../config";
 
-export const saveUserToDb = () => {};
+const databaseId = config.getKey("DATABASE_ID");
+const userCollectionId = config.getKey("USER_COLLECTION_ID");
+
+export async function saveUserToDB({ user, id }) {
+  const newUser = await databases.createDocument(
+    databaseId,
+    userCollectionId,
+    id || ID.unique(),
+    user
+  );
+
+  return newUser;
+}
 
 export const updateUser = () => {};
 

@@ -3,11 +3,11 @@ import { Menu } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../../assets/svgs/Logo";
 import { mainHeaderNavlinks as navLinks } from "../../../utils/constants";
+import { useAuth } from "../../../hooks";
 
 function Navbar() {
   const { isScrollingDown } = useScrollEvent();
-
-  const user = false;
+  const { authStatus } = useAuth();
 
   return (
     <section
@@ -25,9 +25,10 @@ function Navbar() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-2">
+            
             {navLinks.map((link) => (
               <NavLink
-                className="hover:bg-zinc-100 py-3 px-5 duration-150"
+                className="hover:bg-zinc-100 py-3 px-5 duration-150 text-[0.9rem]"
                 key={link.name}
                 to={link.url}
               >
@@ -38,32 +39,27 @@ function Navbar() {
         </div>
 
         <nav className="flex items-center gap-2">
-          {user ? (
-            <>
-              <Link
-                className="duration-150 px-6 py-3 hover:bg-zinc-100"
-                to="/dashboard/create"
-              >
-                Create Link
-              </Link>
+          <NavLink
+            className="duration-150 px-6 py-3 bg-zinc-200 hover:bg-zinc-100 text-[0.9rem]"
+            to={authStatus ? "/dashboard/create" : "/login"}
+          >
+            {authStatus ? "Create New Link" : "Login"}
+          </NavLink>
 
-              <Link to="/dashboard">
-                <div className="w-[50px] h-[50px] bg-black rounded-full"></div>
-              </Link>
-            </>
+          {authStatus ? (
+            <Link
+              className="bg-black text-white px-6 py-3 text-[0.9rem]"
+              to="/dashboard"
+            >
+              Dashboard
+            </Link>
           ) : (
-            <>
-              <NavLink
-                className="duration-150 px-6 py-3 hover:bg-zinc-100"
-                to="/login"
-              >
-                Login
-              </NavLink>
-
-              <Link className="bg-black text-white px-6 py-3" to="/signup">
-                Signup - <span className=" italic font-light">Its free</span>
-              </Link>
-            </>
+            <Link
+              className="bg-black text-white px-6 py-3 text-[0.9rem]"
+              to="/signup"
+            >
+              Signup - <span className=" italic font-light">Its free</span>
+            </Link>
           )}
 
           <Menu

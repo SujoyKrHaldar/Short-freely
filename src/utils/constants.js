@@ -7,7 +7,10 @@ const _responseStatus = {
 export const responseStatus = Object.freeze(_responseStatus);
 
 // Response error type
-const _responseErrorType = {};
+const _responseErrorType = {
+  USER_ALREADY_EXIST: "user_already_exists",
+  GENERAL_RATE_LIMIT_EXEED: "general_rate_limit_exceeded",
+};
 export const responseErrorType = Object.freeze(_responseErrorType);
 
 // Dashboard sidebar navlinks
@@ -36,10 +39,6 @@ export const mainHeaderNavlinks = [
   {
     name: "Home",
     url: "/",
-  },
-  {
-    name: "Dashboard",
-    url: "/dashboard",
   },
   {
     name: "Features",
@@ -221,3 +220,84 @@ export const faqs = [
       "Yes, our platform provides detailed analytics, including click counts, geographic data, and more.",
   },
 ];
+
+//   const response = {
+//     $createdAt: "2024-12-13T09:12:11.080+00:00",
+//     $id: "675bfa680023218bd735",
+//     $updatedAt: "2024-12-13T09:12:11.080+00:00",
+//     accessedAt: "2024-12-13T09:12:11.078+00:00",
+//     email: "sujoykrhaldar@gmail.com",
+//     emailVerification: false,
+//     labels: [],
+//     mfa: false,
+//     name: "Sujoy kumar haldar",
+//     passwordUpdate: "2024-12-13T09:12:11.078+00:00",
+//     phone: "",
+//     phoneVerification: false,
+//     prefs: {},
+//     registration: "2024-12-13T09:12:11.078+00:00",
+//     status: true,
+//   };
+
+//   const currentuser = {
+//     $createdAt: "2024-12-13T09:12:11.080+00:00",
+//     $id: "675bfa680023218bd735",
+//     $updatedAt: "2024-12-13T09:12:11.080+00:00",
+//     accessedAt: "2024-12-13T09:12:11.078+00:00",
+//     email: "sujoykrhaldar@gmail.com",
+//     emailVerification: false,
+//     labels: [],
+//     mfa: false,
+//     name: "Sujoy kumar haldar",
+//     passwordUpdate: "2024-12-13T09:12:11.078+00:00",
+//     phone: "",
+//     phoneVerification: false,
+//     prefs: {},
+//     registration: "2024-12-13T09:12:11.078+00:00",
+//     status: true,
+//   };
+
+// const error = {
+//   code: 409,
+//   message:
+//     "A user with the same id, email, or phone already exists in this project.",
+//   type: "user_already_exists",
+//   version: "1.6.1",
+//   type: "user_already_exists",
+//   message:
+//     "A user with the same id, email, or phone already exists in this project.",
+//   stack:
+//     "AppwriteException: A user with the same id, email, or phone already exists in this project.",
+// };
+
+// const session = {
+//   $createdAt: "2024-12-13T13:30:15.220+00:00",
+//   $id: "675c36e732453e092098",
+//   $updatedAt: "2024-12-13T13:30:15.220+00:00",
+//   clientCode: "CH",
+//   clientEngine: "Blink",
+//   clientEngineVersion: "131.0.0.0",
+//   clientName: "Chrome",
+//   clientType: "browser",
+//   clientVersion: "131.0",
+//   countryCode: "in",
+//   countryName: "India",
+//   current: true,
+//   deviceBrand: "",
+//   deviceModel: "",
+//   deviceName: "desktop",
+//   expire: "2025-12-13T13:30:15.205+00:00",
+//   factors: ["password"],
+//   ip: "116.206.220.49",
+//   mfaUpdatedAt: "",
+//   osCode: "WIN",
+//   osName: "Windows",
+//   osVersion: "10",
+//   provider: "email",
+//   providerAccessToken: "",
+//   providerAccessTokenExpiry: "",
+//   providerRefreshToken: "",
+//   providerUid: "sujoykrhaldar@gmail.com",
+//   secret: "",
+//   userId: "675c36e20019847ebe35",
+// };

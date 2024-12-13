@@ -20,6 +20,7 @@ import communicationOne from "../assets/illustrations/communication-1.png";
 import arrowImgUrl from "../assets/illustrations/arrow.png";
 import underlineImgUrl from "../assets/illustrations/underline.png";
 import companyListImgUrl from "../assets/illustrations/company-list.png";
+import emailImgUrl from "../assets/illustrations/email.png";
 
 export {
   searchImgUrl,
@@ -43,5 +44,6 @@ export {
   greetingImgUrl,
   notFoundImgUrl,
   emptyImgUrl,
+  emailImgUrl,
   companyListImgUrl,
 };
