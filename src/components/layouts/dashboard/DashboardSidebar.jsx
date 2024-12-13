@@ -22,7 +22,7 @@ function DashboardSidebar() {
         timeout: 5000,
       });
 
-      logoutUser();
+      await logoutUser();
       removeUserDataFromClient();
 
       notify({
