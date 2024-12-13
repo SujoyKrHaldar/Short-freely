@@ -8,7 +8,7 @@ function HomeFooterSection() {
   return (
     <section className="pt-16 pb-8 relative z-10 w-full">
       <div className="container w-full h-full">
-        <div className=" px-20 bg-zinc-800 text-white flex items-center justify-around  gap-4">
+        <div className=" px-20 py-4 pt-2 bg-zinc-800 text-white flex items-center justify-around  gap-4">
           <div className="space-y-8">
             <div className="space-y-4">
               <img
@@ -19,7 +19,8 @@ function HomeFooterSection() {
               <p className="uppercase tracking-[0.5rem] text-zinc-300">
                 Why are you waiting for
               </p>
-              <h2 className="text-[2.8rem] font-bold max-w-lg leading-[3.5rem]">
+
+              <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl max-w-lg ">
                 Ready to simplify Your Links, Amplify Your Reach
               </h2>
 
