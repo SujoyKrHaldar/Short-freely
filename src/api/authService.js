@@ -33,13 +33,40 @@ export const getCurrentUser = async () => {
   }
 };
 
-export const logoutUser = async () => {
-  await account.deleteSession("current");
+export const logoutUser = async (sessionId = "current") => {
+  await account.deleteSession(sessionId);
   return true;
 };
 
-export const getCurrentUserSession = () => {};
+export const getCurrentUserSession = async () => {
+  try {
+    return await this.account.getSession("current");
+  } catch (error) {
+    return;
+  }
+};
 
-export const getAllUserSession = () => {};
+export const getAllSession = async () => {
+  try {
+    const sessionList = await this.account.listSessions();
+    return sessionList;
+  } catch (error) {
+    return;
+  }
+};
+
+export const updatePassword = async (newPassword, oldPassword) => {
+  try {
+    const response = await this.account.updatePassword(
+      newPassword,
+      oldPassword
+    );
+    return response;
+  } catch (error) {
+    if (error.type === "user_invalid_credentials") throw "Invalid credentials.";
+
+    throw error.message;
+  }
+};
 
 export const updateUserPassword = () => {};
