@@ -6,7 +6,7 @@ function Dashboard() {
     <>
       <MetaTags
         title="Dashboard • Url shortner"
-        description=""
+        description="Manage your links, check analytics, manage account and many more."
         conicalRoute="dashboard"
       />
 
