@@ -26,6 +26,7 @@ body {
 a,
 p,
 label,
+button,
 ::placeholder,
 input {
   font-family: "Roboto", serif;
