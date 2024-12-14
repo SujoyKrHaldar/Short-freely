@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/svgs/Logo";
-import { Menu, Search } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 
-function DashboardHeader({ handleExpand }) {
+function DashboardHeader({ handleExpand, isExpand }) {
   return (
     <header className="fixed w-full z-30">
       <div className="px-16 flex items-center justify-between gap-8 py-4 ">
@@ -32,7 +32,11 @@ function DashboardHeader({ handleExpand }) {
             onClick={handleExpand}
             className="bg-white h-full border p-3 border-zinc-300 cursor-pointer"
           >
-            <Menu color="black" size={20} />
+            {isExpand ? (
+              <Menu color="black" size={20} />
+            ) : (
+              <X color="black" size={20} />
+            )}
           </div>
         </nav>
       </div>

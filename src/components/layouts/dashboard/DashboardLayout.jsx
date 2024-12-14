@@ -11,7 +11,10 @@ function DashboardLayout({ children }) {
   };
   return (
     <main className="relative flex min-h-svh w-full">
-      <DashboardHeader handleExpand={handleDashboardExpand} />
+      <DashboardHeader
+        handleExpand={handleDashboardExpand}
+        isExpand={expandDashboardContent}
+      />
       <DashboardSidebar />
       <section
         className={`z-20 flex flex-1 flex-col lg:min-w-0 h-full min-h-screen pointer-events-none duration-200 ease-in-out ${
