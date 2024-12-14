@@ -1,3 +1,4 @@
+import DashboardAccount from "./DashboardAccount";
 import DashboardCreateShortUrl from "./DashboardCreateShortUrl";
 import DashboardHome from "./DashboardHome";
 import DashboardShortLinks from "./DashboardShortLinks";
@@ -8,4 +9,5 @@ export {
   DeshboardSearch,
   DashboardShortLinks,
   DashboardCreateShortUrl,
+  DashboardAccount,
 };

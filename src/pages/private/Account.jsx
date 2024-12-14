@@ -1,3 +1,4 @@
+import { DashboardAccount } from "../../components/pages/dashboard";
 import { MetaTags } from "../../components/shared";
 
 function Account() {
@@ -5,14 +6,11 @@ function Account() {
     <>
       <MetaTags
         title="Account • Url shortner"
-        description=""
+        description="Manage your account"
         conicalRoute="dashboard/account"
       />
 
-      <section className="container space-y-8 py-8">
-        <h1 className="text-4xl">Account</h1>
-        <div className="w-full h-[400px] bg-white border border-zinc-300"></div>
-      </section>
+      <DashboardAccount />
     </>
   );
 }
