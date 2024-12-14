@@ -1,14 +1,16 @@
+import { DashboardCreateShortUrl } from "../../components/pages/dashboard";
 import { MetaTags } from "../../components/shared";
 
 function CreateShortUrl() {
   return (
     <>
-      <MetaTags title="Create short url • Url shortner" />
+      <MetaTags
+        title="Create short url • Url shortner"
+        description="Create a short url"
+        conicalRoute="dashboard/create"
+      />
 
-      <section className="container space-y-8 py-8">
-        <h1 className="text-4xl">Create url</h1>
-        <div className="w-full h-[400px] bg-white border border-zinc-300"></div>
-      </section>
+      <DashboardCreateShortUrl />
     </>
   );
 }
