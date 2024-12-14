@@ -15,7 +15,7 @@ function HomeLandingSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!url) return null;
-    navigate("/login?createUrl=" + url);
+    navigate(`/dashboard/create?longurl=${url}`);
   };
 
   return (
