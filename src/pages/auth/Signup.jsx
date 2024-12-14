@@ -2,13 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { SignupForm } from "../../components/ui";
 import { MetaTags } from "../../components/shared";
 import { communicationThree as imageUrl } from "../../utils/imageUrls";
-
-// import { EmailExistPopup, CreatingAccountPopup } from "../../components/pages";
-// import { useState } from "react";
+import { useQueryParams } from "../../hooks";
 
 function Signup() {
-  // const [isEmailExist, setEmailExist] = useState(true);
   const navigate = useNavigate();
+
+  const queryParams = useQueryParams("redirectTo");
+
+  const redirectRoute = queryParams
+    ? `/login?redirectTo=${queryParams}`
+    : "/login";
 
   return (
     <>
@@ -36,7 +39,7 @@ function Signup() {
             Already have an Account?{" "}
             <span
               className="font-semibold cursor-pointer"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate(redirectRoute)}
             >
               Try Login
             </span>

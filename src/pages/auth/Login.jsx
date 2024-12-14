@@ -2,9 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../../components/ui";
 import { MetaTags } from "../../components/shared";
 import { greetingImgUrl as imageUrl } from "../../utils/imageUrls";
+import { useQueryParams } from "../../hooks";
 
 function Login() {
   const navigate = useNavigate();
+
+  const queryParams = useQueryParams("redirectTo");
+
+  const redirectRoute = queryParams
+    ? `/signup?redirectTo=${queryParams}`
+    : "/signup";
 
   return (
     <>
@@ -28,7 +35,7 @@ function Login() {
             Don&apos;t have an Account?{" "}
             <span
               className="font-semibold cursor-pointer"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate(redirectRoute)}
             >
               Create an Account
             </span>
