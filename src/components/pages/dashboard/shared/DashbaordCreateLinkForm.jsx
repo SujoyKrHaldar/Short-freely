@@ -80,7 +80,7 @@ const DashbaordCreateLinkForm = () => {
             />
 
             <div className="space-y-2">
-              <label>Short Link - Custom Back-Half (Optional)</label>
+              <label>Custom Back-Half (Optional)</label>
               <div className="relative flex w-full overflow-hidden">
                 <p className="border border-black border-r-0 py-3 px-5 h-fit bg-zinc-100">
                   Lol.is
@@ -153,7 +153,7 @@ const DashbaordCreateLinkForm = () => {
         <div className=" sticky bottom-0 px-8 py-4 flex items-center justify-end gap-2 w-full h-fit bg-white border border-zinc-300">
           <button
             type="button"
-            className="bg-white border border-zinc-300 px-6 py-2 cursor-pointer"
+            className="bg-zinc-200 border border-zinc-300 px-6 py-2 cursor-pointer"
             onClick={handleCancle}
           >
             Cancel
