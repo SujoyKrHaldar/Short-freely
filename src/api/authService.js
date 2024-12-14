@@ -40,7 +40,7 @@ export const logoutUser = async (sessionId = "current") => {
 
 export const getCurrentUserSession = async () => {
   try {
-    return await this.account.getSession("current");
+    return await account.getSession("current");
   } catch (error) {
     return;
   }
@@ -48,7 +48,7 @@ export const getCurrentUserSession = async () => {
 
 export const getAllSession = async () => {
   try {
-    const sessionList = await this.account.listSessions();
+    const sessionList = await account.listSessions();
     return sessionList;
   } catch (error) {
     return;
@@ -57,10 +57,7 @@ export const getAllSession = async () => {
 
 export const updatePassword = async (newPassword, oldPassword) => {
   try {
-    const response = await this.account.updatePassword(
-      newPassword,
-      oldPassword
-    );
+    const response = await account.updatePassword(newPassword, oldPassword);
     return response;
   } catch (error) {
     if (error.type === "user_invalid_credentials") throw "Invalid credentials.";
