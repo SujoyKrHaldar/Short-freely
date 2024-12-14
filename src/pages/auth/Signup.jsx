@@ -31,7 +31,7 @@ function Signup() {
 
           <SignupForm className="space-y-4 mt-4 mb-4" />
 
-          <p className="text-xs mb-8">
+          <p className="text-sm mb-8">
             By continuing, I agree to the Terms of Use & Privacy Policy
           </p>
 
@@ -45,13 +45,6 @@ function Signup() {
             </span>
           </p>
         </div>
-
-        {/* {isEmailExist && (
-          <div className="fixed w-full h-screen inset-0 flex items-center justify-center bg-[#ffffffcb] backdrop-blur-sm z-10">
-            <EmailExistPopup handleClick={() => setEmailExist(false)} />
-            <CreatingAccountPopup />
-          </div>
-        )} */}
       </section>
     </>
   );
