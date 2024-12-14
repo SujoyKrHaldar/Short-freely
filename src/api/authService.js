@@ -66,4 +66,12 @@ export const updatePassword = async (newPassword, oldPassword) => {
   }
 };
 
+export const deleteAccount = async (userId) => {
+  try {
+    return await account.deleteIdentity(userId);
+  } catch (error) {
+    throw error.message;
+  }
+};
+
 export const updateUserPassword = () => {};
