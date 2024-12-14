@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Input from "../../../ui/forms/Input";
+import { useQueryParams } from "../../../../hooks";
+import { useNavigate } from "react-router-dom";
 
 const DashbaordCreateLinkForm = () => {
   const {
@@ -17,21 +19,23 @@ const DashbaordCreateLinkForm = () => {
   const [error, setError] = useState(false);
   const [qrCode, setQrCode] = useState("");
   const [expirationVisible, setExpirationVisible] = useState(false);
+  const longurlFromQuery = useQueryParams("longurl");
+  const navigate = useNavigate();
 
   // Watch fields
-  const watchQr = watch("qr", false);
-  const watchExpiration = watch("expiration", false);
+  // const watchQr = watch("qr", false);
+  // const watchExpiration = watch("expiration", false);
 
-  // Handle random slug generation
-  const generateSlug = () => {
-    const randomSlug = Math.random().toString(36).substring(2, 8);
-    setValue("slug", randomSlug);
-  };
+  useEffect(() => {
+    if (longurlFromQuery) {
+      setValue("destination", longurlFromQuery);
+    }
+  }, [longurlFromQuery, setValue]);
 
   const handleQrToggle = (e) => {
     setQrVisible(e.target.checked);
+    const url = watch("destination");
     if (e.target.checked) {
-      const url = watch("destination");
       if (url) {
         setQrCode(`https://api.qrserver.com/v1/create-qr-code/?data=${url}`);
       }
@@ -40,13 +44,27 @@ const DashbaordCreateLinkForm = () => {
     }
   };
 
+  const generateSlug = () => {
+    return Math.random().toString(36).substring(2, 8);
+  };
+
   const onSubmit = (data) => {
+    setError(false);
+    setLoading(true);
+
+    if (data.slug === "") {
+      const slug = generateSlug();
+      data.slug = slug;
+    }
+
     console.log("Form Data Submitted:", data);
+    setLoading(false);
   };
 
   const handleCancle = () => {
     setQrVisible(false);
     setExpirationVisible(false);
+    navigate("/dashboard/create");
     reset();
   };
 
@@ -97,20 +115,13 @@ const DashbaordCreateLinkForm = () => {
                     },
                   })}
                 />
-                {/* <button
-                  type="button"
-                  onClick={generateSlug}
-                  className="bg-black text-white px-6 py-2 w-fit border h-full border-black absolute top-1/2 -translate-y-1/2 right-0"
-                >
-                  Generate Slug
-                </button> */}
               </div>
             </div>
           </div>
 
           {/* BOX RIGHT */}
           <div className="w-[40%] border border-zinc-300 bg-white">
-            <div className="p-8 border-b space-y-4 border-zinc-300">
+            <div className="p-6 border-b space-y-4 border-zinc-300">
               <div className="flex items-center gap-4">
                 <input
                   type="checkbox"
@@ -130,7 +141,7 @@ const DashbaordCreateLinkForm = () => {
               )}
             </div>
 
-            <div className="p-8 space-y-4">
+            <div className="p-6 space-y-4">
               <div className="flex items-center gap-4">
                 <input
                   type="checkbox"
@@ -156,7 +167,7 @@ const DashbaordCreateLinkForm = () => {
             className="bg-zinc-200 border border-zinc-300 px-6 py-2 cursor-pointer"
             onClick={handleCancle}
           >
-            Cancel
+            Reset Fields
           </button>
 
           <button
