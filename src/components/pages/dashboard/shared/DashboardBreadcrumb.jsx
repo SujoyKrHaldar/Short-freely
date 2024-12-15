@@ -15,7 +15,7 @@ const DashboardBreadcrumb = ({ links }) => {
                 <span className="mx-2 text-gray-400">/</span>
               </>
             ) : (
-              <p>{link.name}</p>
+              <p className="text-black">{link.name}</p>
             )}
           </li>
         ))}
