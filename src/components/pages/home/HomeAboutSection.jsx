@@ -26,11 +26,19 @@ function HomeAboutSection() {
           className="mx-auto h-[100px]"
         />
 
-        <div className="flex items-center justify-evenly gap-[1px] bg-zinc-300 max-w-[800px] mx-auto">
+        <div className="flex items-center justify-evenly gap-[1px] bg-zinc-300 mx-auto max-w-[1000px]">
           {productStats.map((data, id) => (
-            <div key={id} className="w-full bg-white">
-              <h3 className="font-bold text-[4rem]">{data.no}</h3>
-              <p>{data.text}</p>
+            <div key={id} className="relative w-full bg-white z-10">
+              <p className="-z-10 text-zinc-100 text-[12rem] leading-[9rem] font-black absolute left-[15%] -top-[20%]">
+                #
+              </p>
+              <p
+                style={{ WebkitTextStroke: "1px black" }}
+                className="font-black text-transparent text-[6rem] leading-[6rem]"
+              >
+                {data.no}
+              </p>
+              <p className="uppercase">{data.text}</p>
             </div>
           ))}
         </div>
