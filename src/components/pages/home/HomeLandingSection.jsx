@@ -46,7 +46,7 @@ function HomeLandingSection() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               autoFocus={true}
-              type="text"
+              type="url"
               className="py-3 px-5 outline-none w-[350px] h-full bg-white"
               placeholder="https://www.example.com/long-url"
             />
