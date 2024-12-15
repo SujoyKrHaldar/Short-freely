@@ -76,10 +76,14 @@ const DashbaordCreateLinkForm = () => {
           <div className="p-10 pt-8 space-y-4 w-[60%] border border-zinc-300 bg-white">
             <Input
               autoFocus={true}
-              label="Title (Optional)"
+              label="Title"
               type="text"
               placeholder="Enter a title"
-              {...register("title")}
+              error={errors?.title || error}
+              errorMessage={errors?.title?.message}
+              {...register("title", {
+                required: "Title is required",
+              })}
             />
 
             <Input
