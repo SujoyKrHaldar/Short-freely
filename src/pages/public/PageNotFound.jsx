@@ -39,7 +39,6 @@ function PageNotFound() {
             <p
               onClick={handleClick}
               className="bg-white border border-black px-6 py-3 cursor-pointer"
-              to="/"
             >
               Go Back
             </p>
