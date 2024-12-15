@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   dashboardSidebarNavlinks as navLinks,
   responseStatus,
@@ -10,6 +10,7 @@ import { useNotification, useAuth } from "../../../hooks";
 function DashboardSidebar() {
   const { logout: removeUserDataFromClient } = useAuth();
   const notify = useNotification();
+  const { pathname } = useLocation();
 
   const handleLogout = async () => {
     const loginNotification = sessionStorage.getItem("isLoggedin");
@@ -48,12 +49,23 @@ function DashboardSidebar() {
 
         <nav className="space-y-4">
           {navLinks.map((link) => (
-            <Link className="block text-lg " key={link.name} to={link.url}>
+            <Link
+              className={`block text-lg duration-200 ${
+                pathname === link.url
+                  ? "text-black font-medium"
+                  : "text-zinc-400"
+              }`}
+              key={link.name}
+              to={link.url}
+            >
               {link.name}
             </Link>
           ))}
 
-          <p onClick={handleLogout} className="block text-lg cursor-pointer">
+          <p
+            onClick={handleLogout}
+            className="block text-lg cursor-pointer text-zinc-400"
+          >
             Logout
           </p>
         </nav>
