@@ -28,7 +28,7 @@ const SplashScreen = ({ loading }) => {
           : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="w-[120px] animate-pulse">
+      <div className="animate-pulse">
         <Logo />
       </div>
     </section>
@@ -63,23 +63,14 @@ function useAutoLoginOnRefresh() {
     } catch (_) {
       return false;
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     }
   };
 
   useEffect(() => {
-    const handleLoad = async () => {
-      await checkAuth();
-
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-    };
-
-    window.addEventListener("load", handleLoad);
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
+    checkAuth();
   }, []);
 
   return { loading };

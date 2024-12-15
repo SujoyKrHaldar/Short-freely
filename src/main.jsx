@@ -8,10 +8,10 @@ import { store } from "./state";
 import router from "./router";
 
 createRoot(document.getElementById("root")).render(
-  // <StrictMode>
-  <Provider store={store}>
-    <NotificationUi />
-    <RouterProvider router={router} />
-  </Provider>
-  // </StrictMode>
+  <StrictMode>
+    <Provider store={store}>
+      <NotificationUi />
+      <RouterProvider router={router} />
+    </Provider>
+  </StrictMode>
 );
