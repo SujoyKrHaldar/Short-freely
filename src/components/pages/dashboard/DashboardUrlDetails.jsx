@@ -136,7 +136,7 @@ const UrlDetails = ({
                   <img
                     src={faviconUrl}
                     alt="Favicon"
-                    className="w-[100px] h-auto"
+                    className="w-[6 0px] h-auto"
                   />
                 )}
               </div>

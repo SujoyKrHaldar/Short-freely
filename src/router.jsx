@@ -73,11 +73,11 @@ const router = createBrowserRouter([
             element: <SearchLinks />,
           },
           {
-            path: "/dashboard/edit/:id",
+            path: "/dashboard/edit/:urlId",
             element: <CreateShortUrl />,
           },
           {
-            path: "/dashboard/link/:id",
+            path: "/dashboard/link/:urlId",
             element: <UrlDetails />,
           },
           {
