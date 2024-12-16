@@ -13,6 +13,7 @@ import {
   UrlDetails,
   SearchLinks,
   AllShortLinks,
+  EditShortUrl,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -74,7 +75,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/dashboard/edit/:urlId",
-            element: <CreateShortUrl />,
+            element: <EditShortUrl />,
           },
           {
             path: "/dashboard/link/:urlId",

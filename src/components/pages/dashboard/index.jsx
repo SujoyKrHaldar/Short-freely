@@ -4,6 +4,7 @@ import DashboardHome from "./home/DashboardHome";
 import DashboardShortLinks from "./short-links/DashboardShortLinks";
 import DashboardUrlDetails from "./url-details/DashboardUrlDetails";
 import DeshboardSearch from "./search/DeshboardSearch";
+import DashboardEditUrl from "./edit-url/DashboardEditUrl";
 
 export {
   DashboardHome,
@@ -12,4 +13,5 @@ export {
   DashboardCreateShortUrl,
   DashboardAccount,
   DashboardUrlDetails,
+  DashboardEditUrl,
 };

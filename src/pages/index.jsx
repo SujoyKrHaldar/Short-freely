@@ -9,6 +9,7 @@ import PageNotFound from "./public/PageNotFound";
 import UrlDetails from "./private/UrlDetails";
 import SearchLinks from "./private/SearchLinks";
 import AllShortLinks from "./private/AllShortLinks";
+import EditShortUrl from "./private/EditShortUrl";
 
 export {
   Home,
@@ -21,5 +22,6 @@ export {
   PageNotFound,
   UrlDetails,
   SearchLinks,
+  EditShortUrl,
   AllShortLinks,
 };
