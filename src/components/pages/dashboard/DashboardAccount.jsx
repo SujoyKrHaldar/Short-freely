@@ -1,5 +1,5 @@
 import DashboardBreadcrumb from "./shared/DashboardBreadcrumb";
-import DashboardDangerzone from "./shared/DashboardDangerzone";
+// import DashboardDangerzone from "./shared/DashboardDangerzone";
 import DashboardPasswordUpdate from "./shared/DashboardPasswordUpdate";
 import DashboardProfileEdit from "./shared/DashboardProfileEdit";
 import DashboardSessions from "./shared/DashboardSessions";
@@ -28,7 +28,7 @@ function DashboardAccount() {
         <DashboardProfileEdit />
         <DashboardPasswordUpdate />
         <DashboardSessions />
-        <DashboardDangerzone />
+        {/* <DashboardDangerzone /> */}
       </div>
     </section>
   );
