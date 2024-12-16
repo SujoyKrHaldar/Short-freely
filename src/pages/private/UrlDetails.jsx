@@ -36,7 +36,7 @@ const useFetchUrlById = () => {
   const [loading, setLoading] = useState(true);
   const { urlId } = useParams();
   const { userData } = useAuth();
-  const userId = userData.$id;
+  const userId = userData?.$id;
 
   const fetchUrlData = async () => {
     setLoading(true);
