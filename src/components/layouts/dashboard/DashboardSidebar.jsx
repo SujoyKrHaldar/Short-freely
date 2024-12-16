@@ -43,7 +43,7 @@ function DashboardSidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 w-80 max-lg:hidden pt-24 flex flex-col justify-between bg-white">
       <div className="space-y-8 px-16 pt-8 h-full">
-        <p className="uppercase tracking-[0.5rem] text-xs text-zinc-400">
+        <p className="uppercase tracking-[0.5rem] text-xs text-zinc-500">
           Menu
         </p>
 
@@ -52,8 +52,8 @@ function DashboardSidebar() {
             <Link
               className={`block text-lg duration-200 ${
                 pathname === link.url
-                  ? "text-black font-medium"
-                  : "text-zinc-400"
+                  ? "text-black font-bold"
+                  : "text-zinc-500"
               }`}
               key={link.name}
               to={link.url}
@@ -64,7 +64,7 @@ function DashboardSidebar() {
 
           <p
             onClick={handleLogout}
-            className="block text-lg cursor-pointer text-zinc-400"
+            className="block text-lg cursor-pointer text-zinc-500"
           >
             Logout
           </p>
