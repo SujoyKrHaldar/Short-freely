@@ -1,5 +1,5 @@
-import DashbaordCreateLinkForm from "./shared/DashbaordCreateLinkForm";
-import DashboardBreadcrumb from "./shared/DashboardBreadcrumb";
+import DashbaordCreateLinkForm from "../shared/DashbaordLinkForm";
+import DashboardBreadcrumb from "../shared/DashboardBreadcrumb";
 
 function DashboardCreateShortUrl() {
   const breadcrumbs = [

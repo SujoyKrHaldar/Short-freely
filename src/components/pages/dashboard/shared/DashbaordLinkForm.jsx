@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import Input from "../../../ui/forms/Input";
 import { useQueryParams } from "../../../../hooks";
 import { useNavigate } from "react-router-dom";
+import Input from "../../../ui/forms/Input";
 
-const DashbaordCreateLinkForm = () => {
+const DashbaordLinkForm = () => {
   const {
     register,
     handleSubmit,
@@ -21,10 +21,6 @@ const DashbaordCreateLinkForm = () => {
   const [expirationVisible, setExpirationVisible] = useState(false);
   const longurlFromQuery = useQueryParams("longurl");
   const navigate = useNavigate();
-
-  // Watch fields
-  // const watchQr = watch("qr", false);
-  // const watchExpiration = watch("expiration", false);
 
   useEffect(() => {
     if (longurlFromQuery) {
@@ -193,4 +189,4 @@ const DashbaordCreateLinkForm = () => {
   );
 };
 
-export default DashbaordCreateLinkForm;
+export default DashbaordLinkForm;

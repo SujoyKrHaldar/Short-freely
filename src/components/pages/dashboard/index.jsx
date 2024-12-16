@@ -1,9 +1,9 @@
-import DashboardAccount from "./DashboardAccount";
-import DashboardCreateShortUrl from "./DashboardCreateShortUrl";
-import DashboardHome from "./DashboardHome";
-import DashboardShortLinks from "./DashboardShortLinks";
-import DashboardUrlDetails from "./DashboardUrlDetails";
-import DeshboardSearch from "./DeshboardSearch";
+import DashboardAccount from "./account/DashboardAccount";
+import DashboardCreateShortUrl from "./create-url/DashboardCreateShortUrl";
+import DashboardHome from "./home/DashboardHome";
+import DashboardShortLinks from "./short-links/DashboardShortLinks";
+import DashboardUrlDetails from "./url-details/DashboardUrlDetails";
+import DeshboardSearch from "./search/DeshboardSearch";
 
 export {
   DashboardHome,

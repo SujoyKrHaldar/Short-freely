@@ -7,9 +7,10 @@ import {
   Trash2 as Delete,
   ArrowDownToLine as Download,
 } from "lucide-react";
-import DashboardBreadcrumb from "./shared/DashboardBreadcrumb";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import DashboardUrlAnalytics from "./DashboardUrlAnalytics";
+import DashboardUrlOptions from "./DashboardUrlOptions";
 
 function DashboardUrlDetails({
   originalUrl,
@@ -25,7 +26,7 @@ function DashboardUrlDetails({
 }) {
   return (
     <section className="w-full h-full space-y-8">
-      <TopSection postTitle={title} PostId={$id} />
+      <DashboardUrlOptions postTitle={title} PostId={$id} />
       <section className="space-y-4">
         <UrlDetails
           postTitle={title}
@@ -35,21 +36,11 @@ function DashboardUrlDetails({
           updatedAt={$updatedAt}
           urlId={$id}
         />
-        <Analytics />
+        <DashboardUrlAnalytics />
       </section>
     </section>
   );
 }
-
-const Analytics = () => {
-  return (
-    <div className="border border-zinc-300 bg-white">
-      <div className="p-8 border-b border-zinc-300 w-full flex items-start justify-between">
-        <h2 className="text-2xl font-bold">Analytics</h2>
-      </div>
-    </div>
-  );
-};
 
 const UrlDetails = ({
   postTitle,
@@ -199,64 +190,6 @@ const UrlDetails = ({
             ))}
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
-
-const TopSection = ({ postTitle, PostId }) => {
-  const breadcrumbs = [
-    {
-      name: "Dashboard",
-      url: "/dashboard",
-    },
-    {
-      name: "Links",
-      url: "/dashboard/links",
-    },
-    {
-      name: postTitle,
-      url: "/dashboard/link/" + PostId,
-    },
-  ];
-  const navigate = useNavigate();
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    navigate(-1);
-  };
-
-  return (
-    <div className="flex items-end justify-between w-full h-full">
-      <DashboardBreadcrumb links={breadcrumbs} />
-
-      <div className="space-x-2">
-        <p
-          onClick={handleClick}
-          className="bg-white cursor-pointer text-black px-5 py-2 border border-zinc-300  inline-block"
-        >
-          Go Back
-        </p>
-        <Link
-          className="bg-black text-white px-5 py-2 border border-black  inline-block"
-          to="/dashboard/list"
-        >
-          Back to List
-        </Link>
-
-        {/* <Link
-            className="bg-green-700 text-white px-5 py-2 border border-black  inline-block"
-            to="/dashboard/list"
-          >
-            Edit
-          </Link>
-
-          <Link
-            className="bg-red-700 text-white px-5 py-2 border border-black  inline-block"
-            to="/dashboard/list"
-          >
-            Delete
-          </Link> */}
       </div>
     </div>
   );

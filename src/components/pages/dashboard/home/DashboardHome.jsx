@@ -1,7 +1,7 @@
-import DashboardEmptyBox from "./shared/DashboardEmptyBox";
+import NoResultFallbackUi from "../shared/NoResultFallbackUi";
 import { Link } from "react-router-dom";
-import { greetingImgUrl as imageUrl } from "../../../utils/imageUrls";
-import { useAuth } from "../../../hooks";
+import { greetingImgUrl as imageUrl } from "../../../../utils/imageUrls";
+import { useAuth } from "../../../../hooks";
 
 function DashboardHome() {
   const { userData } = useAuth();
@@ -28,7 +28,10 @@ function DashboardHome() {
       </div>
 
       <div className="z-50 relative">
-        <DashboardEmptyBox />
+        <NoResultFallbackUi
+          title="No links found"
+          description="Want to see metrics on your recent links? Create and publish a short link to get started."
+        />
       </div>
     </section>
   );

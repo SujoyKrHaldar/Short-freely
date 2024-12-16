@@ -1,8 +1,7 @@
-import DashboardBreadcrumb from "./shared/DashboardBreadcrumb";
-// import DashboardDangerzone from "./shared/DashboardDangerzone";
-import DashboardPasswordUpdate from "./shared/DashboardPasswordUpdate";
-import DashboardProfileEdit from "./shared/DashboardProfileEdit";
-import DashboardSessions from "./shared/DashboardSessions";
+import DashboardBreadcrumb from "../shared/DashboardBreadcrumb";
+import DashboardPasswordUpdate from "./DashboardPasswordUpdate";
+import DashboardProfileEdit from "./DashboardProfileEdit";
+import DashboardSessions from "./DashboardSessions";
 
 function DashboardAccount() {
   const breadcrumbs = [
@@ -28,7 +27,6 @@ function DashboardAccount() {
         <DashboardProfileEdit />
         <DashboardPasswordUpdate />
         <DashboardSessions />
-        {/* <DashboardDangerzone /> */}
       </div>
     </section>
   );
