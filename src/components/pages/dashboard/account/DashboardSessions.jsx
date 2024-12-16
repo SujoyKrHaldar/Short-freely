@@ -41,14 +41,14 @@ const SessionLists = () => {
       notify({
         message: `Deleting session...`,
         type: responseStatus.WARNING,
-        timeout: 10000,
+        timeout: 3000,
       });
       await deleteSessionBySessionId(sessionId);
 
       notify({
         message: `Session deleted successfully.`,
         type: responseStatus.SUCCESS,
-        timeout: 5000,
+        timeout: 3000,
       });
 
       getSessionList();
