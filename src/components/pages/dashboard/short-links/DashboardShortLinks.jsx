@@ -18,9 +18,6 @@ function DashboardShortLinks({ loading, data, error }) {
     },
   ];
 
-  console.log(data);
-  console.log(error);
-
   return (
     <section className="w-full h-full space-y-6">
       <div className="flex items-end justify-between w-full h-full">
