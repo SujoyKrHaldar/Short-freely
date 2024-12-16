@@ -1,7 +1,7 @@
-import NoResultFallbackUi from "../shared/NoResultFallbackUi";
 import { Link } from "react-router-dom";
 import { greetingImgUrl as imageUrl } from "../../../../utils/imageUrls";
 import { useAuth } from "../../../../hooks";
+import DashboardHomeUrlLists from "./DashboardHomeUrlLists";
 
 function DashboardHome() {
   const { userData } = useAuth();
@@ -16,7 +16,7 @@ function DashboardHome() {
         </div>
 
         <Link
-          className="bg-white text-black px-5 py-3 border border-black  inline-block"
+          className="bg-white text-black px-5 py-3 border border-zinc-400  inline-block"
           to="/dashboard/account"
         >
           Manage Account
@@ -27,12 +27,7 @@ function DashboardHome() {
         </div>
       </div>
 
-      <div className="z-50 relative">
-        <NoResultFallbackUi
-          title="No links found"
-          description="Want to see metrics on your recent links? Create and publish a short link to get started."
-        />
-      </div>
+      <DashboardHomeUrlLists />
     </section>
   );
 }

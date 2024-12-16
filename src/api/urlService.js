@@ -19,12 +19,16 @@ export const getUrlById = async (urlId) => {
   }
 };
 
-export const getAllUrls = async (userId) => {
+export const getAllUrls = async ({ userId, limit }) => {
   try {
     const response = await databases.listDocuments(
       databaseId,
       urlCollectionId,
-      [Query.equal("userId", userId), Query.orderDesc("$createdAt")]
+      [
+        Query.equal("userId", userId),
+        Query.orderDesc("$createdAt"),
+        Query.limit(limit),
+      ]
     );
 
     return response;
