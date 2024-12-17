@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 import { greetingImgUrl as imageUrl } from "../../../../utils/imageUrls";
 import { useAuth } from "../../../../hooks";
 import DashboardHomeUrlLists from "./DashboardHomeUrlLists";
+// import DashboardHomeStats from "./DashboardHomeStats";
+import { useFetchUrls } from "../../../../hooks";
 
 function DashboardHome() {
   const { userData } = useAuth();
+  const DEFAULT_URL_LIMIT = 3;
+  const { data, loading, error } = useFetchUrls({ limit: DEFAULT_URL_LIMIT });
 
   return (
     <section className="w-full h-full space-y-8 relative z-10">
@@ -27,7 +31,8 @@ function DashboardHome() {
         </div>
       </div>
 
-      <DashboardHomeUrlLists />
+      {/* <DashboardHomeStats data={data} /> */}
+      <DashboardHomeUrlLists data={data} loading={loading} error={error} />
     </section>
   );
 }
