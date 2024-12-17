@@ -49,7 +49,17 @@ export const createUrl = async (data) => {
   return result;
 };
 
-export const updateUrlById = async () => {};
+export const updateUrlById = async (data) => {
+  const result = await databases.updateDocument(
+    databaseId,
+    urlCollectionId,
+    data.$id,
+    data,
+    [Permission.read(Role.any())]
+  );
+
+  return result;
+};
 
 export const deleteUrlById = async (urlId) => {
   return await databases.deleteDocument(databaseId, urlCollectionId, urlId);
