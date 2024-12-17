@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { useDispatch, useSelector } from "react-redux";
-import { SET_LOGGING_OUT } from "../state";
 import useNotification from "./useNotification";
 import { responseStatus } from "../utils/constants";
 import { logoutUser } from "../api/authService";
@@ -8,9 +6,7 @@ import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
 function useLogout() {
-  const dispatch = useDispatch();
-  const { logout: removeUserDataFromClient } = useAuth();
-  const isLoggingOut = useSelector((state) => state.logout.isLoggingOut);
+  const { logout: removeUserDataFromClient, setLoggingOut } = useAuth();
   const notify = useNotification();
   const navigate = useNavigate();
 
@@ -19,8 +15,7 @@ function useLogout() {
     if (loginNotification) sessionStorage.removeItem("isLoggedin");
 
     try {
-      //   dispatch(SET_LOGGING_OUT(true));
-
+      // setLoggingOut(true);
       notify({
         message: `Please wait....`,
         type: responseStatus.WARNING,
@@ -28,11 +23,7 @@ function useLogout() {
       });
 
       await logoutUser();
-      navigate("/signup", { replace: true });
-      //   navigate("/signup");
-
       removeUserDataFromClient();
-
       notify({
         message: `Logout successful`,
         type: responseStatus.SUCCESS,
@@ -44,12 +35,10 @@ function useLogout() {
         type: responseStatus.ERROR,
         timeout: 5000,
       });
-    } finally {
-      //   dispatch(SET_LOGGING_OUT(false));
     }
   };
 
-  return { isLoggingOut, logout };
+  return { logout };
 }
 
 export default useLogout;
