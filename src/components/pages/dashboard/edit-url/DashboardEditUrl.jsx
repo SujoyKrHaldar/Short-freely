@@ -37,7 +37,7 @@ function DashboardEditUrl() {
       });
     } finally {
       setActionProgress(false);
-      navigate("/dashboard/links", { replace: true });
+      navigate(-1, { replace: true });
     }
   };
 
