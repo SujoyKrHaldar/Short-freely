@@ -32,12 +32,10 @@ function DashboardLinkCard({ data }) {
       </div>
 
       <div className="flex items-center gap-2">
-        {data?.clickCount?.length > 0 && (
-          <div className="p-2 flex items-center gap-1 bg-white border border-zinc-300 duration-300 text-sm font-medium">
-            <MousePointerClick className="opacity-50" color="black" size={15} />
-            <p>{data?.clickCount?.length} clicks</p>
-          </div>
-        )}
+        <div className="p-2 flex items-center gap-1 bg-white border border-zinc-300 duration-300 text-sm font-medium">
+          <MousePointerClick className="opacity-50" color="black" size={15} />
+          <p>{data?.clickCount?.length} clicks</p>
+        </div>
 
         <Link
           className="px-5 py-2 border border-zinc-300 hover:border-black duration-200 text-sm font-medium"
