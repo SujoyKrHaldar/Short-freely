@@ -10,6 +10,7 @@ export const responseStatus = Object.freeze(_responseStatus);
 const _responseErrorType = {
   USER_ALREADY_EXIST: "user_already_exists",
   GENERAL_RATE_LIMIT_EXEED: "general_rate_limit_exceeded",
+  DOCUMENT_ALREADY_EXISTS: "document_already_exists",
 };
 export const responseErrorType = Object.freeze(_responseErrorType);
 
