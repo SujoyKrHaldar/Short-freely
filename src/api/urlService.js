@@ -26,7 +26,7 @@ export const getAllUrls = async ({ userId, limit, offset }) => {
       urlCollectionId,
       [
         Query.equal("userId", userId),
-        Query.orderDesc("$createdAt"),
+        Query.orderDesc("$updatedAt"),
         Query.limit(limit),
         Query.offset(offset),
       ]
