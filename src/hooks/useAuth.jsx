@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { LOGIN, LOGOUT } from "../state";
+import { LOGIN, LOGOUT, SET_LOGGING_OUT } from "../state";
 
 const useAuth = () => {
   const dispatch = useDispatch();
   const authStatus = useSelector((state) => state.auth.authStatus);
+  const isLoggingOut = useSelector((state) => state.auth.isLoggingOut);
   const userData = useSelector((state) => state.auth.userData);
 
   const login = (user) => {
@@ -14,7 +15,11 @@ const useAuth = () => {
     dispatch(LOGOUT());
   };
 
-  return { authStatus, userData, login, logout };
+  const setLoggingOut = (booleanValue) => {
+    dispatch(SET_LOGGING_OUT(booleanValue));
+  };
+
+  return { authStatus, isLoggingOut, userData, login, logout, setLoggingOut };
 };
 
 export default useAuth;
