@@ -16,11 +16,11 @@ const useFetchUrls = ({ limit, page = 1 }) => {
     setError(false);
 
     try {
-      const offset = (page - 1) * limit; // Calculate offset based on page
+      const offset = (page - 1) * limit;
       const response = await getAllUrls({ userId, limit, offset });
 
-      setData(response); // Assuming `response.documents` contains the list of items
-      setTotalPages(Math.ceil(response.total / limit)); // Calculate total pages
+      setData(response);
+      setTotalPages(Math.ceil(response.total / limit));
     } catch (_) {
       setError(true);
     } finally {
