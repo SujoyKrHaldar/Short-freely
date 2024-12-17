@@ -56,7 +56,8 @@ const DashbaordLinkForm = ({ defaultData }) => {
     }
   }, [longurlFromQuery, setValue]);
 
-  // TODO: WORK ON QR GENERATEION
+  // TODO: WORK ON QR GENERATEION url: https://chatgpt.com/c/675d491c-4ecc-8007-bdae-9306e2ae7d3a
+  // TODO: DISABLE UPDATE THE EXISTING DATA
   // TODO: ALSO WORK ON FAVICON GENERATION FOR LONG URLS
   const handleQrToggle = (e) => {
     setQrVisible(e.target.checked);
@@ -127,6 +128,9 @@ const DashbaordLinkForm = ({ defaultData }) => {
           timeout: 5000,
         });
         reset();
+
+        //TODO : ADD A SHARE QR & URL POPUP WITH SMALL ANIMATION REACT TSPARTICLE https://github.com/tsparticles/react/#readme
+        navigate("/dashboard/link/" + urlId, { replace: true });
         return;
       }
     } catch (error) {
@@ -142,7 +146,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
       if (error?.type === responseErrorType.DOCUMENT_ALREADY_EXISTS) {
         notify({
           message:
-            "Custom back-half slug is already exist. Try to generate a new slug",
+            "Custom back-half slug is already exist. Try to generate a unique slug or skip it.",
           type: responseStatus.ERROR,
           timeout: 5000,
         });
@@ -185,7 +189,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
           type: responseStatus.SUCCESS,
           timeout: 5000,
         });
-        navigate("/dashboard/link/" + urlId);
+        navigate("/dashboard/link/" + urlId, { replace: true });
         return;
       }
     } catch (error) {
@@ -335,7 +339,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
           </div>
         </div>
 
-        <div className=" sticky bottom-0 px-8 py-4 flex items-center justify-end gap-2 w-full h-fit bg-white border border-zinc-300">
+        <div className=" sticky bottom-0 py-6 flex items-center justify-end gap-2 w-full h-fit  border-t border-t-zinc-300 bg-zinc-100">
           <button
             type="button"
             className="bg-zinc-200 border border-zinc-300 px-6 py-2 cursor-pointer"
