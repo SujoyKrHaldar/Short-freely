@@ -7,6 +7,9 @@ const authAction = {
     state.authStatus = false;
     state.userData = null;
   },
+  setLoggingOut(state, action) {
+    state.isLoggingOut = action.payload;
+  },
 };
 
 export default authAction;

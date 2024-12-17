@@ -1,5 +1,4 @@
-import { LOGIN, LOGOUT } from "./auth/authSlice";
-import { SET_LOGGING_OUT } from "./logout/logoutSlice";
+import { LOGIN, LOGOUT, SET_LOGGING_OUT } from "./auth/authSlice";
 import {
   ADD_NOTIFICATION,
   REMOVE_NOTIFICATION,
