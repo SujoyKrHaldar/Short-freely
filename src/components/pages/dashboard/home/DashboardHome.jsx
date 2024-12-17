@@ -20,7 +20,7 @@ function DashboardHome() {
         </div>
 
         <Link
-          className="bg-white text-black px-5 py-3 border border-zinc-400  inline-block"
+          className="bg-white text-black px-5 py-2 border border-zinc-400  inline-block"
           to="/dashboard/account"
         >
           Manage Account

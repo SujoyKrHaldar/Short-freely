@@ -116,7 +116,7 @@ const ProfileForm = () => {
             <>
               <button
                 type="button"
-                className="bg-zinc-100 border border-zinc-300 px-6 py-2 cursor-pointer"
+                className="bg-zinc-100 border border-zinc-300 px-5 py-2 cursor-pointer"
                 onClick={onCancel}
               >
                 Cancel
@@ -124,7 +124,7 @@ const ProfileForm = () => {
 
               <button
                 type="submit"
-                className="bg-black text-white px-6 py-2 border border-black"
+                className="bg-black text-white px-5 py-2 border border-black"
               >
                 {loading ? (
                   <div className="flex items-center justify-center gap-3 mr-4">
@@ -139,7 +139,7 @@ const ProfileForm = () => {
           ) : (
             <button
               type="button"
-              className="bg-zinc-100 border border-zinc-300 px-6 py-2 cursor-pointer"
+              className="bg-zinc-100 border border-zinc-300 px-5 py-2 cursor-pointer"
               onClick={() => setIsEditable(true)}
             >
               Edit Profile
