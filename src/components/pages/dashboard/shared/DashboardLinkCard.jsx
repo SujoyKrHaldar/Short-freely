@@ -16,19 +16,18 @@ function DashboardLinkCard({ data }) {
     });
   };
   return (
-    <div className="p-5 bg-white border-2 border-zinc-200 hover:border-black duration-200 flex items-center justify-between">
-      <div className="space-y-1">
-        <p className="text-lg font-bold">{data.title}</p>
-        <p className="text-sm">
-          <span className="text-blue-600 font-medium">{data.shortUrl}</span> •{" "}
-          {data.$createdAt === data.$updatedAt
-            ? `Created on ${new Date(data.$createdAt).toDateString()}`
-            : `Created on ${new Date(
-                data.$createdAt
-              ).toDateString()} & Updated at ${new Date(
-                data.$updatedAt
-              ).toDateString()}`}
-        </p>
+    <div className="p-5 bg-white border-[1.5px] border-zinc-100 hover:border-black duration-200 flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 rounded-full bg-zinc-200"></div>
+        <div className="space-y-1">
+          <p className="text-lg font-bold">{data.title}</p>
+          <p className="text-sm">
+            <span className="text-blue-600 font-medium">{data.shortUrl}</span> •{" "}
+            {data.$createdAt === data.$updatedAt
+              ? `Created on ${new Date(data.$createdAt).toDateString()}`
+              : `Updated on ${new Date(data.$updatedAt).toDateString()}`}
+          </p>
+        </div>
       </div>
 
       <div className="flex items-center gap-2">
