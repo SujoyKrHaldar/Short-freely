@@ -51,7 +51,7 @@ function DashboardLinkCard({ data }) {
           View Details
         </Link>
 
-        <div
+        <div title="Copy short url"
           onClick={handleCopy}
           className="group p-2 cursor-pointer bg-zinc-200 border border-zinc-300 hover:border-black duration-300 text-sm font-medium"
         >
