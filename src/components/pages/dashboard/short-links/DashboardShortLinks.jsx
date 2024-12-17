@@ -1,12 +1,12 @@
-/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import NoResultFallbackUi from "../shared/NoResultFallbackUi";
 import DashboardBreadcrumb from "../shared/DashboardBreadcrumb";
 import { searchImgUrl } from "../../../../utils/imageUrls";
 import DashboardLinkCard from "../shared/DashboardLinkCard";
 import ErrorFallbackUi from "../shared/ErrorFallbackUi";
+import { useFetchUrls } from "../../../../hooks";
 
-function DashboardShortLinks({ loading, data, error }) {
+function DashboardShortLinks() {
   const breadcrumbs = [
     {
       name: "Dashboard",
@@ -17,6 +17,8 @@ function DashboardShortLinks({ loading, data, error }) {
       url: "/dashboard/links",
     },
   ];
+
+  const { data, loading, error } = useFetchUrls({ limit: 20 });
 
   return (
     <section className="w-full h-full space-y-6">
