@@ -32,10 +32,13 @@ function DashboardLinkCard({ data }) {
       </div>
 
       <div className="flex items-center gap-2">
-        <div className="p-2 flex items-center gap-1 bg-white border border-zinc-300 duration-300 text-sm font-medium">
+        <Link
+          to={`/dashboard/link/${data.$id}#analytics`}
+          className="p-2 flex items-center gap-1 bg-white border border-zinc-300 duration-300 text-sm font-medium"
+        >
           <MousePointerClick className="opacity-50" color="black" size={15} />
           <p>{data?.clickCount?.length} clicks</p>
-        </div>
+        </Link>
 
         <Link
           className="px-5 py-2 border border-zinc-300 hover:border-black duration-200 text-sm font-medium"
@@ -51,7 +54,8 @@ function DashboardLinkCard({ data }) {
           View Details
         </Link>
 
-        <div title="Copy short url"
+        <div
+          title="Copy short url"
           onClick={handleCopy}
           className="group p-2 cursor-pointer bg-zinc-200 border border-zinc-300 hover:border-black duration-300 text-sm font-medium"
         >
