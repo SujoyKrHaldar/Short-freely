@@ -49,11 +49,11 @@ export const createUrl = async (data) => {
   return result;
 };
 
-export const updateUrlById = async (data) => {
+export const updateUrlById = async (data, urlId) => {
   const result = await databases.updateDocument(
     databaseId,
     urlCollectionId,
-    data.$id,
+    urlId,
     data,
     [Permission.read(Role.any())]
   );

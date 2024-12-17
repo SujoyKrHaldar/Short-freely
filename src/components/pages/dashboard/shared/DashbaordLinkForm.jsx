@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth, useNotification, useQueryParams } from "../../../../hooks";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Input from "../../../ui/forms/Input";
 import { createUrl, updateUrlById } from "../../../../api/urlService";
 import { responseErrorType, responseStatus } from "../../../../utils/constants";
@@ -15,7 +15,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
     watch,
     setValue,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm();
 
   const [qrVisible, setQrVisible] = useState(false);
@@ -23,12 +23,15 @@ const DashbaordLinkForm = ({ defaultData }) => {
   const [qrCode, setQrCode] = useState("");
   // const [expirationVisible, setExpirationVisible] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
+
   const longurlFromQuery = useQueryParams("longurl");
   const navigate = useNavigate();
   const notify = useNotification();
   const { userData } = useAuth();
   const userId = userData.$id;
+  const { urlId } = useParams();
 
+  // ! POPULATE EXISTING DATA IF IN EDIT MODE
   useEffect(() => {
     if (defaultData) {
       setIsEditMode(true);
@@ -46,12 +49,15 @@ const DashbaordLinkForm = ({ defaultData }) => {
     }
   }, [defaultData, setValue, reset]);
 
+  // ! GETTING LONGURL DATA FROM QUERY PARAMS WHICH IC COMING FROM HOMEPAGE
   useEffect(() => {
     if (longurlFromQuery) {
       setValue("originalUrl", longurlFromQuery);
     }
   }, [longurlFromQuery, setValue]);
 
+  // TODO: WORK ON QR GENERATEION
+  // TODO: ALSO WORK ON FAVICON GENERATION FOR LONG URLS
   const handleQrToggle = (e) => {
     setQrVisible(e.target.checked);
     const url = watch("originalUrl");
@@ -64,6 +70,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
     }
   };
 
+  // * CANCLE SUBMISSION FOR EDIT AND CREATE
   const handleCancle = () => {
     setQrVisible(false);
     // setExpirationVisible(false);
@@ -75,20 +82,23 @@ const DashbaordLinkForm = ({ defaultData }) => {
     reset();
   };
 
+  // * GENERATE CUSTOM SLUG FOR SHORT URL
   const generateSlug = () => {
     return Math.random().toString(36).substring(2, 8);
   };
 
+  // * ON FORM SUBMIT
   const onSubmit = (data) => {
     setLoading(true);
 
     if (defaultData) {
-      console.log("Updating link with data:", data);
+      updateExistingLinkUrl(data);
     } else {
       createNewLinkUrl(data);
     }
   };
 
+  //! CREATE NEW DOCUMENT
   const createNewLinkUrl = async (data) => {
     const SHORT_URL_DOMAIN = "short.ly";
 
@@ -129,8 +139,77 @@ const DashbaordLinkForm = ({ defaultData }) => {
         return;
       }
 
+      if (error?.type === responseErrorType.DOCUMENT_ALREADY_EXISTS) {
+        notify({
+          message:
+            "Custom back-half slug is already exist. Try to generate a new slug",
+          type: responseStatus.ERROR,
+          timeout: 5000,
+        });
+        return;
+      }
+
       notify({
         message: "Failed to create link. Try again later.",
+        type: responseStatus.ERROR,
+        timeout: 5000,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  //! UPDATE EXISTING DOCUMENT
+  const updateExistingLinkUrl = async (data) => {
+    const SHORT_URL_DOMAIN = "short.ly";
+
+    if (data.customSlug === "") {
+      const slug = generateSlug();
+      data.customSlug = slug;
+      data.shortUrl = SHORT_URL_DOMAIN + "/" + data.customSlug;
+    }
+
+    try {
+      const response = await updateUrlById(
+        {
+          shortUrl: data.shortUrl,
+          title: data.title,
+          customSlug: data.customSlug,
+          originalUrl: data.originalUrl,
+        },
+        urlId
+      );
+      if (response) {
+        notify({
+          message: "Short url updated successfully.",
+          type: responseStatus.SUCCESS,
+          timeout: 5000,
+        });
+        navigate("/dashboard/link/" + urlId);
+        return;
+      }
+    } catch (error) {
+      if (error?.type === responseErrorType.GENERAL_RATE_LIMIT_EXEED) {
+        notify({
+          message: "Too Many Requests! Please try again after some time.",
+          type: responseStatus.ERROR,
+          timeout: 5000,
+        });
+        return;
+      }
+
+      if (error?.type === responseErrorType.DOCUMENT_ALREADY_EXISTS) {
+        notify({
+          message:
+            "Custom back-half slug is already exist. Try to generate a new slug",
+          type: responseStatus.ERROR,
+          timeout: 5000,
+        });
+        return;
+      }
+
+      notify({
+        message: "Failed to update link. Try again later.",
         type: responseStatus.ERROR,
         timeout: 5000,
       });
@@ -193,7 +272,6 @@ const DashbaordLinkForm = ({ defaultData }) => {
               </div>
             </div>
           </div>
-
           {/* BOX RIGHT */}
           {/* <div className="w-[40%] border border-zinc-300 bg-white">
             <div className="p-6 border-b space-y-4 border-zinc-300">
@@ -235,6 +313,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
             </div>
           </div> */}
 
+          {/* // TODO: UPDATE QR GENERATIO PROCESS AND UI */}
           <div className="w-[40%] border border-zinc-300 bg-white">
             <div className="p-6 space-y-4">
               <div className="flex items-center gap-4">
@@ -266,8 +345,13 @@ const DashbaordLinkForm = ({ defaultData }) => {
           </button>
 
           <button
+            disabled={!isDirty}
             type="submit"
-            className="bg-black text-white px-6 py-2 border border-black"
+            className={` ${
+              isDirty
+                ? "cursor-pointer bg-black"
+                : "cursor-not-allowed bg-zinc-500 border-zinc-500"
+            } bg-black text-white px-6 py-2 border border-black`}
           >
             {loading ? (
               <div className="flex items-center justify-center gap-3 mr-4">
