@@ -18,7 +18,7 @@ function DashboardSidebar() {
           {navLinks.map((link) => (
             <Link
               className={`block text-lg duration-200 ${
-                pathname === link.url ? "text-black font-bold" : "text-zinc-500"
+                pathname === link.url ? "text-black font-bold" : "text-zinc-600"
               }`}
               key={link.name}
               to={link.url}
@@ -29,7 +29,7 @@ function DashboardSidebar() {
 
           <p
             onClick={logout}
-            className="block text-lg cursor-pointer text-zinc-500"
+            className="block text-lg cursor-pointer text-zinc-600"
           >
             Logout
           </p>
