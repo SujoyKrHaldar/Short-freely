@@ -1,6 +1,6 @@
+import { Query, ID, Permission, Role } from "appwrite";
 import { databases } from "./initServer";
 import config from "../config";
-import { Query } from "appwrite";
 
 const databaseId = config.getKey("DATABASE_ID");
 const urlCollectionId = config.getKey("URL_COLLECTION_ID");
@@ -33,10 +33,24 @@ export const getAllUrls = async ({ userId, limit }) => {
 
     return response;
   } catch (error) {
-    console.log(error);
     throw error.message;
   }
 };
-export const createUrl = async () => {};
+
+export const createUrl = async (data) => {
+  const result = await databases.createDocument(
+    databaseId,
+    urlCollectionId,
+    ID.unique(),
+    data,
+    [Permission.read(Role.any())]
+  );
+
+  return result;
+};
+
 export const updateUrlById = async () => {};
-export const deleteUrlById = async () => {};
+
+export const deleteUrlById = async (urlId) => {
+  return await databases.deleteDocument(databaseId, urlCollectionId, urlId);
+};
