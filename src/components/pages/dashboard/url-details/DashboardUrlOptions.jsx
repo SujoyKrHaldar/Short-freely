@@ -31,13 +31,13 @@ const DashboardUrlOptions = ({ postTitle, PostId }) => {
       <div className="space-x-2">
         <p
           onClick={handleClick}
-          className="bg-white cursor-pointer text-black px-5 py-2 border border-zinc-300  inline-block"
+          className="bg-white cursor-pointer text-black px-5 py-2 border border-zinc-400  inline-block"
         >
           Go Back
         </p>
         <Link
           className="bg-black text-white px-5 py-2 border border-black  inline-block"
-          to="/dashboard/list"
+          to="/dashboard/links"
         >
           Back to List
         </Link>
