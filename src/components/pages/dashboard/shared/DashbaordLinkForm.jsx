@@ -1,10 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useQueryParams } from "../../../../hooks";
+import { useAuth, useNotification, useQueryParams } from "../../../../hooks";
 import { useNavigate } from "react-router-dom";
 import Input from "../../../ui/forms/Input";
+import { createUrl, updateUrlById } from "../../../../api/urlService";
+import { responseErrorType, responseStatus } from "../../../../utils/constants";
 
-const DashbaordLinkForm = () => {
+const DashbaordLinkForm = ({ defaultData }) => {
   const {
     register,
     handleSubmit,
@@ -16,21 +20,41 @@ const DashbaordLinkForm = () => {
 
   const [qrVisible, setQrVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
   const [qrCode, setQrCode] = useState("");
-  const [expirationVisible, setExpirationVisible] = useState(false);
+  // const [expirationVisible, setExpirationVisible] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
   const longurlFromQuery = useQueryParams("longurl");
   const navigate = useNavigate();
+  const notify = useNotification();
+  const { userData } = useAuth();
+  const userId = userData.$id;
+
+  useEffect(() => {
+    if (defaultData) {
+      setIsEditMode(true);
+      const { title, originalUrl, customSlug, expiration, expirationDate } =
+        defaultData;
+      setValue("title", title);
+      setValue("originalUrl", originalUrl);
+      setValue("customSlug", customSlug);
+      setValue("expiration", expiration);
+      setValue("expirationDate", expirationDate);
+      // setExpirationVisible(Boolean(expiration));
+    } else {
+      setIsEditMode(false);
+      reset();
+    }
+  }, [defaultData, setValue, reset]);
 
   useEffect(() => {
     if (longurlFromQuery) {
-      setValue("destination", longurlFromQuery);
+      setValue("originalUrl", longurlFromQuery);
     }
   }, [longurlFromQuery, setValue]);
 
   const handleQrToggle = (e) => {
     setQrVisible(e.target.checked);
-    const url = watch("destination");
+    const url = watch("originalUrl");
     if (e.target.checked) {
       if (url) {
         setQrCode(`https://api.qrserver.com/v1/create-qr-code/?data=${url}`);
@@ -40,28 +64,79 @@ const DashbaordLinkForm = () => {
     }
   };
 
+  const handleCancle = () => {
+    setQrVisible(false);
+    // setExpirationVisible(false);
+    if (isEditMode) {
+      reset(defaultData);
+      return;
+    }
+    navigate("/dashboard/create");
+    reset();
+  };
+
   const generateSlug = () => {
     return Math.random().toString(36).substring(2, 8);
   };
 
   const onSubmit = (data) => {
-    setError(false);
     setLoading(true);
 
-    if (data.slug === "") {
-      const slug = generateSlug();
-      data.slug = slug;
+    if (defaultData) {
+      console.log("Updating link with data:", data);
+    } else {
+      createNewLinkUrl(data);
     }
-
-    console.log("Form Data Submitted:", data);
-    setLoading(false);
   };
 
-  const handleCancle = () => {
-    setQrVisible(false);
-    setExpirationVisible(false);
-    navigate("/dashboard/create");
-    reset();
+  const createNewLinkUrl = async (data) => {
+    const SHORT_URL_DOMAIN = "short.ly";
+
+    if (data.customSlug === "") {
+      const slug = generateSlug();
+      data.customSlug = slug;
+    }
+
+    data.userId = userId;
+
+    data.shortUrl = SHORT_URL_DOMAIN + "/" + data.customSlug;
+
+    try {
+      const response = await createUrl({
+        shortUrl: data.shortUrl,
+        title: data.title,
+        customSlug: data.customSlug,
+        originalUrl: data.originalUrl,
+        userId: data.userId,
+      });
+
+      if (response) {
+        notify({
+          message: "Short url created successfully.",
+          type: responseStatus.SUCCESS,
+          timeout: 5000,
+        });
+        reset();
+        return;
+      }
+    } catch (error) {
+      if (error?.type === responseErrorType.GENERAL_RATE_LIMIT_EXEED) {
+        notify({
+          message: "Too Many Requests! Please try again after some time.",
+          type: responseStatus.ERROR,
+          timeout: 5000,
+        });
+        return;
+      }
+
+      notify({
+        message: "Failed to create link. Try again later.",
+        type: responseStatus.ERROR,
+        timeout: 5000,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -75,7 +150,7 @@ const DashbaordLinkForm = () => {
               label="Title"
               type="text"
               placeholder="Enter a title"
-              error={errors?.title || error}
+              error={errors?.title}
               errorMessage={errors?.title?.message}
               {...register("title", {
                 required: "Title is required",
@@ -83,13 +158,13 @@ const DashbaordLinkForm = () => {
             />
 
             <Input
-              label="Destination"
+              label="Original Url"
               type="url"
               placeholder="https://example.com/my-long-url"
-              error={errors?.destination || error}
-              errorMessage={errors?.destination?.message}
-              {...register("destination", {
-                required: "Destination URL is required",
+              error={errors?.originalUrl}
+              errorMessage={errors?.originalUrl?.message}
+              {...register("originalUrl", {
+                required: "Original URL is required",
                 pattern: {
                   value: /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i,
                   message: "Invalid URL format",
@@ -101,14 +176,14 @@ const DashbaordLinkForm = () => {
               <label>Custom Back-Half (Optional)</label>
               <div className="relative flex w-full overflow-hidden">
                 <p className="border border-black border-r-0 py-3 px-5 h-fit bg-zinc-100">
-                  Lol.is
+                  short.ly
                 </p>
                 <Input
                   type="text"
-                  placeholder="Eg: your-custom-back-half"
-                  error={errors?.slug || error}
-                  errorMessage={errors?.slug?.message}
-                  {...register("slug", {
+                  placeholder="Eg: your custom back-half"
+                  error={errors?.customSlug}
+                  errorMessage={errors?.customSlug?.message}
+                  {...register("customSlug", {
                     pattern: {
                       value: /^[a-zA-Z0-9-]*$/,
                       message: "Only letters, numbers, and dashes allowed",
@@ -120,7 +195,7 @@ const DashbaordLinkForm = () => {
           </div>
 
           {/* BOX RIGHT */}
-          <div className="w-[40%] border border-zinc-300 bg-white">
+          {/* <div className="w-[40%] border border-zinc-300 bg-white">
             <div className="p-6 border-b space-y-4 border-zinc-300">
               <div className="flex items-center gap-4">
                 <input
@@ -158,6 +233,26 @@ const DashbaordLinkForm = () => {
                 </div>
               )}
             </div>
+          </div> */}
+
+          <div className="w-[40%] border border-zinc-300 bg-white">
+            <div className="p-6 space-y-4">
+              <div className="flex items-center gap-4">
+                <input
+                  type="checkbox"
+                  {...register("qr")}
+                  onChange={handleQrToggle}
+                  className="h-5 w-5 accent-black "
+                />
+                <label className="font-medium">Generate QR Code</label>
+              </div>
+
+              {qrVisible && qrCode && (
+                <div className="p-4 border border-zinc-300">
+                  <img src={qrCode} alt="QR Code" className="w-full" />
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -167,7 +262,7 @@ const DashbaordLinkForm = () => {
             className="bg-zinc-200 border border-zinc-300 px-6 py-2 cursor-pointer"
             onClick={handleCancle}
           >
-            Reset Fields
+            Reset to Default
           </button>
 
           <button
@@ -177,10 +272,10 @@ const DashbaordLinkForm = () => {
             {loading ? (
               <div className="flex items-center justify-center gap-3 mr-4">
                 <div className="w-5 h-5 rounded-full border-[3px] border-zinc-500 border-l-transparent animate-spin"></div>
-                <p>Please Wait</p>
+                <p>{isEditMode ? "Updating" : "Creating Link"}</p>
               </div>
             ) : (
-              <p>Create Your Link</p>
+              <p>{isEditMode ? "Update Link" : "Create New Link"}</p>
             )}
           </button>
         </div>
