@@ -21,7 +21,7 @@ function DashboardLayout({ children }) {
           expandDashboardContent ? "lg:pl-10" : "lg:pl-80"
         }`}
       >
-        <div className="rounded-tl-3xl pointer-events-auto h-full grow p-6 bg-zinc-100 border-l border-zinc-300 lg:p-28 lg:pb-16 lg:px-16 ">
+        <div className="rounded-tl-3xl pointer-events-auto h-full grow p-6 bg-zinc-100 border-l border-zinc-300 py-28 lg:px-20 pb-4">
           <div className="max-w-6xl mx-auto">{children}</div>
         </div>
       </section>

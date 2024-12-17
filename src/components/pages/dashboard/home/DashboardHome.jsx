@@ -11,7 +11,7 @@ function DashboardHome() {
   const { data, loading, error } = useFetchUrls({ limit: DEFAULT_URL_LIMIT });
 
   return (
-    <section className="w-full h-full space-y-8 relative z-10">
+    <section className="w-full h-full space-y-8 relative z-10 pb-8">
       <div className="flex items-end justify-between w-full h-full relative p-10 pt-20 bg-white overflow-hidden border border-zinc-300 -z-10">
         <div className="space-y-2">
           <p className="uppercase tracking-[0.5rem] text-sm">Greetings </p>

@@ -46,7 +46,7 @@ function DashboardShortLinks() {
         </Link>
       </div>
 
-      <div className="space-y-4 py-4 border-t border-zinc-300 relative">
+      <div className="space-y-4 pt-4 border-t border-zinc-300 relative">
         {data?.documents?.length > 0 && !error && (
           <p>Total {data?.total} links found.</p>
         )}
