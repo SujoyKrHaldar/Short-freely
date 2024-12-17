@@ -8,7 +8,7 @@ import greetingImgUrl from "../assets/illustrations/greetings.png";
 import notFoundImgUrl from "../assets/illustrations/page-not-found.png";
 import emptyImgUrl from "../assets/illustrations/empty-list.png";
 import fileSharingImgUrl from "../assets/illustrations/file-sharing.png";
-import loadingImgUrl from "../assets/illustrations/loading.png";
+import completedImgUrl from "../assets/illustrations/completed.png";
 import workingMenImgUrl from "../assets/illustrations/working.png";
 import searchImgUrl from "../assets/illustrations/search.png";
 import decoratorOne from "../assets/illustrations/decorator-1.png";
@@ -24,7 +24,7 @@ import emailImgUrl from "../assets/illustrations/email.png";
 
 export {
   searchImgUrl,
-  loadingImgUrl,
+  completedImgUrl,
   workingMenImgUrl,
   fileSharingImgUrl,
   analyticsImgUrl,
