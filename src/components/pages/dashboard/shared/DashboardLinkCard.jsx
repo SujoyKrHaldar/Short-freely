@@ -15,14 +15,39 @@ function DashboardLinkCard({ data }) {
       timeout: 3000,
     });
   };
+
   return (
-    <div className="p-5 bg-white border-[1.5px] border-zinc-100 hover:border-black duration-200 flex items-center justify-between">
+    <div className="p-5 bg-white border-[1.5px] border-zinc-100 hover:border-black duration-200 flex items-end justify-between">
       <div className="flex items-center gap-4">
         <div className="w-12 h-12 rounded-full bg-zinc-200"></div>
         <div className="space-y-1">
-          <p className="text-lg font-bold">{data.title}</p>
+          <div className="flex items-center gap-1">
+            <p className="text-lg font-bold first-letter:uppercase">{data.title} </p>
+            <p>•</p>
+            <div
+              onClick={handleCopy}
+              className=" flex items-center gap-2 group cursor-pointer"
+            >
+              <p className="text-blue-700 text-lg font-medium group-hover:underline cursor-pointer">
+                {data.shortUrl}
+              </p>
+              <Copy
+                className="opacity-60 group-hover:opacity-100 duration-300"
+                color="black"
+                size={16}
+              />
+            </div>
+          </div>
+
+          <Link
+            to={data.originalUrl}
+            title={data.originalUrl}
+            className="text-sm text-zinc-500 hover:underline"
+          >
+            {data.originalUrl.slice(0, 50)}...
+          </Link>
+
           <p className="text-sm">
-            <span className="text-blue-600 font-medium">{data.shortUrl}</span> •{" "}
             {data.$createdAt === data.$updatedAt
               ? `Created on ${new Date(data.$createdAt).toDateString()}`
               : `Updated on ${new Date(data.$updatedAt).toDateString()}`}
@@ -40,30 +65,18 @@ function DashboardLinkCard({ data }) {
         </Link>
 
         <Link
-          className="px-5 py-2 border border-zinc-300 hover:border-black duration-200 text-sm font-medium"
+          className="px-4 py-2 border border-zinc-300 hover:border-black duration-200 text-sm font-medium"
           to={`/dashboard/edit/${data.$id}`}
         >
-          Edit
+          Edit or Delete
         </Link>
 
         <Link
-          className="px-5 py-2 bg-zinc-200 border border-zinc-300 hover:border-black duration-300 text-sm font-medium"
+          className="px-4 py-2 bg-zinc-200 border border-zinc-300 hover:border-black duration-300 text-sm font-medium"
           to={`/dashboard/link/${data.$id}`}
         >
           View Details
         </Link>
-
-        <div
-          title="Copy short url"
-          onClick={handleCopy}
-          className="group p-2 cursor-pointer bg-zinc-200 border border-zinc-300 hover:border-black duration-300 text-sm font-medium"
-        >
-          <Copy
-            className="opacity-50 group-hover:opacity-100 duration-300"
-            color="black"
-            size={20}
-          />
-        </div>
       </div>
     </div>
   );

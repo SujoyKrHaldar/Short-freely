@@ -37,9 +37,11 @@ function DashboardHomeUrlLists({ data, loading, error }) {
           </div>
 
           <div className="space-y-2">
-            {data.documents.map((data) => (
-              <DashboardLinkCard data={data} key={data.$id} />
-            ))}
+            {data.documents
+              // .filter((doc) => doc?.clickCount?.length > 0) // TODO: HOW TO RENDER MOST PERFORMED BASED ON CLICK COUNT LINKS HERE FROM ALL LINKS
+              .map((data) => (
+                <DashboardLinkCard data={data} key={data.$id} />
+              ))}
           </div>
         </section>
       ) : (
@@ -56,9 +58,9 @@ const SkeletonUi = () => {
   return (
     <section className="space-y-4">
       <section className="space-y-4">
-        <div className=" bg-zinc-300 w-full h-[100px] animate-pulse"></div>
-        <div className="bg-zinc-300 w-full h-[100px] animate-pulse"></div>
-        <div className="bg-zinc-300 w-full h-[100px] animate-pulse"></div>
+        <div className=" bg-zinc-300 w-full h-[120px] animate-pulse"></div>
+        <div className="bg-zinc-300 w-full h-[120px] animate-pulse"></div>
+        <div className="bg-zinc-300 w-full h-[120px] animate-pulse"></div>
       </section>
     </section>
   );
