@@ -111,8 +111,8 @@ function DashboardEditUrl() {
 const SkeletonUi = () => {
   return (
     <section className="flex items-start gap-4">
-      <div className=" bg-zinc-300 w-[60%] h-[400px] animate-pulse"></div>
-      <div className="bg-zinc-300 w-[40%] h-[200px] animate-pulse"></div>
+      <div className=" bg-zinc-300 w-[60%] h-[350px] animate-pulse"></div>
+      <div className="bg-zinc-300 w-[40%] h-[350px] animate-pulse"></div>
     </section>
   );
 };
