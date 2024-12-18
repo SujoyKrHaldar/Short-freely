@@ -1,22 +1,28 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "./Input";
 import { responseStatus, responseErrorType } from "../../../utils/constants";
 import { loginUser } from "../../../api/authService";
-import { useAuth, useNotification } from "../../../hooks";
+import { useAuth, useNotification, useQueryParams } from "../../../hooks";
 
 function LoginForm({ className }) {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
+  const existingEmail = useQueryParams("email");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const { login: saveUserDataToClient } = useAuth();
   const notify = useNotification();
+
+  useEffect(() => {
+    existingEmail && setValue("email", existingEmail);
+  }, [existingEmail, setValue]);
 
   const loginEvent = async (data) => {
     setError(false);

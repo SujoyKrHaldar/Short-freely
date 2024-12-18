@@ -16,6 +16,7 @@ function SignupForm({ className }) {
   } = useForm();
 
   const [error, setError] = useState(false);
+  const [existingEmail, setExistingEmail] = useState("");
   const [errorPopup, setErrorPopup] = useState(false);
   const [loading, setLoading] = useState(false);
   const { login: saveUserDataToClient } = useAuth();
@@ -59,6 +60,7 @@ function SignupForm({ className }) {
 
       if (error?.type === responseErrorType.USER_ALREADY_EXIST) {
         setErrorPopup(true);
+        setExistingEmail(email);
         return;
       }
 
@@ -90,7 +92,12 @@ function SignupForm({ className }) {
 
   return (
     <>
-      {errorPopup && <EmailExistPopup handleClick={handleClick} />}
+      {errorPopup && (
+        <EmailExistPopup
+          handleClick={handleClick}
+          existingEmail={existingEmail}
+        />
+      )}
 
       <div className="w-full">
         <form onSubmit={handleSubmit(createUserAccount)} className={className}>
@@ -173,9 +180,9 @@ function SignupForm({ className }) {
   );
 }
 
-function EmailExistPopup({ handleClick }) {
+function EmailExistPopup({ handleClick, existingEmail }) {
   return (
-    <div className="fixed z-10 inset-0 w-full h-screen bg-zinc-100 flex items-center justify-center">
+    <section className="fixed z-50 inset-0 w-full h-screen bg-zinc-100 flex items-center justify-center">
       <div className="text-center max-w-md p-8 bg-white border border-zinc-300">
         <div className="w-[200px] h-auto mx-auto">
           <img src={emailImgUrl} alt="email exits" />
@@ -194,7 +201,7 @@ function EmailExistPopup({ handleClick }) {
         <div className="flex flex-col items-center w-full gap-2">
           <Link
             className="py-3 px-6 text-center bg-black text-white w-full border border-black"
-            to="/login"
+            to={`/login?email=${existingEmail}`}
           >
             Continue Login
           </Link>
@@ -207,7 +214,7 @@ function EmailExistPopup({ handleClick }) {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
