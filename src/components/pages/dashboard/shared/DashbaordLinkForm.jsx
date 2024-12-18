@@ -8,8 +8,12 @@ import { createUrl, updateUrlById } from "../../../../api/urlService";
 import { responseErrorType, responseStatus } from "../../../../utils/constants";
 import { Lock, QrCode } from "lucide-react";
 import ShareLinkPopup from "./ShareLinkPopup";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
-// TODO: Make seperate custom hooks for each and every useeffct and functions
+// TODO: Make seperate custom hooks for each and every useeffect and functions
+// TODO: Implement tsparticle
+
 const DashbaordLinkForm = ({ defaultData }) => {
   const {
     register,
@@ -24,6 +28,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
   const [qrCode, setQrCode] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
   const [isEnableSharePopup, setEnableSharePopup] = useState(false);
+  const [showParticlesOnCreation, setShowParticlesOnCreation] = useState(false);
   const [shareDetails, setShareDetails] = useState({});
 
   const navigate = useNavigate();
@@ -136,6 +141,8 @@ const DashbaordLinkForm = ({ defaultData }) => {
           faviconUrl: response.faviconUrl,
           urlId: response.$id,
         });
+        setShowParticlesOnCreation(true); // Show particles on success
+        setTimeout(() => setShowParticlesOnCreation(false), 6000); // Hide after 3s
         return;
       }
     } catch (error) {
@@ -198,8 +205,21 @@ const DashbaordLinkForm = ({ defaultData }) => {
     }
   };
 
+  //* Initializing the tsParticles instance
+  const particlesInit = async (engine) => {
+    await loadFull(engine);
+  };
+
   return (
     <section className="relative w-full h-full flex items-center justify-center">
+      {showParticlesOnCreation && (
+        <Particles
+          init={particlesInit}
+          options={particleOptions}
+          className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-60"
+        />
+      )}
+
       <div
         className={`fixed inset-0 w-full h-full flex items-center justify-center z-50 bg-white duration-300 ${
           isEnableSharePopup
@@ -211,7 +231,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
           qrCodeSrc={shareDetails.qrCode}
           link={shareDetails.shortUrl}
           faviconSrc={shareDetails.faviconUrl}
-          onClose={() => navigate("/dashboard/link/" + shareDetails.urlId2)}
+          onClose={() => navigate("/dashboard/link/" + shareDetails.urlId)}
         />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-16 w-full">
@@ -365,6 +385,40 @@ const DashbaordLinkForm = ({ defaultData }) => {
       </form>
     </section>
   );
+};
+
+const particleOptions = {
+  fpsLimit: 60,
+  particles: {
+    number: {
+      value: 50,
+      density: { enable: true, value_area: 800 },
+    },
+    color: { value: "#ffdd00" },
+    shape: {
+      type: "circle",
+    },
+    opacity: {
+      value: 0.8,
+    },
+    size: {
+      value: 4,
+      random: true,
+    },
+    move: {
+      enable: true,
+      speed: 3,
+      direction: "none",
+      outModes: "out",
+    },
+  },
+  interactivity: {
+    detectsOn: "canvas",
+    events: {
+      onHover: { enable: false },
+      onClick: { enable: false },
+    },
+  },
 };
 
 export default DashbaordLinkForm;
