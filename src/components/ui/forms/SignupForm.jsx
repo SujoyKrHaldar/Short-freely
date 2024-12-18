@@ -185,7 +185,7 @@ function EmailExistPopup({ handleClick, existingEmail }) {
     <section className="fixed z-50 inset-0 w-full h-screen bg-zinc-100 flex items-center justify-center">
       <div className="text-center max-w-md p-8 bg-white border border-zinc-300">
         <div className="w-[200px] h-auto mx-auto">
-          <img src={emailImgUrl} alt="email exits" />
+          <img src={emailImgUrl} draggable={false} alt="email exits" />
         </div>
         <div className="mb-6 space-y-4">
           <h2 className="text-4xl font-bold">
@@ -206,12 +206,12 @@ function EmailExistPopup({ handleClick, existingEmail }) {
             Continue Login
           </Link>
 
-          <p
+          <button
             className="py-3 px-6 cursor-pointer text-center bg-white text-black w-full border border-black"
             onClick={handleClick}
           >
             Change Email
-          </p>
+          </button>
         </div>
       </div>
     </section>
