@@ -9,7 +9,12 @@ function HomeFeatureSection() {
     <section className="py-10 sm:py-16 lg:py-24">
       <div className="container space-y-16">
         <div className="max-w-3xl mx-auto text-center space-y-4">
-          <img src={decorator} className="w-10 mx-auto" />
+          <img
+            src={decorator}
+            draggable={false}
+            alt="decorator"
+            className="w-10 mx-auto"
+          />
           <p className="uppercase tracking-[0.5rem]">Our Platform</p>
           <h2 className="text-3xl font-bold text-black sm:text-4xl lg:text-5xl">
             Ready to simplify Your Links & Empowering Your Links with Advanced
@@ -52,7 +57,12 @@ export default HomeFeatureSection;
 const FeatureCard = ({ data }) => {
   return (
     <div className="p-6 py-10 w-full h-full bg-white border border-white hover:border-zinc-400 duration-150 text-center hover:scale-105 cursor-auto z-10 hover:z-30 hover:odd:rotate-2 hover:even:-rotate-2 hover:shadow-xl [&:nth-child(3)]:scale-105 [&:nth-child(3)]:border-zinc-400 [&:nth-child(3)]:z-20 [&:nth-child(3)]:-rotate-2 [&:nth-child(3)]:shadow-lg hover:[&:nth-child(3)]:shadow-xl">
-      <img src={data.imgUrl} alt={data.title} className="w-[80%] mx-auto" />
+      <img
+        src={data.imgUrl}
+        alt={data.title}
+        draggable={false}
+        className="w-[80%] mx-auto"
+      />
       <h3 className="text-2xl font-bold my-4">{data.title}</h3>
       <p>{data.description}</p>
     </div>

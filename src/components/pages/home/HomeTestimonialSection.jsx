@@ -8,7 +8,12 @@ function HomeTestimonialSection() {
     <section className="py-10 bg-white sm:py-16 lg:py-24">
       <div className="container space-y-16">
         <div className="max-w-3xl mx-auto text-center space-y-4">
-          <img src={decorator} className="w-10 mx-auto" />
+          <img
+            src={decorator}
+            className="w-10 mx-auto"
+            draggable={false}
+            alt="decorator"
+          />
           <p className="uppercase tracking-[0.5rem]">Testimonials</p>
           <h2 className="text-3xl font-bold text-black sm:text-4xl lg:text-5xl">
             Trusted by Thousands Worldwide
@@ -44,6 +49,7 @@ const TestimonialCard = ({ testimonial }) => {
       <div className="px-5 py-6">
         <div className="flex items-center justify-between">
           <img
+            draggable={false}
             className="flex-shrink-0 object-cover w-10 h-10 rounded-full"
             src={testimonial.avatar}
             alt={testimonial.name}
@@ -56,7 +62,12 @@ const TestimonialCard = ({ testimonial }) => {
               {testimonial.username}
             </p>
           </div>
-          <a href="#" title="" className="inline-block text-sky-500">
+          <a
+            draggable={false}
+            href="#"
+            title=""
+            className="inline-block text-sky-500"
+          >
             <BadgeCheck />
           </a>
         </div>

@@ -12,7 +12,9 @@ function HomeFooterSection() {
           <div className="space-y-8">
             <div className="space-y-4">
               <img
+                draggable={false}
                 src={decorator}
+                alt="decorator"
                 className="relative -left-8 w-12 -rotate-12 invert"
               />
 
@@ -39,7 +41,7 @@ function HomeFooterSection() {
           </div>
 
           <div className="w-[500px]">
-            <img src={imageUrl} alt="hero image" />
+            <img src={imageUrl} alt="footer cta image" draggable={false} />
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ function PageNotFound() {
       <section className="container w-full h-screen py-16 flex items-center justify-center border-b border-zinc-300">
         <div className="space-y-4 text-center max-w-2xl">
           <div className="w-[300px] h-[290px] mx-auto">
-            <img src={imageUrl} alt="page not found" />
+            <img src={imageUrl} alt="page not found" draggable={false} />
           </div>
           <h1 className="text-7xl font-bold">Page is not Found</h1>
           <p className="text-lg">

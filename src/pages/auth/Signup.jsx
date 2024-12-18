@@ -23,7 +23,7 @@ function Signup() {
 
       <section className="container border-b border-zinc-300 relative w-full h-full flex items-center justify-around min-h-screen py-16">
         <div className="w-[500px]">
-          <img src={imageUrl} alt="page not found" />
+          <img src={imageUrl} alt="hero image - signup" draggable={false} />
         </div>
 
         <div className="w-full max-w-xl p-16">

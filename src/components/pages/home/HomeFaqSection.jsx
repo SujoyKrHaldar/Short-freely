@@ -15,7 +15,12 @@ const HomeFaqSection = () => {
       <div className="container relative w-full h-full flex items-center justify-around">
         <div className="max-w-xl space-y-8">
           <div className="max-w-2xl space-y-4">
-            <img src={decorator} className="w-10" />
+            <img
+              src={decorator}
+              draggable={false}
+              alt="decorator"
+              className="w-10"
+            />
             <p className="uppercase tracking-[0.5rem]">FAQ</p>
             <h2 className="text-3xl font-bold text-black sm:text-4xl lg:text-5xl">
               Got Questions?
@@ -47,7 +52,7 @@ const HomeFaqSection = () => {
         </div>
 
         <div className="w-[450px]">
-          <img src={questionImgUrl} alt="page not found" />
+          <img draggable={false} src={questionImgUrl} alt="question mark" />
         </div>
       </div>
     </section>

@@ -71,19 +71,30 @@ function HomeLandingSection() {
                 className="w-10 h-10 border-4 shadow-md border-white rounded-full"
                 src={img.url}
                 alt="Demo users"
+                draggable={false}
               />
             ))}
           </div>
           <p>1K+ people already using it.</p>
           <div className="relative -top-2 w-16 opacity-35">
-            <img src={arrowImgUrl} alt="arrow" />
+            <img src={arrowImgUrl} alt="arrow" draggable={false} />
           </div>
         </div>
       </div>
 
       <div className="relative mt-8 w-full flex items-center p-16">
-        <img src={imageUrl} alt="hero image" className="max-w-sm h-auto mx-auto" />
-        <img src={browserWindowImgUrl} alt="window" className="absolute top-0 translate-x-1/2 right-1/2 max-w-2xl" />
+        <img
+          src={imageUrl}
+          draggable={false}
+          alt="hero image"
+          className="max-w-sm h-auto mx-auto"
+        />
+        <img
+          src={browserWindowImgUrl}
+          alt="window border"
+          className="absolute top-0 translate-x-1/2 right-1/2 max-w-2xl"
+          draggable={false}
+        />
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-1/4 bg-white -z-10"></div>

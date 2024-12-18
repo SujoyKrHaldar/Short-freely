@@ -43,7 +43,7 @@ function Login() {
         </div>
 
         <div className="w-[500px]">
-          <img src={imageUrl} alt="page not found" />
+          <img src={imageUrl} alt="hero image - login" draggable={false} />
         </div>
       </section>
     </>

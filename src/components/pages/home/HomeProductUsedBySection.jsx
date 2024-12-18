@@ -8,7 +8,12 @@ function HomeProductUsedBySection() {
   return (
     <section className="bg-white py-16 text-center">
       <div className="container space-y-8">
-        <img src={decorator} className="w-4 mx-auto" />
+        <img
+          src={decorator}
+          draggable={false}
+          alt="decorator"
+          className="w-4 mx-auto"
+        />
 
         <div className="flex items-center justify-center gap-8">
           <LeftLeafSvg />
@@ -25,10 +30,12 @@ function HomeProductUsedBySection() {
 
         <div className="max-w-4xl mx-auto">
           <img
+            draggable={false}
             src={companyListImgUrl}
             alt="companies that are using our product"
           />
           <img
+            draggable={false}
             src={underlineImgUrl}
             alt="underline"
             className="mx-auto h-[100px]"
