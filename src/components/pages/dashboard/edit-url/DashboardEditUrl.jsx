@@ -61,7 +61,12 @@ function DashboardEditUrl() {
       <div className="flex items-end justify-between">
         <div className="space-y-2">
           <DashboardBreadcrumb links={breadcrumbs} />
-          <h1 className="text-4xl font-bold">Edit Link </h1>
+          <h1 className="text-4xl font-bold">
+            Edit Link{" "}
+            <span className="font-normal text-blue-700">
+              {data?.shortUrl && "/"} {data?.shortUrl}
+            </span>
+          </h1>
           {data?.$id && <p className="text-normal font-normal">#{data?.$id}</p>}
         </div>
 
