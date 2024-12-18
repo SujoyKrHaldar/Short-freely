@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useFetchUrlById, useNotification } from "../../../../hooks";
 import DashbaordEditLinkForm from "../shared/DashbaordLinkForm";
 import DashboardBreadcrumb from "../shared/DashboardBreadcrumb";
@@ -71,12 +71,12 @@ function DashboardEditUrl() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link
+          <button
             className="bg-white cursor-pointer text-black px-5 py-2 border border-zinc-400  inline-block"
-            to="/dashboard/links"
+            onClick={() => navigate(-1)}
           >
             Cancle Edit
-          </Link>
+          </button>
           <button
             className="bg-red-700 border text-white border-red-700 px-6 py-2 cursor-pointer"
             onClick={handleDeleteUrl}
