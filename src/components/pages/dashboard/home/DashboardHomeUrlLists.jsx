@@ -22,13 +22,13 @@ function DashboardHomeUrlLists({ data, loading, error }) {
             <h2 className="text-3xl font-bold">Latest Links</h2>
             <div className="flex items-center gap-2">
               <Link
-                className="bg-white text-black px-5 py-2 border border-zinc-400 inline-block"
+                className=" px-5 py-2"
                 to="/dashboard/analytics"
               >
                 View Analytics
               </Link>{" "}
               <Link
-                className="bg-black text-white px-5 py-2 border border-zinc-400 inline-block"
+                className="bg-white px-5 py-2 border border-zinc-400"
                 to="/dashboard/links"
               >
                 View All Links
