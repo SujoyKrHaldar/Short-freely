@@ -21,7 +21,8 @@ function DashboardShortLinks() {
 
   const page = parseInt(useQueryParams("page")) || 1;
 
-  const ITEMS_PER_PAGE = 5;
+  const ITEMS_PER_PAGE = 6;
+
   const { loading, data, error, totalPages, currentPage } = useFetchUrls({
     limit: ITEMS_PER_PAGE,
     page,
@@ -114,6 +115,42 @@ const PaginationControl = ({ page, totalPages, currentPage }) => {
       : navigate(`/dashboard/links?page=${newPage}`);
   };
 
+  const getPaginationLinks = () => {
+    const pages = [];
+
+    if (totalPages <= 5) {
+      // If total pages are small, show all page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Always include the first page
+      pages.push(1);
+
+      // Include the current page and the one before it (if not at the start)
+      if (currentPage > 2) {
+        pages.push(currentPage - 1);
+      }
+
+      // Include the current page
+      if (currentPage !== 1 && currentPage !== totalPages) {
+        pages.push(currentPage);
+      }
+
+      // Include the next page if not near the end
+      if (currentPage < totalPages - 1) {
+        pages.push(currentPage + 1);
+      }
+
+      // Always include the last page
+      if (!pages.includes(totalPages)) {
+        pages.push(totalPages);
+      }
+    }
+
+    return [...new Set(pages)]; // Remove duplicates if any
+  };
+
   return (
     <div className="sticky bottom-0 flex items-center justify-between py-6 border-t border-t-zinc-300 bg-zinc-100">
       <p>
@@ -124,19 +161,34 @@ const PaginationControl = ({ page, totalPages, currentPage }) => {
         <button
           className={` ${
             currentPage <= 1 ? "bg-zinc-100 border-0 text-zinc-400" : "bg-white"
-          } text-black px-5 py-2 border border-zinc-300  inline-block`}
+          } text-black px-5 py-2 border border-zinc-300 duration-150 hover:border-black`}
           disabled={currentPage <= 1}
           onClick={() => handlePageChange(page - 1)}
         >
           Previous
         </button>
 
+        {getPaginationLinks().map((page, index, array) => (
+          <>
+            {index > 0 && page !== array[index - 1] + 1 && <span>...</span>}
+            <button
+              key={page}
+              onClick={() => handlePageChange(page)}
+              className={` px-4 py-2 border bg-white duration-150 hover:border-black ${
+                page === currentPage ? "border-black" : "border-zinc-300"
+              }`}
+            >
+              {page}
+            </button>
+          </>
+        ))}
+
         <button
           className={` ${
             currentPage >= totalPages
               ? "bg-zinc-100 border-0 text-zinc-400"
               : "bg-white"
-          } bg-white text-black px-5 py-2 border border-zinc-300 inline-block`}
+          } bg-white text-black px-5 py-2 border border-zinc-300 duration-150 hover:border-black`}
           disabled={currentPage >= totalPages}
           onClick={() => handlePageChange(page + 1)}
         >
