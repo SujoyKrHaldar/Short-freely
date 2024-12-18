@@ -21,6 +21,7 @@ import arrowImgUrl from "../assets/illustrations/arrow.png";
 import underlineImgUrl from "../assets/illustrations/underline.png";
 import companyListImgUrl from "../assets/illustrations/company-list.png";
 import emailImgUrl from "../assets/illustrations/email.png";
+import browserWindowImgUrl from "../assets/illustrations/browser-window.svg";
 
 export {
   searchImgUrl,
@@ -45,5 +46,6 @@ export {
   notFoundImgUrl,
   emptyImgUrl,
   emailImgUrl,
+  browserWindowImgUrl,
   companyListImgUrl,
 };

@@ -5,6 +5,7 @@ import { userProfileImgs } from "../../../utils/constants.js";
 import {
   linkSharingImgUrl as imageUrl,
   arrowImgUrl,
+  browserWindowImgUrl,
 } from "../../../utils/imageUrls.js";
 
 function HomeLandingSection() {
@@ -80,8 +81,9 @@ function HomeLandingSection() {
         </div>
       </div>
 
-      <div className="max-w-lg mt-8">
-        <img src={imageUrl} alt="hero image" />
+      <div className="relative mt-8 w-full flex items-center p-16">
+        <img src={imageUrl} alt="hero image" className="max-w-sm h-auto mx-auto" />
+        <img src={browserWindowImgUrl} alt="window" className="absolute top-0 translate-x-1/2 right-1/2 max-w-2xl" />
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-1/4 bg-white -z-10"></div>
