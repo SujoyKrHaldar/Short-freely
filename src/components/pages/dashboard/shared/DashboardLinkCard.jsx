@@ -7,6 +7,8 @@ import { responseStatus } from "../../../../utils/constants";
 function DashboardLinkCard({ data }) {
   const notify = useNotification();
 
+  console.log(data);
+
   const handleCopy = () => {
     navigator.clipboard.writeText(data?.shortUrl);
     notify({
@@ -18,18 +20,30 @@ function DashboardLinkCard({ data }) {
 
   return (
     <div className="p-5 bg-white border-[1.5px] border-zinc-100 hover:border-black duration-200 flex items-end justify-between">
-      <div className="flex items-center gap-4">
-        <div className="w-12 h-12 rounded-full bg-zinc-200"></div>
+      <div className="flex items-start gap-4">
+        <div className="w-8 h-8 rounded-full bg-zinc-100 mt-1">
+          <img
+            alt={data?.originalUrlDomain}
+            draggable="false"
+            loading="lazy"
+            decoding="async"
+            className="blur-0 rounded-full size-4 shrink-0 transition-[width,height] w-full h-full group-data-[variant=loose]/card-list:sm:h-5 group-data-[variant=loose]/card-list:sm:w-5"
+            src={data?.faviconUrl}
+          />
+        </div>
+
         <div className="space-y-1">
           <div className="flex items-center gap-1">
-            <p className="text-lg font-bold first-letter:uppercase">{data.title} </p>
+            <p className="text-lg font-bold first-letter:uppercase">
+              {data?.title}{" "}
+            </p>
             <p>•</p>
             <div
               onClick={handleCopy}
               className=" flex items-center gap-2 group cursor-pointer"
             >
               <p className="text-blue-700 text-lg font-medium group-hover:underline cursor-pointer">
-                {data.shortUrl}
+                {data?.shortUrl}
               </p>
               <Copy
                 className="opacity-60 group-hover:opacity-100 duration-300"
@@ -40,8 +54,8 @@ function DashboardLinkCard({ data }) {
           </div>
 
           <Link
-            to={data.originalUrl}
-            title={data.originalUrl}
+            to={data?.originalUrl}
+            title={data?.originalUrl}
             className="text-sm text-zinc-500 hover:underline"
           >
             {data.originalUrl.slice(0, 50)}...
