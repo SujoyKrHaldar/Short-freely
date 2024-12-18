@@ -14,7 +14,7 @@ function ShareLinkPopup({ qrCodeSrc, link, faviconSrc, onClose }) {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("https://bit.ly/udemy-course-mern");
+    navigator.clipboard.writeText(link);
     alert("Link copied to clipboard!");
   };
 
