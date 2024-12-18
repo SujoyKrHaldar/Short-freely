@@ -69,7 +69,11 @@ function DashboardShortLinks() {
             {page === totalPages && (
               <div className="text-center py-8 opacity-50">
                 <div className="w-[200px] mx-auto h-auto">
-                  <img src={completedImgUrl} alt="end of the list" />
+                  <img
+                    src={completedImgUrl}
+                    draggable={false}
+                    alt="end of the list"
+                  />
                 </div>
                 <p>You have reached end of your list</p>
               </div>

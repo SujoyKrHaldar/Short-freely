@@ -6,7 +6,12 @@ function NoResultFallbackUi({ title, description }) {
   return (
     <section className="p-8 py-16 w-full h-full flex items-center justify-center bg-white border border-zinc-300">
       <div className="text-center max-w-md">
-        <img src={emptyImgUrl} alt="empty img" className="w-[30%] mx-auto" />
+        <img
+          src={emptyImgUrl}
+          alt="no result image"
+          draggable={false}
+          className="w-[30%] mx-auto"
+        />
 
         <h2 className="text-2xl font-bold">{title}</h2>
         <p className="mt-2 mb-6 max-w-xs mx-auto text-sm">{description}</p>

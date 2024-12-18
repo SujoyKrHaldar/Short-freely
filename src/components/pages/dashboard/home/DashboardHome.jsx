@@ -27,7 +27,7 @@ function DashboardHome() {
         </Link>
 
         <div className="absolute top-0 right-[15%] w-1/4 h-auto -z-10 opacity-40">
-          <img src={imageUrl} alt="page not found" />
+          <img src={imageUrl} alt="greetings" draggable={false} />
         </div>
       </div>
 
