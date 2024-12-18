@@ -7,8 +7,6 @@ import { responseStatus } from "../../../../utils/constants";
 function DashboardLinkCard({ data }) {
   const notify = useNotification();
 
-  console.log(data);
-
   const handleCopy = () => {
     navigator.clipboard.writeText(data?.shortUrl);
     notify({
