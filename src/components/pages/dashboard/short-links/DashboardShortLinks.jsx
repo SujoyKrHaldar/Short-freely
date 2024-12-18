@@ -159,9 +159,11 @@ const PaginationControl = ({ page, totalPages, currentPage }) => {
 
       <div className="flex items-center gap-2">
         <button
-          className={` ${
-            currentPage <= 1 ? "bg-zinc-100 border-0 text-zinc-400" : "bg-white"
-          } text-black px-5 py-2 border border-zinc-300 duration-150 hover:border-black`}
+          className={` border ${
+            currentPage <= 1
+              ? "bg-zinc-100 border-transparent text-zinc-400"
+              : "bg-white hover:border-black"
+          } text-black px-5 py-2 border-zinc-300 duration-150 `}
           disabled={currentPage <= 1}
           onClick={() => handlePageChange(page - 1)}
         >
@@ -184,11 +186,11 @@ const PaginationControl = ({ page, totalPages, currentPage }) => {
         ))}
 
         <button
-          className={` ${
+          className={` border ${
             currentPage >= totalPages
-              ? "bg-zinc-100 border-0 text-zinc-400"
-              : "bg-white"
-          } bg-white text-black px-5 py-2 border border-zinc-300 duration-150 hover:border-black`}
+              ? "bg-zinc-100 border-transparent text-zinc-400"
+              : "bg-white hover:border-black"
+          } bg-white text-black px-5 py-2 border-zinc-300 duration-150 `}
           disabled={currentPage >= totalPages}
           onClick={() => handlePageChange(page + 1)}
         >
