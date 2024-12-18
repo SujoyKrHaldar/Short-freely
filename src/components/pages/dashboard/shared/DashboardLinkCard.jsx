@@ -19,7 +19,7 @@ function DashboardLinkCard({ data }) {
   return (
     <div className="p-5 bg-white border-[1.5px] border-zinc-100 hover:border-black duration-200 flex items-end justify-between">
       <div className="flex items-start gap-4">
-        <div className="w-8 h-8 rounded-full bg-zinc-100 mt-1">
+        <div className="w-10 h-10 rounded-full p-1 border border-zinc-200 bg-zinc-100 mt-1">
           <img
             alt={data?.originalUrlDomain}
             draggable="false"
@@ -36,7 +36,7 @@ function DashboardLinkCard({ data }) {
               {data?.title}{" "}
             </p>
             <p>•</p>
-            <div
+            <button
               onClick={handleCopy}
               className=" flex items-center gap-2 group cursor-pointer"
             >
@@ -45,10 +45,10 @@ function DashboardLinkCard({ data }) {
               </p>
               <Copy
                 className="opacity-60 group-hover:opacity-100 duration-300"
-                color="black"
+                color="blue"
                 size={16}
               />
-            </div>
+            </button>
           </div>
 
           <Link
