@@ -12,8 +12,6 @@ function LinkDeletePopup({
   faviconSrc,
   urlId,
   onClosePopup,
-  redirectOnSuccess,
-  redirectOnError,
 }) {
   const [verifyCode, setVerifyCode] = useState("");
   const [loading, setLoading] = useState(false);
@@ -61,7 +59,7 @@ function LinkDeletePopup({
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto p-8 px-12 bg-white border border-zinc-400 relative z-10">
+    <div className="w-full max-w-md mx-auto p-8 bg-white border border-zinc-400 relative z-10">
       <button onClick={onClose} className="absolute top-8 right-8">
         <Close size={20} />
       </button>
@@ -76,10 +74,10 @@ function LinkDeletePopup({
         </div>
 
         <h1 className="text-3xl font-bold text-gray-800 text-center">
-          Delete {link}
+          Delete <span className="text-blue-800">{link}</span>
         </h1>
 
-        <p className=" text-center ">
+        <p className=" text-center text-sm ">
           Deleting this link will remove all of its analytics. This action
           cannot be undone. Proceed with Caution.
         </p>

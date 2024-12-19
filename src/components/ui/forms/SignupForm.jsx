@@ -7,6 +7,7 @@ import { responseStatus, responseErrorType } from "../../../utils/constants";
 import { registerUser } from "../../../api/authService";
 import { useAuth, useNotification } from "../../../hooks";
 import { emailImgUrl } from "../../../utils/imageUrls";
+import { X as Close } from "lucide-react";
 
 function SignupForm({ className }) {
   const {
@@ -92,12 +93,19 @@ function SignupForm({ className }) {
 
   return (
     <>
-      {errorPopup && (
+      <section
+        className={`fixed inset-0 flex items-center justify-center z-50 duration-200 ${
+          errorPopup
+            ? "z-50 opacity-100 pointer-events-auto bg-[#ffffffcc] backdrop-blur-md"
+            : "z-0 opacity-0 pointer-events-none"
+        }`}
+      >
         <EmailExistPopup
           handleClick={handleClick}
           existingEmail={existingEmail}
+          onClose={() => setErrorPopup(false)}
         />
-      )}
+      </section>
 
       <div className="w-full">
         <form onSubmit={handleSubmit(createUserAccount)} className={className}>
@@ -180,41 +188,40 @@ function SignupForm({ className }) {
   );
 }
 
-function EmailExistPopup({ handleClick, existingEmail }) {
+function EmailExistPopup({ handleClick, existingEmail, onClose }) {
   return (
-    <section className="fixed z-50 inset-0 w-full h-screen bg-zinc-100 flex items-center justify-center">
-      <div className="text-center max-w-md p-8 bg-white border border-zinc-300">
-        <div className="w-[200px] h-auto mx-auto">
-          <img src={emailImgUrl} draggable={false} alt="email exits" />
-        </div>
-        <div className="mb-6 space-y-4">
-          <h2 className="text-4xl font-bold">
-            User with this Email already exist
-          </h2>
-          <p>
-            We have found an existing account. If you would like to proceed with
-            this account choose for Login. Or please change the email address to
-            continue.
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center w-full gap-2">
-          <Link
-            className="py-3 px-6 text-center bg-black text-white w-full border border-black"
-            to={`/login?email=${existingEmail}`}
-          >
-            Continue Login
-          </Link>
-
-          <button
-            className="py-3 px-6 cursor-pointer text-center bg-white text-black w-full border border-black"
-            onClick={handleClick}
-          >
-            Change Email
-          </button>
-        </div>
+    <div className="text-center max-w-md p-8 bg-white border border-zinc-400 relative">
+      <button onClick={onClose} className="absolute top-8 right-8">
+        <Close size={20} />
+      </button>
+      <div className="w-[200px] h-auto mx-auto">
+        <img src={emailImgUrl} draggable={false} alt="email exits" />
       </div>
-    </section>
+      <div className="mb-6 space-y-4">
+        <h1 className="text-3xl font-bold">This Email already exist</h1>
+        <p className="text-sm">
+          We have found an existing account. If you would like to proceed with
+          this account choose for Login. Or please change the email address to
+          continue.
+        </p>
+      </div>
+
+      <div className="flex flex-col items-center w-full gap-2">
+        <Link
+          className="py-3 px-6 text-center bg-black text-white w-full border border-black"
+          to={`/login?email=${existingEmail}`}
+        >
+          Continue Login
+        </Link>
+
+        <button
+          className="py-3 px-6 cursor-pointer text-center bg-white text-black w-full border border-black"
+          onClick={handleClick}
+        >
+          Change Email
+        </button>
+      </div>
+    </div>
   );
 }
 

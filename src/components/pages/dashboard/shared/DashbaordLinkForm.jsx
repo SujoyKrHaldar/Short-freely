@@ -8,8 +8,6 @@ import { createUrl, updateUrlById } from "../../../../api/urlService";
 import { responseErrorType, responseStatus } from "../../../../utils/constants";
 import { Lock, QrCode } from "lucide-react";
 import ShareLinkPopup from "./ShareLinkPopup";
-// import { Particles } from "@tsparticles/react";
-// import { loadFull } from "tsparticles";
 
 const DashbaordLinkForm = ({ defaultData }) => {
   const {
@@ -25,7 +23,6 @@ const DashbaordLinkForm = ({ defaultData }) => {
   const [qrCode, setQrCode] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
   const [isEnableSharePopup, setEnableSharePopup] = useState(false);
-  // const [showParticlesOnCreation, setShowParticlesOnCreation] = useState(true);
   const [shareDetails, setShareDetails] = useState({});
 
   const navigate = useNavigate();
@@ -140,8 +137,6 @@ const DashbaordLinkForm = ({ defaultData }) => {
           faviconUrl: response.faviconUrl,
           urlId: response.$id,
         });
-        // setShowParticlesOnCreation(true); // Show particles on success
-        // setTimeout(() => setShowParticlesOnCreation(false), 6000); // Hide after 3s
         return;
       }
     } catch (error) {
@@ -205,26 +200,12 @@ const DashbaordLinkForm = ({ defaultData }) => {
     }
   };
 
-  //* Initializing the tsParticles instance
-  // const particlesInit = async (engine) => {
-  //   await loadFull(engine);
-  // };
-
   return (
     <section className="relative w-full h-full flex items-center justify-center">
-      {/* {showParticlesOnCreation && (
-        <Particles
-          id="success-particles"
-          // init={particlesInit}
-          options={particleOptions}
-          className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-60 bg-black"
-        />
-      )} */}
-
       <div
         className={`fixed inset-0 w-full h-full flex items-center justify-center z-50 bg-white duration-300 ${
           isEnableSharePopup
-            ? "z-50 opacity-100 pointer-events-auto"
+            ? "z-50 opacity-100 pointer-events-auto bg-[#ffffffcc] backdrop-blur-md"
             : "z-0 opacity-0 pointer-events-none"
         }`}
       >
@@ -388,80 +369,5 @@ const DashbaordLinkForm = ({ defaultData }) => {
     </section>
   );
 };
-
-// const particleOptions = {
-//   fpsLimit: 60,
-//   particles: {
-//     number: {
-//       value: 50,
-//       density: { enable: true, value_area: 800 },
-//     },
-//     color: { value: "#ffdd00" },
-//     shape: {
-//       type: "circle",
-//     },
-//     opacity: {
-//       value: 0.8,
-//     },
-//     size: {
-//       value: 4,
-//       random: true,
-//     },
-//     move: {
-//       enable: true,
-//       speed: 3,
-//       direction: "none",
-//       outModes: "out",
-//     },
-//   },
-//   interactivity: {
-//     detectsOn: "canvas",
-//     events: {
-//       onHover: { enable: false },
-//       onClick: { enable: false },
-//     },
-//   },
-// };
-
-// const particleOptions = {
-//   fpsLimit: 120,
-//   particles: {
-//     number: {
-//       value: 80,
-//       density: {
-//         enable: true,
-//         area: 800,
-//       },
-//     },
-//     color: {
-//       value: ["#ffdd00", "#00bfff", "#ff6347"],
-//     },
-//     shape: {
-//       type: "circle",
-//     },
-//     opacity: {
-//       value: 0.8,
-//     },
-//     size: {
-//       value: { min: 2, max: 6 },
-//       random: true,
-//     },
-//     move: {
-//       enable: true,
-//       speed: 2,
-//       direction: "none",
-//       outModes: {
-//         default: "out",
-//       },
-//     },
-//   },
-//   interactivity: {
-//     events: {
-//       onHover: { enable: false },
-//       onClick: { enable: false },
-//     },
-//   },
-//   detectRetina: true,
-// };
 
 export default DashbaordLinkForm;
