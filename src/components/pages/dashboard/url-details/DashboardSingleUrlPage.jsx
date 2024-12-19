@@ -15,7 +15,7 @@ function DashboardSingleUrlPage({ loading, data, error }) {
           imageUrl={searchImgUrl}
         />
       ) : (
-        <DashboardUrlDetails {...data} />
+        <DashboardUrlDetails data={data} />
       )}
     </>
   );

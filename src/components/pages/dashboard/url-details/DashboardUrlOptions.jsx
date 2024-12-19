@@ -21,7 +21,7 @@ const DashboardUrlOptions = ({ postTitle, PostId }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    navigate(-1);
+    navigate(-1, { replace: true });
   };
 
   return (
@@ -41,20 +41,6 @@ const DashboardUrlOptions = ({ postTitle, PostId }) => {
         >
           Back to List
         </Link>
-
-        {/* <Link
-            className="bg-green-700 text-white px-5 py-2 border border-black  inline-block"
-            to="/dashboard/list"
-          >
-            Edit
-          </Link>
-
-          <Link
-            className="bg-red-700 text-white px-5 py-2 border border-black  inline-block"
-            to="/dashboard/list"
-          >
-            Delete
-          </Link> */}
       </div>
     </div>
   );

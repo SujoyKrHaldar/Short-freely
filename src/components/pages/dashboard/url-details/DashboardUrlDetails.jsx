@@ -1,41 +1,35 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import {
-  Copy,
-  Share2 as Share,
-  Pencil as Edit,
-  Trash2 as Delete,
-  ArrowDownToLine as Download,
-} from "lucide-react";
+import { Link2, Share2 as Share } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DashboardUrlAnalytics from "./DashboardUrlAnalytics";
 import DashboardUrlOptions from "./DashboardUrlOptions";
+import { useNotification } from "../../../../hooks";
+import ShareLinkPopup from "../shared/ShareLinkPopup";
 
-function DashboardUrlDetails({
-  originalUrl,
-  qrCode,
-  shortUrl,
-  title,
-  isActive,
-  customSlug,
-  $updatedAt,
-  $id,
-  $createdAt,
-  expirationDate,
-}) {
+function DashboardUrlDetails({ data }) {
+  const [isOpenPopup, setOpenPopup] = useState(false);
+
   return (
-    <section className="w-full h-full space-y-8">
-      <DashboardUrlOptions postTitle={title} PostId={$id} />
-      <section className="space-y-4">
-        <UrlDetails
-          postTitle={title}
-          shortUrl={shortUrl}
-          originalUrl={originalUrl}
-          createdAt={$createdAt}
-          updatedAt={$updatedAt}
-          urlId={$id}
+    <section className="w-full h-full relative">
+      <div
+        className={`fixed inset-0 flex items-center justify-center z-50 duration-200 ${
+          isOpenPopup
+            ? "z-50 opacity-100 pointer-events-auto bg-[#ffffffcc] backdrop-blur-md"
+            : "z-0 opacity-0 pointer-events-none"
+        }`}
+      >
+        <ShareLinkPopup
+          qrCodeSrc={data.qrCode}
+          link={data.shortUrl}
+          faviconSrc={data.faviconUrl}
+          onClose={() => setOpenPopup(false)}
         />
+      </div>
+      <DashboardUrlOptions postTitle={data?.title} PostId={data?.$id} />
+      <section className="space-y-4 my-6">
+        <UrlDetails {...data} openPopup={() => setOpenPopup(true)} />
         <DashboardUrlAnalytics />
       </section>
     </section>
@@ -43,152 +37,95 @@ function DashboardUrlDetails({
 }
 
 const UrlDetails = ({
-  postTitle,
   shortUrl,
+  title,
+  qrCode,
   originalUrl,
-  urlId,
-  updatedAt,
-  createdAt,
+  originalUrlDomain,
+  faviconUrl,
+  $createdAt: createdAt,
+  $id: urlId,
+  $updatedAt: updatedAt,
+  openPopup,
 }) => {
-  const navigate = useNavigate();
-
-  const handleAction = {
-    handleEdit: () => {
-      navigate(`/dashboard/edit/${urlId}`);
-    },
-    handleCopy: () => {
-      alert("edit");
-    },
-    handleDelete: () => {
-      alert("edit");
-    },
-    handleDownload: () => {
-      alert("edit");
-    },
-    handleShare: () => {
-      alert("edit");
-    },
-  };
-
-  const actions = [
-    {
-      name: "Copy",
-      icon: <Copy color="black" size={20} />,
-      onClick: handleAction.handleCopy,
-    },
-    {
-      name: "Share",
-      icon: <Share color="black" size={20} />,
-      onClick: handleAction.handleShare,
-    },
-    {
-      name: "Edit",
-      icon: <Edit color="black" size={20} />,
-      onClick: handleAction.handleEdit,
-    },
-
-    {
-      name: "Delete",
-      icon: <Delete color="black" size={20} />,
-      onClick: handleAction.handleDelete,
-    },
-  ];
-
-  const [faviconUrl, setFaviconUrl] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  const handleFetchFavicon = () => {
-    setLoading(true);
-    try {
-      const domain = new URL(originalUrl).hostname;
-      const favicon = `https://www.google.com/s2/favicons?sz=256&domain=${domain}`;
-
-      setFaviconUrl(favicon);
-    } catch (error) {
-      console.error("Invalid URL", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    handleFetchFavicon();
-  }, [originalUrl]);
-
   return (
-    <div className="border border-zinc-300 bg-white">
-      <div className="p-8 w-full flex items-start justify-between">
+    <div className="border p-10 border-zinc-300 bg-white space-y-6">
+      {/* TOP SECTION */}
+      <div className="w-full flex items-start justify-between">
         {/* LEFT SECTION */}
+
         <div className="space-y-4">
-          <div className="space-y-2">
-            <div className="flex items-start gap-4">
-              <div className="border border-zinc-4 rounded-full overflow-hidden">
-                {!loading && (
-                  <img
-                    src={faviconUrl}
-                    alt="Favicon"
-                    className="w-[6 0px] h-auto"
-                  />
-                )}
-              </div>
-              <div className="space-y-1">
-                <h1 className="text-4xl font-bold">{postTitle}</h1>
+          <div className="flex items-start gap-8">
+            <div className="w-[100px] h-auto rounded-full bg-zinc-100 p-1 border border-zinc-200 overflow-hidden mt-1">
+              <img
+                alt={originalUrlDomain}
+                draggable="false"
+                loading="lazy"
+                decoding="async"
+                className="blur-0 rounded-full w-full h-full"
+                src={faviconUrl}
+              />
+            </div>
+
+            <div className="space-y-1">
+              <h1 className="text-5xl font-bold first-letter:uppercase max-w-md">
+                {title}
+              </h1>
+
+              <div className="flex items-center gap-2">
+                <Link2
+                  className="opacity-60 group-hover:opacity-100 duration-300"
+                  color="blue"
+                  size={25}
+                />
                 <Link
                   to={shortUrl}
                   target="_blank"
-                  className="text-2xl cursor-pointer hover:underline text-blue-700 block"
+                  className="text-xl font-medium cursor-pointer hover:underline text-blue-700 block"
                 >
                   {shortUrl}
                 </Link>
-                <Link
-                  to={originalUrl}
-                  target="_blank"
-                  className="hover:underline text-zinc-400 block max-w-lg"
-                >
-                  {originalUrl}
-                </Link>
               </div>
+
+              <Link
+                to={originalUrl}
+                target="_blank"
+                className="hover:underline text-zinc-400 block max-w-md"
+              >
+                {originalUrl}
+              </Link>
             </div>
           </div>
-
           {createdAt === updatedAt ? (
-            <p>{new Date(createdAt).toDateString()}</p>
+            <p>Created on {new Date(createdAt).toDateString()}</p>
           ) : (
-            <p>Last updated {new Date(createdAt).toDateString()}</p>
+            <p>
+              Created on {new Date(createdAt).toDateString()} & Last updated{" "}
+              {new Date(updatedAt).toDateString()}
+            </p>
           )}
+          <div className="flex items-center gap-2">
+            <Link
+              className="bg-black text-white border border-black px-5 py-2"
+              to={`/dashboard/edit/${urlId}`}
+            >
+              Edit or Delete Link
+            </Link>
+
+            <button
+              onClick={openPopup}
+              className="bg-white text-black border border-zinc-400 p-2 px-5 pl-4 flex items-center justify-between gap-2"
+            >
+              <Share color="black" size={15} />
+              <p>Share</p>
+            </button>
+          </div>
         </div>
 
         {/* RIGHT SECTION */}
-        <div className="flex gap-4">
-          <div className="border border-zinc-400 relative max-w-[157px] h-fit">
-            <img
-              className="p-4"
-              src="https://img.abyssale.com/574bfa75-c880-46be-97ae-599473818958"
-            />
 
-            <div
-              title="Download"
-              onClick={handleAction.handleDownload}
-              className="p-2 pl-[0.2rem] border-t border-zinc-400 w-full cursor-pointer flex items-center justify-center gap-1"
-            >
-              <Download color="black" size={15} />
-              <p className="text-sm">Download</p>
-            </div>
-          </div>
-          <div className="space-y-1">
-            {actions.map((data, id) => (
-              <div
-                key={id}
-                title={data.title}
-                onClick={data.onClick}
-                className="p-3 bg-zinc-100 border border-zinc-400 group hover:border-black hover:bg-white duration-2150 w-fit cursor-pointer flex items-center gap-2"
-              >
-                <div className="opacity-70 group-hover:opacity-100 duration-150">
-                  {data.icon}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="relative w-[200px] h-[200px] bg-white border p-2 border-zinc-400">
+          <img src={qrCode} draggable={false} alt={title} loading="lazy" />
         </div>
       </div>
     </div>
