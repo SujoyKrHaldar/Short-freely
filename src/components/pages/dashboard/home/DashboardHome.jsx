@@ -40,40 +40,77 @@ function DashboardHome() {
       </div>
 
       <section className="grid grid-cols-1 gap-6 xl:grid-cols-3 sm:grid-cols-2">
-        <div className="px-10 py-6 bg-white border border-zinc-300 flex items-start gap-4">
-          <div className="p-4 bg-zinc-200 rounded-full">
-            <Unlink />
-          </div>
-          <div className="space-y-1">
-            <p className="text-5xl font-bold">
-              {dataLoading ? 0 : data?.total}
-            </p>
-            <p>Links created</p>
-          </div>
+        <div className="px-10 py-6 h-[125px] bg-white border border-zinc-300 flex items-start gap-4 relative overflow-hidden">
+          {dataLoading ? (
+            <div
+              className={`absolute w-full h-full bg-black inset-0 ${
+                dataLoading
+                  ? " bg-zinc-300 animate-pulse"
+                  : "bg-transparent pointer-events-none"
+              }`}
+            ></div>
+          ) : (
+            <>
+              <div className="p-4 bg-zinc-200 rounded-full">
+                <Unlink />
+              </div>
+              <div className="space-y-1">
+                <p className="text-5xl font-bold">
+                  {dataLoading ? 0 : data?.total}
+                </p>
+                <p>Links created</p>
+              </div>
+            </>
+          )}
         </div>
 
-        <div className="px-10 py-6 bg-white border border-zinc-300 flex items-start gap-4">
-          <div className="p-4 bg-zinc-200 rounded-full">
-            <QrCode />
-          </div>
-          <div className="space-y-1">
-            <p className="text-5xl font-bold">
-              {dataLoading ? 0 : data?.total}
-            </p>
-            <p>QR generated</p>
-          </div>
+        <div className="px-10 py-6 h-[125px] bg-white border border-zinc-300 flex items-start gap-4 relative overflow-hidden">
+          {dataLoading ? (
+            <div
+              className={`absolute w-full h-full bg-black inset-0 ${
+                dataLoading
+                  ? " bg-zinc-300 animate-pulse"
+                  : "bg-transparent pointer-events-none"
+              }`}
+            ></div>
+          ) : (
+            <>
+              <div className="p-4 bg-zinc-200 rounded-full">
+                <QrCode />
+              </div>
+              <div className="space-y-1">
+                <p className="text-5xl font-bold">
+                  {dataLoading ? 0 : data?.total}
+                </p>
+                <p>QR generated</p>
+              </div>
+            </>
+          )}
         </div>
 
-        <div className="px-10 py-6 bg-white border border-zinc-300 flex items-start gap-4">
-          <div className="p-4 bg-zinc-200 rounded-full">
-            <Click />
-          </div>
-          <div className="space-y-1">
-            <p className="text-5xl font-bold">
-              {clickCountLoading ? 0 : clickCount}
-            </p>
-            <p>Clicks counted</p>
-          </div>
+        <div className="px-10 py-6 h-[125px] bg-white border border-zinc-300 flex items-start gap-4 relative overflow-hidden">
+          {dataLoading ? (
+            <div
+              className={`absolute w-full h-full bg-black inset-0 ${
+                dataLoading
+                  ? " bg-zinc-300 animate-pulse"
+                  : "bg-transparent pointer-events-none"
+              }`}
+            ></div>
+          ) : (
+            <>
+              {" "}
+              <div className="p-4 bg-zinc-200 rounded-full">
+                <Click />
+              </div>
+              <div className="space-y-1">
+                <p className="text-5xl font-bold">
+                  {clickCountLoading ? 0 : clickCount}
+                </p>
+                <p>Clicks counted</p>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
