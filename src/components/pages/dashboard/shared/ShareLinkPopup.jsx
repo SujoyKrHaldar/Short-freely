@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowDownToLine as Download, Copy, X as Close } from "lucide-react";
+import { useNotification } from "../../../../hooks";
+import { responseStatus } from "../../../../utils/constants";
 
 /* eslint-disable react/prop-types */
 function ShareLinkPopup({ qrCodeSrc, link, faviconSrc, onClose }) {
+  const notify = useNotification();
+
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = qrCodeSrc;
@@ -15,7 +19,11 @@ function ShareLinkPopup({ qrCodeSrc, link, faviconSrc, onClose }) {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(link);
-    alert("Link copied to clipboard!");
+    notify({
+      message: "Link copied to clipboard.",
+      type: responseStatus.SUCCESS,
+      timeout: 5000,
+    });
   };
 
   return (
@@ -90,7 +98,7 @@ function ShareLinkPopup({ qrCodeSrc, link, faviconSrc, onClose }) {
         </div>
       </div>
 
-      <div className="absolute w-full h-1/2 bottom-0 left-0 bg-zinc-100 -z-10"></div>
+      <div className="absolute w-full h-1/2 bottom-0 left-0 bg-zinc-100 -z-10 border-t border-zinc-300"></div>
     </div>
   );
 }
