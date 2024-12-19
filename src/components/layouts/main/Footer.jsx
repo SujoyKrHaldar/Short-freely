@@ -11,40 +11,16 @@ function Footer() {
               <Logo />
             </Link>
 
-            <p>URL Shortner</p>
+            <p>Short Freely</p>
           </div>
 
           <ul className="flex gap-6">
             <li>
-              <a
-                href="#"
+              <Link
+                href="https://www.instagram.com/sujoykhaldar/"
                 rel="noreferrer"
                 target="_blank"
-                className="text-gray-700 transition hover:opacity-75"
-              >
-                <span className="sr-only">Facebook</span>
-
-                <svg
-                  className="size-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                rel="noreferrer"
-                target="_blank"
-                className="text-gray-700 transition hover:opacity-75"
+                className="text-red-500 transition hover:opacity-75"
               >
                 <span className="sr-only">Instagram</span>
 
@@ -60,15 +36,15 @@ function Footer() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
 
             <li>
               <a
-                href="#"
+                href="https://x.com/SujoyKrHaldar"
                 rel="noreferrer"
                 target="_blank"
-                className="text-gray-700 transition hover:opacity-75"
+                className="text-blue-500 transition hover:opacity-75"
               >
                 <span className="sr-only">Twitter</span>
 
@@ -84,11 +60,11 @@ function Footer() {
             </li>
 
             <li>
-              <a
-                href="#"
+              <Link
+                href="https://github.com/SujoyKrHaldar"
                 rel="noreferrer"
                 target="_blank"
-                className="text-gray-700 transition hover:opacity-75"
+                className="text-black transition hover:opacity-75"
               >
                 <span className="sr-only">GitHub</span>
 
@@ -104,15 +80,15 @@ function Footer() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
-                href="#"
+              <Link
+                to="https://dribbble.com/SujoyKrHaldar"
                 rel="noreferrer"
                 target="_blank"
-                className="text-gray-700 transition hover:opacity-75"
+                className="text-pink-500 transition hover:opacity-75"
               >
                 <span className="sr-only">Dribbble</span>
 
@@ -128,7 +104,7 @@ function Footer() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -141,6 +117,7 @@ function Footer() {
           <nav className="flex items-center gap-6 text-sm">
             <Link to="/terms-&-conditions">Terms & conditions</Link>
             <Link to="/privacy-policy">Privacy policy</Link>
+            <Link to="https://sujoykh.vercel.app">@Sujoy007</Link>
           </nav>
         </div>
       </div>
