@@ -98,7 +98,7 @@ export const getOriginalUrl = async (customSlug) => {
         Query.select(["$id", "originalUrl", "title"]),
       ]
     );
-    return response;
+    return response.documents[0];
   } catch (error) {
     throw error.message;
   }
