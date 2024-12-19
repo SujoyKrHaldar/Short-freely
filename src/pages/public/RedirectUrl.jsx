@@ -112,7 +112,6 @@ const useSaveLinkStats = (url, loading, error) => {
 
   useEffect(() => {
     if (!loading && !error && url) {
-      console.log("saving anakytics");
       saveLinkStats();
     }
   }, [urlId, error, loading]);
