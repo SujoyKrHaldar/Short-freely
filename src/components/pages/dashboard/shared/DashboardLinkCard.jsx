@@ -73,7 +73,7 @@ function DashboardLinkCard({ data }) {
           className="p-2 flex items-center gap-1 bg-white border border-zinc-300 duration-300 text-sm font-medium"
         >
           <MousePointerClick className="opacity-50" color="black" size={15} />
-          <p>{data?.clickCount?.length} clicks</p>
+          <p>{data?.analyticsCount?.length} clicks</p>
         </Link>
 
         <Link
