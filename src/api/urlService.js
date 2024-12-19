@@ -34,6 +34,28 @@ export const getAllUrls = async ({ userId, limit, offset }) => {
 
     return response;
   } catch (error) {
+    console.log({ error });
+    throw error.message;
+  }
+};
+
+export const getAllUrlsBySearch = async ({ userId, searchQuery }) => {
+  try {
+    const response = await databases.listDocuments(
+      databaseId,
+      urlCollectionId,
+      [
+        Query.equal("userId", userId),
+        Query.or([
+          Query.search("title", searchQuery),
+          Query.search("customSlug", searchQuery),
+        ]),
+        Query.orderDesc("$updatedAt"),
+      ]
+    );
+
+    return response;
+  } catch (error) {
     throw error.message;
   }
 };
