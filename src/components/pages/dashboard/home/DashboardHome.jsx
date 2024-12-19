@@ -1,14 +1,22 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import { greetingImgUrl as imageUrl } from "../../../../utils/imageUrls";
 import { useAuth } from "../../../../hooks";
 import DashboardHomeUrlLists from "./DashboardHomeUrlLists";
-import DashboardHomeStats from "./DashboardHomeStats";
 import { useFetchUrls } from "../../../../hooks";
+import { useEffect, useState } from "react";
+import { getAllClickCounts } from "../../../../api/analyticService";
+import { Unlink, QrCode, MousePointerClick as Click } from "lucide-react";
 
 function DashboardHome() {
   const { userData } = useAuth();
   const DEFAULT_URL_LIMIT = 5;
-  const { data, loading, error } = useFetchUrls({ limit: DEFAULT_URL_LIMIT });
+  const {
+    data,
+    loading: dataLoading,
+    error,
+  } = useFetchUrls({ limit: DEFAULT_URL_LIMIT });
+  const { clickCount, loading: clickCountLoading } = useFetchAllClickCounts();
 
   return (
     <section className="w-full h-full space-y-8 relative z-10 pb-8">
@@ -31,11 +39,73 @@ function DashboardHome() {
         </div>
       </div>
 
+      <section className="grid grid-cols-1 gap-6 xl:grid-cols-3 sm:grid-cols-2">
+        <div className="px-10 py-6 bg-white border border-zinc-300 flex items-start gap-4">
+          <div className="p-4 bg-zinc-200 rounded-full">
+            <Unlink />
+          </div>
+          <div className="space-y-1">
+            <p className="text-5xl font-bold">
+              {dataLoading ? 0 : data?.total}
+            </p>
+            <p>Links created</p>
+          </div>
+        </div>
 
-      <DashboardHomeStats data={data} />
-      <DashboardHomeUrlLists data={data} loading={loading} error={error} />
+        <div className="px-10 py-6 bg-white border border-zinc-300 flex items-start gap-4">
+          <div className="p-4 bg-zinc-200 rounded-full">
+            <QrCode />
+          </div>
+          <div className="space-y-1">
+            <p className="text-5xl font-bold">
+              {dataLoading ? 0 : data?.total}
+            </p>
+            <p>QR generated</p>
+          </div>
+        </div>
+
+        <div className="px-10 py-6 bg-white border border-zinc-300 flex items-start gap-4">
+          <div className="p-4 bg-zinc-200 rounded-full">
+            <Click />
+          </div>
+          <div className="space-y-1">
+            <p className="text-5xl font-bold">
+              {clickCountLoading ? 0 : clickCount}
+            </p>
+            <p>Clicks counted</p>
+          </div>
+        </div>
+      </section>
+
+      <DashboardHomeUrlLists data={data} loading={dataLoading} error={error} />
     </section>
   );
 }
+
+const useFetchAllClickCounts = (urlId) => {
+  const [clickCount, setClickCount] = useState();
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const fetchClickCounts = async () => {
+    setLoading(true);
+    setError(false);
+    try {
+      const response = await getAllClickCounts();
+
+      setClickCount(response);
+    } catch (_) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchClickCounts();
+  }, []);
+
+  return { loading, clickCount, error };
+};
 
 export default DashboardHome;
