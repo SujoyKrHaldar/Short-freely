@@ -30,7 +30,7 @@ function DashboardUrlDetails({ data }) {
       <DashboardUrlOptions postTitle={data?.title} PostId={data?.$id} />
       <section className="space-y-4 my-6">
         <UrlDetails {...data} openPopup={() => setOpenPopup(true)} />
-        <DashboardUrlAnalytics />
+        <DashboardUrlAnalytics data={data} />
       </section>
     </section>
   );
