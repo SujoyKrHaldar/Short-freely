@@ -87,3 +87,19 @@ export const updateUrlById = async (data, urlId) => {
 export const deleteUrlById = async (urlId) => {
   return await databases.deleteDocument(databaseId, urlCollectionId, urlId);
 };
+
+export const getOriginalUrl = async (customSlug) => {
+  try {
+    const response = await databases.listDocuments(
+      databaseId,
+      urlCollectionId,
+      [
+        Query.equal("customSlug", customSlug),
+        Query.select(["$id", "originalUrl", "title"]),
+      ]
+    );
+    return response;
+  } catch (error) {
+    throw error.message;
+  }
+};
