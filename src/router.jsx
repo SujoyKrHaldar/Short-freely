@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             element: <Home />,
           },
           {
-            path: "/url/:Slug",
+            path: "/redirect/:customSlug",
             element: <RedirectUrl />,
           },
           {

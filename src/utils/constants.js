@@ -222,6 +222,12 @@ export const faqs = [
   },
 ];
 
+// SHORT URL FORMAT
+import config from "../config";
+
+const CLIENT_URL = config.getKey("CLIENT_URL");
+
+export const SHORT_URL_PREFIX = `${CLIENT_URL}/redirect`;
 //   const response = {
 //     $createdAt: "2024-12-13T09:12:11.080+00:00",
 //     $id: "675bfa680023218bd735",

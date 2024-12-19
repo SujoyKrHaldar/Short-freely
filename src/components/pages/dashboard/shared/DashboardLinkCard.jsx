@@ -1,14 +1,14 @@
 import { Copy, MousePointerClick } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useNotification } from "../../../../hooks";
-import { responseStatus } from "../../../../utils/constants";
+import { responseStatus, SHORT_URL_PREFIX } from "../../../../utils/constants";
 
 /* eslint-disable react/prop-types */
 function DashboardLinkCard({ data }) {
   const notify = useNotification();
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(data?.shortUrl);
+    navigator.clipboard.writeText(`${SHORT_URL_PREFIX}/${data?.customSlug}`);
     notify({
       message: "Link copied to clipboard.",
       type: responseStatus.SUCCESS,

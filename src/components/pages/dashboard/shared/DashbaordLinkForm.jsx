@@ -136,6 +136,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
           shortUrl: response.shortUrl,
           faviconUrl: response.faviconUrl,
           urlId: response.$id,
+          customSlug: response.customSlug,
         });
         return;
       }
@@ -213,6 +214,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
           qrCodeSrc={shareDetails.qrCode}
           link={shareDetails.shortUrl}
           faviconSrc={shareDetails.faviconUrl}
+          customSlug={shareDetails.customSlug}
           onClose={() => navigate("/dashboard/link/" + shareDetails.urlId)}
         />
       </div>

@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import { Link2, Share2 as Share } from "lucide-react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import DashboardUrlAnalytics from "./DashboardUrlAnalytics";
 import DashboardUrlOptions from "./DashboardUrlOptions";
-import { useNotification } from "../../../../hooks";
 import ShareLinkPopup from "../shared/ShareLinkPopup";
+import { SHORT_URL_PREFIX } from "../../../../utils/constants";
 
 function DashboardUrlDetails({ data }) {
   const [isOpenPopup, setOpenPopup] = useState(false);
@@ -24,6 +23,7 @@ function DashboardUrlDetails({ data }) {
           qrCodeSrc={data.qrCode}
           link={data.shortUrl}
           faviconSrc={data.faviconUrl}
+          customSlug={data.customSlug}
           onClose={() => setOpenPopup(false)}
         />
       </div>
@@ -40,6 +40,7 @@ const UrlDetails = ({
   shortUrl,
   title,
   qrCode,
+  customSlug,
   originalUrl,
   originalUrlDomain,
   faviconUrl,
@@ -79,7 +80,7 @@ const UrlDetails = ({
                   size={25}
                 />
                 <Link
-                  to={shortUrl}
+                  to={`${SHORT_URL_PREFIX}/${customSlug}`}
                   target="_blank"
                   className="text-xl font-medium cursor-pointer hover:underline text-blue-700 block"
                 >

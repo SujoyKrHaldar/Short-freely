@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { ArrowDownToLine as Download, Copy, X as Close } from "lucide-react";
 import { useNotification } from "../../../../hooks";
-import { responseStatus } from "../../../../utils/constants";
+import { responseStatus, SHORT_URL_PREFIX } from "../../../../utils/constants";
 
 /* eslint-disable react/prop-types */
-function ShareLinkPopup({ qrCodeSrc, link, faviconSrc, onClose }) {
+function ShareLinkPopup({ qrCodeSrc, link, faviconSrc, onClose, customSlug }) {
   const notify = useNotification();
+
+  const SHORT_URL = `${SHORT_URL_PREFIX}/${customSlug}`;
 
   const handleDownload = () => {
     const link = document.createElement("a");
@@ -18,7 +20,7 @@ function ShareLinkPopup({ qrCodeSrc, link, faviconSrc, onClose }) {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(link);
+    navigator.clipboard.writeText(SHORT_URL);
     notify({
       message: "Link copied to clipboard.",
       type: responseStatus.SUCCESS,
@@ -61,7 +63,7 @@ function ShareLinkPopup({ qrCodeSrc, link, faviconSrc, onClose }) {
 
       <div className="text-center mb-6">
         <Link
-          to={link}
+          to={SHORT_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-700 font-medium hover:underline text-lg"
