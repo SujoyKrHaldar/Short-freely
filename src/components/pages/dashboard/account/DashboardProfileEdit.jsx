@@ -42,7 +42,7 @@ const ProfileForm = () => {
       const response = await updateName(data.name);
       saveUserDataAfterUodation(response);
       notify({
-        message: "Name updated successfull.y.",
+        message: "Your name updated successfully",
         type: responseStatus.SUCCESS,
         timeout: 5000,
       });
