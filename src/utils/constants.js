@@ -25,11 +25,6 @@ export const dashboardSidebarNavlinks = [
     url: "/dashboard/links",
   },
   {
-    name: "Analytics",
-    url: "/dashboard/analytics",
-  },
-
-  {
     name: "Account",
     url: "/dashboard/account",
   },

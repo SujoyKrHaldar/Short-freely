@@ -85,10 +85,6 @@ const router = createBrowserRouter([
             path: "/dashboard/links",
             element: <AllShortLinks />,
           },
-          {
-            path: "/dashboard/analytics",
-            element: <UrlDetails />,
-          },
         ],
       },
     ],
