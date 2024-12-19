@@ -74,4 +74,6 @@ export const deleteAccount = async (userId) => {
   }
 };
 
-export const updateUserPassword = () => {};
+export const updateName = async (name) => {
+    return await account.updateName(name);
+};

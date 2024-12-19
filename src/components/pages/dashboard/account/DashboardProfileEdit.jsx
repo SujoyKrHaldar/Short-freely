@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Input from "../../../ui/forms/Input";
-import { useAuth } from "../../../../hooks";
+import { useAuth, useNotification } from "../../../../hooks";
 import { useForm } from "react-hook-form";
 import DashboardAccountEditTemplate from "./DashboardAccountEditTemplate";
-
-// TODO : update user details
+import { Lock } from "lucide-react";
+import { updateName } from "../../../../api/authService";
+import { responseStatus } from "../../../../utils/constants";
 
 function DashboardProfileEdit() {
   return (
@@ -18,10 +20,11 @@ function DashboardProfileEdit() {
 }
 
 const ProfileForm = () => {
-  const { userData: defaultData } = useAuth();
+  const { userData: defaultData, login: saveUserDataAfterUodation } = useAuth();
   const [loading, setLoading] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
   const [formData, setFormData] = useState(defaultData);
+  const notify = useNotification();
 
   const {
     register,
@@ -33,9 +36,26 @@ const ProfileForm = () => {
   });
 
   // Save handler: Mock API request
-  const onSave = (data) => {
+  const onSave = async (data) => {
     setLoading(true);
-    console.log("Saving data:", data); // Replace with an API call
+    try {
+      const response = await updateName(data.name);
+      saveUserDataAfterUodation(response);
+      notify({
+        message: "Name updated successfull.y.",
+        type: responseStatus.SUCCESS,
+        timeout: 5000,
+      });
+    } catch (_) {
+      notify({
+        message: "Something went wrong",
+        type: responseStatus.ERROR,
+        timeout: 5000,
+      });
+    } finally {
+      setLoading(false);
+    }
+
     setFormData(data); // Update state with new data
     setIsEditable(false); // Exit edit mode
     setLoading(false);
@@ -71,44 +91,24 @@ const ProfileForm = () => {
             })}
           />
 
-          <Input
-            label="Email"
-            type="email"
-            readOnly={!isEditable}
-            className={
-              isEditable
-                ? "bg-white"
-                : "bg-zinc-100 outline-none text-zinc-500 font-bormal border-zinc-200"
-            }
-            error={errors?.email}
-            errorMessage={errors?.email?.message}
-            {...register("email", {
-              required: "Email is required.",
-              validate: (value) =>
-                /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(value) ||
-                "Please enter a valid Email.",
-            })}
-          />
-
-          <Input
-            label="Phone No"
-            type="tel"
-            readOnly={!isEditable}
-            className={
-              isEditable
-                ? "bg-white"
-                : "bg-zinc-100 outline-none text-zinc-500 font-bormal border-zinc-200"
-            }
-            error={errors?.phone}
-            errorMessage={errors?.phone?.message}
-            {...register("phone", {
-              required: "Phone number is required",
-              pattern: {
-                value: /^\d{10}$/,
-                message: "Phone number must be 10 digits",
-              },
-            })}
-          />
+          <div className="relative">
+            <Lock size={18} className="opacity-30 absolute top-2 right-0" />
+            <Input
+              label="Email"
+              type="email"
+              readOnly={true}
+              title="cant be edi"
+              className=" bg-zinc-100 outline-none text-zinc-500 font-bormal border-zinc-200 cursor-not-allowed"
+              error={errors?.email}
+              errorMessage={errors?.email?.message}
+              {...register("email", {
+                required: "Email is required.",
+                validate: (value) =>
+                  /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(value) ||
+                  "Please enter a valid Email.",
+              })}
+            />
+          </div>
         </div>
 
         <div className="flex items-center justify-end gap-2 w-full h-fit border-t-0 border-zinc-300">
