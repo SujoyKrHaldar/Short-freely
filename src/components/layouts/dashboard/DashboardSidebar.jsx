@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Link, useLocation } from "react-router-dom";
 import { dashboardSidebarNavlinks as navLinks } from "../../../utils/constants";
 import { useLogout } from "../../../hooks";
