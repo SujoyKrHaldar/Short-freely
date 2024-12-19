@@ -45,7 +45,7 @@ function DeshboardSearch() {
   };
 
   return (
-    <section className="w-full h-full space-y-6">
+    <section className="w-full h-full space-y-6 pb-8">
       <div className="flex items-end justify-between w-full h-full">
         <div className="space-y-4 w-full">
           <DashboardBreadcrumb links={breadcrumbs} />
