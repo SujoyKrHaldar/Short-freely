@@ -97,7 +97,7 @@ const ProfileForm = () => {
               label="Email"
               type="email"
               readOnly={true}
-              title="cant be edi"
+              title="Email cannot be updated."
               className=" bg-zinc-100 outline-none text-zinc-500 font-bormal border-zinc-200 cursor-not-allowed"
               error={errors?.email}
               errorMessage={errors?.email?.message}
