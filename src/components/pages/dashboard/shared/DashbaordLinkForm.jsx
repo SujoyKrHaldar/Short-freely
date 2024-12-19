@@ -8,11 +8,8 @@ import { createUrl, updateUrlById } from "../../../../api/urlService";
 import { responseErrorType, responseStatus } from "../../../../utils/constants";
 import { Lock, QrCode } from "lucide-react";
 import ShareLinkPopup from "./ShareLinkPopup";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-
-// TODO: Make seperate custom hooks for each and every useeffect and functions
-// TODO: Implement tsparticle
+// import { Particles } from "@tsparticles/react";
+// import { loadFull } from "tsparticles";
 
 const DashbaordLinkForm = ({ defaultData }) => {
   const {
@@ -28,7 +25,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
   const [qrCode, setQrCode] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
   const [isEnableSharePopup, setEnableSharePopup] = useState(false);
-  const [showParticlesOnCreation, setShowParticlesOnCreation] = useState(false);
+  // const [showParticlesOnCreation, setShowParticlesOnCreation] = useState(true);
   const [shareDetails, setShareDetails] = useState({});
 
   const navigate = useNavigate();
@@ -44,6 +41,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
       setIsEditMode(true);
       setValue("title", title);
       setValue("originalUrl", originalUrl);
+      setValue("customSlug", "");
       setQrCode(defaultQrCode);
     } else {
       setIsEditMode(false);
@@ -75,6 +73,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
   const handleCancle = () => {
     if (isEditMode) {
       reset(defaultData);
+      setValue("customSlug", "");
       setQrCode(defaultData.qrCode);
       return;
     }
@@ -141,8 +140,8 @@ const DashbaordLinkForm = ({ defaultData }) => {
           faviconUrl: response.faviconUrl,
           urlId: response.$id,
         });
-        setShowParticlesOnCreation(true); // Show particles on success
-        setTimeout(() => setShowParticlesOnCreation(false), 6000); // Hide after 3s
+        // setShowParticlesOnCreation(true); // Show particles on success
+        // setTimeout(() => setShowParticlesOnCreation(false), 6000); // Hide after 3s
         return;
       }
     } catch (error) {
@@ -192,7 +191,8 @@ const DashbaordLinkForm = ({ defaultData }) => {
       });
     } else if (error?.type === responseErrorType.DOCUMENT_ALREADY_EXISTS) {
       notify({
-        message: "Custom back-half slug already exists. Try another.",
+        message:
+          "Custom back-half slug already exists. Try another or skip it.",
         type: responseStatus.ERROR,
         timeout: 5000,
       });
@@ -206,19 +206,20 @@ const DashbaordLinkForm = ({ defaultData }) => {
   };
 
   //* Initializing the tsParticles instance
-  const particlesInit = async (engine) => {
-    await loadFull(engine);
-  };
+  // const particlesInit = async (engine) => {
+  //   await loadFull(engine);
+  // };
 
   return (
     <section className="relative w-full h-full flex items-center justify-center">
-      {showParticlesOnCreation && (
+      {/* {showParticlesOnCreation && (
         <Particles
-          init={particlesInit}
+          id="success-particles"
+          // init={particlesInit}
           options={particleOptions}
-          className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-60"
+          className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-60 bg-black"
         />
-      )}
+      )} */}
 
       <div
         className={`fixed inset-0 w-full h-full flex items-center justify-center z-50 bg-white duration-300 ${
@@ -234,12 +235,13 @@ const DashbaordLinkForm = ({ defaultData }) => {
           onClose={() => navigate("/dashboard/link/" + shareDetails.urlId)}
         />
       </div>
+
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-16 w-full">
         <div className="flex items-start gap-4">
           {/* BOX LEFT */}
           <div className="p-10 pt-8 space-y-4 w-[60%] border border-zinc-300 bg-white">
             <Input
-              autoFocus={true}
+              autoFocus={!isEditMode}
               label="Title"
               type="text"
               placeholder="Enter a title"
@@ -387,38 +389,79 @@ const DashbaordLinkForm = ({ defaultData }) => {
   );
 };
 
-const particleOptions = {
-  fpsLimit: 60,
-  particles: {
-    number: {
-      value: 50,
-      density: { enable: true, value_area: 800 },
-    },
-    color: { value: "#ffdd00" },
-    shape: {
-      type: "circle",
-    },
-    opacity: {
-      value: 0.8,
-    },
-    size: {
-      value: 4,
-      random: true,
-    },
-    move: {
-      enable: true,
-      speed: 3,
-      direction: "none",
-      outModes: "out",
-    },
-  },
-  interactivity: {
-    detectsOn: "canvas",
-    events: {
-      onHover: { enable: false },
-      onClick: { enable: false },
-    },
-  },
-};
+// const particleOptions = {
+//   fpsLimit: 60,
+//   particles: {
+//     number: {
+//       value: 50,
+//       density: { enable: true, value_area: 800 },
+//     },
+//     color: { value: "#ffdd00" },
+//     shape: {
+//       type: "circle",
+//     },
+//     opacity: {
+//       value: 0.8,
+//     },
+//     size: {
+//       value: 4,
+//       random: true,
+//     },
+//     move: {
+//       enable: true,
+//       speed: 3,
+//       direction: "none",
+//       outModes: "out",
+//     },
+//   },
+//   interactivity: {
+//     detectsOn: "canvas",
+//     events: {
+//       onHover: { enable: false },
+//       onClick: { enable: false },
+//     },
+//   },
+// };
+
+// const particleOptions = {
+//   fpsLimit: 120,
+//   particles: {
+//     number: {
+//       value: 80,
+//       density: {
+//         enable: true,
+//         area: 800,
+//       },
+//     },
+//     color: {
+//       value: ["#ffdd00", "#00bfff", "#ff6347"],
+//     },
+//     shape: {
+//       type: "circle",
+//     },
+//     opacity: {
+//       value: 0.8,
+//     },
+//     size: {
+//       value: { min: 2, max: 6 },
+//       random: true,
+//     },
+//     move: {
+//       enable: true,
+//       speed: 2,
+//       direction: "none",
+//       outModes: {
+//         default: "out",
+//       },
+//     },
+//   },
+//   interactivity: {
+//     events: {
+//       onHover: { enable: false },
+//       onClick: { enable: false },
+//     },
+//   },
+//   detectRetina: true,
+// };
 
 export default DashbaordLinkForm;
