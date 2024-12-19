@@ -46,7 +46,7 @@ function DashboardHomeUrlLists({ data, loading, error }) {
         </section>
       ) : (
         <NoResultFallbackUi
-          title="No links found"
+          title="You dont have any active Links"
           description="Want to see metrics on your recent links? Create and publish a short link to get started."
         />
       )}
