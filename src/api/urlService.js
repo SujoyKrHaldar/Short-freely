@@ -34,7 +34,6 @@ export const getAllUrls = async ({ userId, limit, offset }) => {
 
     return response;
   } catch (error) {
-    console.log({ error });
     throw error.message;
   }
 };
