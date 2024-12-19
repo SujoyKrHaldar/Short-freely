@@ -6,7 +6,7 @@ function MainLayout({ children }) {
   return (
     <>
       <Header />
-      <main className="bg-zinc-100">{children}</main>
+      <main className="bg-zinc-100 relative">{children}</main>
       <Footer />
     </>
   );
