@@ -5,7 +5,7 @@ function AllShortLinks() {
   return (
     <>
       <MetaTags
-        title="All Short Links • Url shortner"
+        title="All Short Links • Short Freely"
         description=""
         conicalRoute="dashboard/links"
       />

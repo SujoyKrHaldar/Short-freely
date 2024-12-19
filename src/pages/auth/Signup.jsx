@@ -16,7 +16,7 @@ function Signup() {
   return (
     <>
       <MetaTags
-        title="Create account • Url shortner"
+        title="Create account • Short Freely"
         description="Create your account"
         conicalRoute="signup"
       />

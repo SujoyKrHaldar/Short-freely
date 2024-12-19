@@ -13,7 +13,7 @@ function Home() {
   return (
     <>
       <MetaTags
-        title="Simplify Your Links, Amplify Your Reach • Url shortner"
+        title="Simplify Your Links, Amplify Your Reach • Short Freely"
         description="Shorten long URLs, track performance, and manage all your links in
             one place. Your go-to solution for smarter sharing."
         conicalRoute=""

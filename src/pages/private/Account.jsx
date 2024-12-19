@@ -5,7 +5,7 @@ function Account() {
   return (
     <>
       <MetaTags
-        title="Account • Url shortner"
+        title="Manage account • Short Freely"
         description="Manage your account"
         conicalRoute="dashboard/account"
       />

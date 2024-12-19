@@ -5,7 +5,7 @@ function CreateShortUrl() {
   return (
     <>
       <MetaTags
-        title="Create short url • Url shortner"
+        title="Create short url • Short Freely"
         description="Create a short url"
         conicalRoute="dashboard/create"
       />

@@ -10,11 +10,7 @@ function UrlDetails() {
   return (
     <>
       <MetaTags
-        title={
-          data?.title
-            ? `${data?.title} • Url shortner`
-            : "Url details • Url shortner"
-        }
+        title={data?.title ? `${data?.title} • Short Freely` : "Loading..."}
         description="Url details"
         conicalRoute={`dashboard/link/${data?.$id}`}
       />

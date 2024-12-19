@@ -16,7 +16,7 @@ function Login() {
   return (
     <>
       <MetaTags
-        title="Login • Url shortner"
+        title="Login • Short Freely"
         description="Login to your account"
         conicalRoute="login"
       />

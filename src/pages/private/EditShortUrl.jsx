@@ -5,7 +5,7 @@ function EditShortUrl() {
   return (
     <>
       <MetaTags
-        title="Edit url • Url shortner"
+        title="Edit url • Short Freely"
         description="Update an existing short url"
         conicalRoute="dashboard/edit/"
       />

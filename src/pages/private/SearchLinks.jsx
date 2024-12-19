@@ -5,7 +5,7 @@ function SearchLinks() {
   return (
     <>
       <MetaTags
-        title="Search • Url shortner"
+        title="Search links here • Short Freely"
         description=""
         conicalRoute="dashboard/search"
       />

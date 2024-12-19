@@ -13,7 +13,7 @@ function PageNotFound() {
   return (
     <>
       <MetaTags
-        title="Page not found • Url shortner"
+        title="Page not found • Short Freely"
         description=""
         conicalRoute=""
       />

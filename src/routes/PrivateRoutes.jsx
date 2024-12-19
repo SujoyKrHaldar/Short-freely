@@ -4,7 +4,9 @@ import { useAuth } from "../hooks";
 
 function PrivateRoutes() {
   const location = useLocation();
-  const { authStatus } = useAuth();
+  const { authStatus, isLoggingOut } = useAuth();
+
+  // console.log("From private route, isloggingout", isLoggingOut);
 
   const redirectRoute =
     location.pathname === "/dashboard"
@@ -13,7 +15,10 @@ function PrivateRoutes() {
       ? `/login?redirectTo=${location.pathname}${location.search}`
       : `/login?redirectTo=${location.pathname}`;
 
-  if (!authStatus) return <Navigate to={redirectRoute} />;
+  // console.log("redriceted to", redirectRoute);
+  // console.log("authstats", authStatus);
+
+  if (!authStatus) return <Navigate to={redirectRoute} replace={true} />;
 
   return (
     <DashboardLayout>
