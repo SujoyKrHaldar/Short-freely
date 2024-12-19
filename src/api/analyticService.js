@@ -1,4 +1,4 @@
-import { ID } from "appwrite";
+import { ID, Query } from "appwrite";
 import { databases } from "./initServer";
 import config from "../config";
 import { UAParser } from "ua-parser-js";
@@ -39,4 +39,18 @@ export const createLinkStats = async ({ urlId, originalUrl, urlTitle }) => {
   );
 
   return result;
+};
+
+export const getAllClickCounts = async () => {
+  try {
+    const response = await databases.listDocuments(
+      databaseId,
+      analyticCollectionId,
+      [Query.select(["$id"])]
+    );
+
+    return response.total;
+  } catch (error) {
+    throw error.message;
+  }
 };
