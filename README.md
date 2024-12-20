@@ -70,17 +70,17 @@ The goal is to build a modern, user-friendly full-stack URL shortener applicatio
 
 ## <a name="features"> Features</a>
 
-👉 **Authentication System**: A robust authentication system ensuring security and user privacy.
-👉 **User-friendly Dashboard**: User will be provided a Dashboard where he/she can manage account, created short urls and its analytics.
-👉 **Shorten URLs**: Convert long URLs into short, easy-to-share links.
-👉 **Custom Slugs**: Define custom back-halves for your links (e.g., `https://short.ly/custom-slug`).
-👉 **URL Redirect**: Redirect users to the original URL when they visit the shortened link. Example: Visiting https://yourapp.com/abc123 takes the user to https://example.com/very-long-url.
-👉 **Detailed URL Page**: A detailed URL page displaying content and URL Analytics for an immersive user experience.
-👉 **Edit & Delete Functionality**: Provide users with the ability to edit and delete the existing URL at any time.
-👉 **QR Code Generation**: Automatically generate QR codes for shortened links.
-👉 **Performence Analytics**: Track user activity, including device, OS, location, and browser.
-👉 **Best UI/UX**: Focused on best UI/UX for the users.
-👉 **Backend as a Service (BaaS) - Appwrite**: Utilize Appwrite as a Backend as a Service solution for streamlined backend development, offering features like authentication, database, file storage, and more.
+- 👉 **Authentication System**: A robust authentication system ensuring security and user privacy.
+- 👉 **User-friendly Dashboard**: User will be provided a Dashboard where he/she can manage account, created short urls and its analytics.
+- 👉 **Shorten URLs**: Convert long URLs into short, easy-to-share links.
+- 👉 **Custom Slugs**: Define custom back-halves for your links (e.g., `https://short.ly/custom-slug`).
+- 👉 **URL Redirect**: Redirect users to the original URL when they visit the shortened link. Example: Visiting https://yourapp.com/abc123 takes the user to https://example.com/very-long-url.
+- 👉 **Detailed URL Page**: A detailed URL page displaying content and URL Analytics for an immersive user experience.
+- 👉 **Edit & Delete Functionality**: Provide users with the ability to edit and delete the existing URL at any time.
+- 👉 **QR Code Generation**: Automatically generate QR codes for shortened links.
+- 👉 **Performence Analytics**: Track user activity, including device, OS, location, and browser.
+- 👉 **Best UI/UX**: Focused on best UI/UX for the users.
+- 👉 **Backend as a Service (BaaS) - Appwrite**: Utilize Appwrite as a Backend as a Service solution for streamlined backend development, offering features like authentication, database, file storage, and more.
 
 ---
 
