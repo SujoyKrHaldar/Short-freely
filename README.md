@@ -19,7 +19,7 @@
     </div>
 </div>
 
-## <a name="table">Table of Contents</a>
+## 🚀 <a name="table">Table of Contents</a>
 
 1. [Introduction](#introduction)
 2. [Tech Stack](#tech-stack)
@@ -31,7 +31,7 @@
 8. [Data Modeling](#data-modeling)
 9. [Deployment](#deployment)
 
-## <a name="introduction"> Introduction</a>
+## 🚀 <a name="introduction"> Introduction</a>
 
 A full-stack web application that allows users to create shortened URLs from long URLs with additional features like custom slugs, QR code generation, and link analytics. Built using <b>React</b>, <b>Appwrite</b>, and <b>Tailwind CSS</b>.
 
@@ -45,7 +45,7 @@ The goal is to build a modern, user-friendly full-stack URL shortener applicatio
 
 ---
 
-## <a name="tech-stack"> Tech Stacks</a>
+## 🚀 <a name="tech-stack"> Tech Stacks</a>
 
 #### Design & Planning
 
@@ -68,7 +68,7 @@ The goal is to build a modern, user-friendly full-stack URL shortener applicatio
 
 ---
 
-## <a name="features"> Features</a>
+## 🚀 <a name="features"> Features</a>
 
 - 👉 **Authentication System**: A robust authentication system ensuring security and user privacy.
 - 👉 **User-friendly Dashboard**: User will be provided a Dashboard where he/she can manage account, created short urls and its analytics.
@@ -84,7 +84,7 @@ The goal is to build a modern, user-friendly full-stack URL shortener applicatio
 
 ---
 
-## <a name="ui-designs"> UI Designs</a>
+## 🚀 <a name="ui-designs"> UI Designs</a>
 
 ### Home Page
 
@@ -104,7 +104,7 @@ The goal is to build a modern, user-friendly full-stack URL shortener applicatio
 
 ---
 
-## <a name="quick-start"> Setup and Installation</a>
+## 🚀 <a name="quick-start"> Setup and Installation</a>
 
 ### Prerequisites
 
@@ -149,7 +149,7 @@ The app will run locally at [http://localhost:5173](http://localhost:5173).
 
 ---
 
-## <a name="usage"> Usage</a>
+## 🚀 <a name="usage"> Usage</a>
 
 ### Create Shortened URLs
 
@@ -181,7 +181,7 @@ You can download it for sharing or copy short url as well.
 
 ---
 
-## <a name="routes-endpoints"> Routes & Endpoints</a>
+## 🚀 <a name="routes-endpoints"> Routes & Endpoints</a>
 
 Overview of routes and their functionality in the application.
 
@@ -221,7 +221,7 @@ Overview of routes and their functionality in the application.
 
 ---
 
-## <a name="data-modeling">Data Modeling</a>
+## 🚀 <a name="data-modeling">Data Modeling</a>
 
 There will be two collection 1. URL 2. Analytics we will wonk on.
 
@@ -278,7 +278,7 @@ Tracks analytics data for each click on a shortened URL.
 ---
 
 
-## <a name="deployment"> Deployment</a>
+## 🚀 <a name="deployment"> Deployment</a>
 
 #### Deploying Frontend
 
