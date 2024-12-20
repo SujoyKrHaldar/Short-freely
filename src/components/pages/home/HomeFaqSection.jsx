@@ -11,26 +11,25 @@ import {
 
 const HomeFaqSection = () => {
   return (
-    <section className="pb-8 pt-16 bg-gray-100">
-      <div className="container relative w-full h-full flex items-center justify-around">
+    <section className="pb-16 mobile:pb-0 laptop:pb-8 pt-16 bg-gray-100">
+      <div className="container relative w-full h-full flex flex-col laptop:flex-row items-center justify-around">
         <div className="max-w-xl space-y-8">
-          <div className="max-w-2xl space-y-4">
+          <div className=" text-center laptop:text-left space-y-4">
             <img
+              loading="lazy"
               src={decorator}
               draggable={false}
               alt="decorator"
-              className="w-10"
+              className="w-10 mx-auto laptop:mx-0"
             />
-            <p className="uppercase tracking-[0.5rem]">FAQ</p>
-            <h2 className="text-3xl font-bold text-black sm:text-4xl lg:text-5xl">
-              Got Questions?
-            </h2>
-            <p className="max-w-lg mt-4">
+            <p className="p-tag">FAQ</p>
+            <h2 className="h2-bold">Got Questions?</h2>
+            <p className="p-main">
               We’ve Got Answers! Some frequently asked questions.
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto space-y-2">
+          <div className="space-y-2">
             {faqs.map((item, id) => (
               <AccordionItem
                 key={id}
@@ -40,7 +39,7 @@ const HomeFaqSection = () => {
             ))}
           </div>
 
-          <p className="text-gray-600  mt-9">
+          <p className="text-gray-600 text-center laptop:text-left">
             Didn’t find the answer you are looking for?{" "}
             <Link
               href="#"
@@ -51,8 +50,13 @@ const HomeFaqSection = () => {
           </p>
         </div>
 
-        <div className="w-[450px]">
-          <img draggable={false} src={questionImgUrl} alt="question mark" />
+        <div className="w-1/2 laptop:w-[450px]">
+          <img
+            loading="lazy"
+            draggable={false}
+            src={questionImgUrl}
+            alt="question mark"
+          />
         </div>
       </div>
     </section>
@@ -68,20 +72,26 @@ const AccordionItem = ({ title, content }) => {
 
   return (
     <div
-      className={`bg-white border duration-150 hover:scale-[1.02] cursor-auto z-10 hover:z-20 hover:shadow-sm ${
+      className={`bg-white border duration-150 laptop:hover:scale-[1.02] cursor-auto z-10 hover:z-20 hover:shadow-sm ${
         isOpen
-          ? " border-black hover:border-black"
-          : "border-zinc-300 hover:border-zinc-500 "
+          ? " border-black laptop:hover:border-black"
+          : "border-zinc-300 laptop:hover:border-zinc-500 "
       }`}
     >
       <button
         onClick={toggleAccordion}
-        className={`w-full flex justify-between items-center py-4 px-6 text-lg border-b duration-200 ${
+        className={`w-full flex justify-between items-center py-3 mobile:py-4 px-4 mobile:px-6 border-b duration-200 ${
           isOpen ? "border-b-black" : "border-b-white"
         } `}
       >
-        <p className={`${isOpen ? "font-bold" : "font-normal"}`}>{title}</p>
-        <motion.span animate={{ rotate: isOpen ? 180 : 0 }} className="ml-2">
+        <p
+          className={`text-left text-sm mobile:text-lg ${
+            isOpen ? "font-bold" : "font-normal"
+          } `}
+        >
+          {title}
+        </p>
+        <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
           <ChevronDown />
         </motion.span>
       </button>
@@ -94,7 +104,9 @@ const AccordionItem = ({ title, content }) => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="overflow-hidden"
       >
-        <p className="px-6 py-4">{content}</p>
+        <p className="px-4 mobile:px-6 py-4 text-sm mobile:text-lg">
+          {content}
+        </p>
       </motion.div>
     </div>
   );

@@ -21,13 +21,18 @@ function Signup() {
         conicalRoute="signup"
       />
 
-      <section className="container border-b border-zinc-300 relative w-full h-full flex items-center justify-around min-h-screen py-16">
-        <div className="w-[500px]">
-          <img src={imageUrl} alt="hero image - signup" draggable={false} />
+      <section className="container border-b border-zinc-300 relative w-full h-full flex flex-col laptop:flex-row items-center justify-around min-h-screen py-16">
+        <div className="hidden mobile:block mobile:w-[400px] laptop:w-[500px]">
+          <img
+            src={imageUrl}
+            alt="hero image - signup"
+            draggable={false}
+            loading="lazy"
+          />
         </div>
 
-        <div className="w-full max-w-xl p-16">
-          <h1 className="text-[3rem] font-medium">Create Account</h1>
+        <div className="w-full max-w-md pt-16 mobile:py-0 laptop:py-16">
+          <h1 className="h1-bold mb-6 mobile:mb-8">Create Account</h1>
 
           <SignupForm className="space-y-4 mt-4 mb-4" />
 

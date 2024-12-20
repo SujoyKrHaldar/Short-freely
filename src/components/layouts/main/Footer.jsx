@@ -5,13 +5,16 @@ function Footer() {
   return (
     <footer className="bg-white mt-auto">
       <div className="container space-y-8 pt-12 pb-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-8 mobile:flex-row items-center justify-between">
           <div className="flex items-center gap-6">
-            <Link className="pl-2 pr-4 border-r border-r-zinc-200" to="/">
+            <Link
+              className="mobile:pl-2 mobile:pr-4 mobile:border-r border-r-zinc-200"
+              to="/"
+            >
               <Logo />
             </Link>
 
-            <p>Short Freely</p>
+            <p className="hidden mobile:block">Short Freely</p>
           </div>
 
           <ul className="flex gap-6">
@@ -109,14 +112,21 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="flex items-center justify-between gap-8 pt-8 border-t border-zinc-400">
+        <div className="flex flex-col-reverse mobile:flex-row items-center justify-between gap-4 mobile:gap-8 pt-8 border-t border-zinc-400">
           <p className="text-sm">
             &copy; 2025 URL Shortner - All rights reserved.
           </p>
 
           <nav className="flex items-center gap-6 text-sm">
-            <Link to="/terms-&-conditions">Terms & conditions</Link>
-            <Link to="/privacy-policy">Privacy policy</Link>
+            <Link
+              className="hidden small-mobile:block"
+              to="/terms-&-conditions"
+            >
+              Terms & conditions
+            </Link>
+            <Link className="hidden small-mobile:block" to="/privacy-policy">
+              Privacy policy
+            </Link>
             <Link to="https://sujoykh.vercel.app">@Sujoy007</Link>
           </nav>
         </div>

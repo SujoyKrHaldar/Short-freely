@@ -19,10 +19,12 @@
   .p-tag {
     @apply uppercase tracking-[0.5rem] text-sm small-mobile:text-lg;
   }
+  .h1-bold {
+    @apply text-5xl tablet:text-6xl font-bold;
+  }
   .h2-bold {
     @apply font-bold text-3xl small-mobile:text-4xl mobile:text-5xl;
   }
-
   .h3-bold {
     @apply text-2xl small-mobile:text-3xl laptop:text-2xl font-bold;
   }
@@ -70,6 +72,9 @@ input {
   font-family: "Roboto", serif;
 }
 
+.mob-nav-link {
+  font-family: "EB Garamond", serif;
+}
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

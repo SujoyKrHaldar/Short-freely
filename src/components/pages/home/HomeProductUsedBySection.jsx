@@ -6,9 +6,10 @@ import {
 
 function HomeProductUsedBySection() {
   return (
-    <section className="bg-white py-16 text-center">
+    <section className="bg-white hidden mobile:block py-16 text-center">
       <div className="container space-y-8">
         <img
+          loading="lazy"
           src={decorator}
           draggable={false}
           alt="decorator"
@@ -19,7 +20,7 @@ function HomeProductUsedBySection() {
           <LeftLeafSvg />
 
           <p className="leading-[2rem] text-zinc-400">
-            <span className="uppercase tracking-[0.5rem] block text-black">
+            <span className="p-tag block text-black">
               Trusted and loved by
             </span>{" "}
             over lots of people in 50+ countries
@@ -30,11 +31,13 @@ function HomeProductUsedBySection() {
 
         <div className="max-w-4xl mx-auto">
           <img
+            loading="lazy"
             draggable={false}
             src={companyListImgUrl}
             alt="companies that are using our product"
           />
           <img
+            loading="lazy"
             draggable={false}
             src={underlineImgUrl}
             alt="underline"

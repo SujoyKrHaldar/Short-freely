@@ -35,17 +35,18 @@ function RedirectUrl() {
     return (
       <>
         <MetaTags title="Broken Link • Short freely" />
-        <section className="fixed inset-0 w-screen h-screen py-16 flex items-center justify-center bg-white">
-          <div className="space-y-4 text-center max-w-xl mb-16">
-            <div className="w-[200px] mx-auto">
+        <section className="container w-full h-screen py-16 flex items-center justify-center border-b border-zinc-300">
+          <div className="space-y-4 text-center max-w-2xl">
+            <div className=" w-[300px] h-[290px] mx-auto">
               <img
                 src={questionImgUrl}
                 alt="page not found"
                 draggable={false}
+                loading="lazy"
               />
             </div>
-            <h1 className="text-6xl font-bold">Page not Found</h1>
-            <p className="text-lg">
+            <h1 className="h1-bold">Page not Found</h1>
+            <p className="p-main">
               This is a 404 error, which means you have clicked on a bad link or
               entered an invalid URL.
             </p>

@@ -6,33 +6,32 @@ import {
 
 function HomeFooterSection() {
   return (
-    <section className="pt-16 pb-8 relative z-10 w-full">
+    <section className="py-8 relative z-10 w-full bg-zinc-800 laptop:bg-transparent">
       <div className="container w-full h-full">
-        <div className=" px-20 py-4 pt-2 bg-zinc-800 text-white flex items-center justify-around  gap-4">
-          <div className="space-y-8">
+        <div className="pt-4 mobile:py-8 laptop:p-8 laptop:bg-zinc-800 text-white flex flex-col laptop:flex-row items-center justify-center gap-4">
+          <div className="space-y-8 w-full laptop:max-w-lg text-center laptop:text-left laptop:p-12">
             <div className="space-y-4">
               <img
+                loading="lazy"
                 draggable={false}
                 src={decorator}
                 alt="decorator"
-                className="relative -left-8 w-12 -rotate-12 invert"
+                className="relative w-12 mx-auto -rotate-12 invert laptop:hidden"
               />
 
-              <p className="uppercase tracking-[0.5rem] text-zinc-300">
-                Why are you waiting for
-              </p>
+              <p className="p-tag text-zinc-300">Why waiting</p>
 
-              <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl max-w-lg ">
+              <h2 className="h2-bold mx-auto max-w-lg">
                 Ready to simplify Your Links, Amplify Your Reach
               </h2>
 
-              <p className="text-zinc-300">
+              <p className="p-main text-zinc-300 mx-auto laptop:mx-0 max-w-xs">
                 More than a link shortener. Sign Up Today and Start Shortening!
               </p>
             </div>
 
             <Link
-              className="bg-white text-black font-bold px-6 py-3 block w-fit"
+              className="cta-secondary-white font-bold block mx-auto laptop:mx-0"
               to="/signup"
             >
               Get Started -{" "}
@@ -40,13 +39,18 @@ function HomeFooterSection() {
             </Link>
           </div>
 
-          <div className="w-[500px]">
-            <img src={imageUrl} alt="footer cta image" draggable={false} />
+          <div className="w-1/3 hidden laptop:block">
+            <img
+              src={imageUrl}
+              alt="footer cta image"
+              draggable={false}
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-white -z-10 border-t border-zinc-300"></div>
+      <div className="hidden laptop:block absolute bottom-0 left-0 w-full h-1/2 bg-white -z-10 border-t border-zinc-300"></div>
     </section>
   );
 }
