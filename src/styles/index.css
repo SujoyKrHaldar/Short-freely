@@ -4,6 +4,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    @apply box-border list-none p-0 m-0 scroll-smooth;
+  }
+}
+
+@layer utilities {
+  /* TYPOGRAPHY */
+
+  .p-main {
+    @apply mobile:font-normal text-xl;
+  }
+  .p-tag {
+    @apply uppercase tracking-[0.5rem] text-sm small-mobile:text-lg;
+  }
+  .h2-bold {
+    @apply font-bold text-3xl small-mobile:text-4xl mobile:text-5xl;
+  }
+
+  .h3-bold {
+    @apply text-2xl small-mobile:text-3xl laptop:text-2xl font-bold;
+  }
+
+  /* GENERAL STYLES */
+
+  /* BUTTONS */
+  .cta {
+    @apply px-6 py-4 laptop:py-3 border border-zinc-800 w-full mobile:w-fit text-center laptop:hover:scale-95 duration-150;
+  }
+  .cta-primary-black {
+    @apply bg-zinc-900 text-white cta;
+  }
+  .cta-primary-gray {
+    @apply text-black bg-zinc-200 cta;
+  }
+  .cta-secondary-white {
+    @apply bg-white border text-black border-black cta;
+  }
+}
+
 div#root {
   display: flex;
   flex-direction: column;
@@ -19,8 +59,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  /* overflow-x: hidden;
-  overflow-y: overlay; */
 }
 
 a,
@@ -30,26 +68,6 @@ button,
 ::placeholder,
 input {
   font-family: "Roboto", serif;
-}
-
-html {
-  font-size: 100%;
-}
-
-@media screen and (max-width: 1024px) {
-  html {
-    font-size: 85%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  html {
-    font-size: 70%;
-  }
-}
-
-.active {
-  background: #f0f0f0;
 }
 
 /* Scrollbar */
@@ -72,47 +90,6 @@ html {
   background: #0e0e0e;
 }
 
-/* img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
-/* 
-
-h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
+.active {
+  background: #f0f0f0;
 }
-
-h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
-p,
-label {
-  font-size: 1.1rem;
-}
-.tag {
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
-}
-
-a {
-  font-size: 0.9rem;
-}
-
-
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-section {
-  position: relative;
-  width: 100%;
-  height: auto;
-} */
