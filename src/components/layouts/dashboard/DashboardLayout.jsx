@@ -4,7 +4,7 @@ import DashboardHeader from "./DashboardHeader";
 import DashboardSidebar from "./DashboardSidebar";
 
 function DashboardLayout({ children }) {
-  const [expandDashboardContent, setExpandDashbaordContent] = useState(false);
+  const [expandDashboardContent, setExpandDashbaordContent] = useState(true);
 
   const handleDashboardExpand = () => {
     setExpandDashbaordContent(!expandDashboardContent);
@@ -21,7 +21,7 @@ function DashboardLayout({ children }) {
           expandDashboardContent ? "laptop:pl-10" : "laptop:pl-80"
         }`}
       >
-        <div className="rounded-tl-3xl pointer-events-auto h-full grow bg-zinc-100 border-l border-zinc-300 py-28 lg:px-16 pb-4">
+        <div className="rounded-tl-3xl pointer-events-auto h-full grow bg-zinc-100 border-l border-zinc-300 py-28 px-16 pb-4">
           <div className="max-w-6xl mx-auto">{children}</div>
         </div>
       </section>
