@@ -20,20 +20,12 @@ function DashboardHomeUrlLists({ data, loading, error }) {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-bold">Latest Links</h2>
-            <div className="flex items-center gap-2">
-              <Link
-                className=" px-5 py-2"
-                to="/dashboard/analytics"
-              >
-                View Analytics
-              </Link>{" "}
-              <Link
-                className="bg-white px-5 py-2 border border-zinc-400"
-                to="/dashboard/links"
-              >
-                View All Links
-              </Link>
-            </div>
+            <Link
+              className="bg-white px-5 py-2 border border-zinc-400"
+              to="/dashboard/links"
+            >
+              View All Links
+            </Link>
           </div>
 
           <div className="space-y-2">
