@@ -26,12 +26,12 @@ function DashboardSidebar() {
             </Link>
           ))}
 
-          <p
+          <button
             onClick={logout}
             className="block text-lg cursor-pointer text-zinc-600"
           >
             Logout
-          </p>
+          </button>
         </nav>
       </div>
 

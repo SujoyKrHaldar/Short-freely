@@ -39,7 +39,7 @@ function DashboardHome() {
         </div>
       </div>
 
-      <section className="grid grid-cols-1 gap-6 xl:grid-cols-3 sm:grid-cols-2">
+      <section className="grid grid-cols-1 gap-6 desktop:grid-cols-3 mobile:grid-cols-2">
         <div className="px-10 py-6 h-[125px] bg-white border border-zinc-300 flex items-start gap-4 relative overflow-hidden">
           {dataLoading ? (
             <div
