@@ -3,19 +3,16 @@ import useNotification from "./useNotification";
 import { responseStatus } from "../utils/constants";
 import { logoutUser } from "../api/authService";
 import useAuth from "./useAuth";
-import { useNavigate } from "react-router-dom";
 
 function useLogout() {
-  const { logout: removeUserDataFromClient, setLoggingOut } = useAuth();
+  const { logout: removeUserDataFromClient } = useAuth();
   const notify = useNotification();
-  const navigate = useNavigate();
 
   const logout = async () => {
     const loginNotification = sessionStorage.getItem("isLoggedin");
     if (loginNotification) sessionStorage.removeItem("isLoggedin");
 
     try {
-      // setLoggingOut(true);
       notify({
         message: `Please wait....`,
         type: responseStatus.WARNING,
