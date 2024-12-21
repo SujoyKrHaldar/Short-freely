@@ -17,11 +17,11 @@ function DashboardHomeUrlLists({ data, loading, error }) {
           imageUrl={searchImgUrl}
         />
       ) : data?.documents?.length > 0 ? (
-        <section className="space-y-4">
-          <div className="flex items-center justify-between">
+        <section className="space-y-4 pt-4">
+          <div className="flex flex-col mobile:flex-row items-start mobile:items-center justify-between gap-4">
             <h2 className="text-3xl font-bold">Latest Links</h2>
             <Link
-              className="bg-white px-5 py-2 border border-zinc-400"
+              className="btn"
               to="/dashboard/links"
             >
               View All Links

@@ -44,6 +44,12 @@
   .cta-secondary-white {
     @apply bg-white border text-black border-black cta;
   }
+
+  /* Dashboard btns */
+
+  .btn {
+    @apply bg-white text-black px-5 py-4 mobile:py-3 border border-zinc-400 w-full mobile:w-max text-center;
+  }
 }
 
 div#root {
