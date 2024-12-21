@@ -219,10 +219,13 @@ const DashbaordLinkForm = ({ defaultData }) => {
         />
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-16 w-full">
-        <div className="flex items-start gap-4">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-8 mobile:space-y-16 w-full"
+      >
+        <div className="flex flex-col laptop:flex-row items-start gap-4">
           {/* BOX LEFT */}
-          <div className="p-10 pt-8 space-y-4 w-[60%] border border-zinc-300 bg-white">
+          <div className="mobile:p-10 mobile:pt-8 space-y-4 w-full laptop:w-[60%] mobile:border border-zinc-300 mobile:bg-white">
             <Input
               autoFocus={!isEditMode}
               label="Title"
@@ -264,8 +267,8 @@ const DashbaordLinkForm = ({ defaultData }) => {
               </div>
               <div className="relative flex w-full overflow-hidden">
                 {!isEditMode && (
-                  <p className="border border-black border-r-0 py-3 px-5 h-fit bg-zinc-100">
-                    short.ly
+                  <p className="hidden mobile:block border border-black border-r-0 py-3 px-5 h-fit bg-zinc-100">
+                    short.freely
                   </p>
                 )}
                 <Input
@@ -278,8 +281,8 @@ const DashbaordLinkForm = ({ defaultData }) => {
                   }
                   placeholder={
                     isEditMode
-                      ? "short.ly/" + defaultData.customSlug
-                      : "short.ly/custom-back-half"
+                      ? "short.freely/" + defaultData.customSlug
+                      : "short.freely/custom-back-half"
                   }
                   error={errors?.customSlug}
                   errorMessage={errors?.customSlug?.message}
@@ -295,9 +298,9 @@ const DashbaordLinkForm = ({ defaultData }) => {
           </div>
 
           {/* BOX RIGHT */}
-          <div className="w-[40%] h-full border border-zinc-300 bg-white p-8 space-y-4">
+          <div className="w-full laptop:w-[40%] h-full mobile:border border-zinc-300 mobile:bg-white mobile:p-8 space-y-4">
             <p className="">Generate QR Code</p>
-            <div className="p-4 border w-full h-[244px] border-zinc-300 bg-white flex items-center justify-center">
+            <div className="p-4 border w-full h-[244px] border-black mobile:border-zinc-300 bg-white flex items-center justify-center">
               {qrCode ? (
                 <img
                   draggable={false}
@@ -307,7 +310,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
                   className="w-[150px] h-auto"
                 />
               ) : (
-                <div className="text-center space-y-2 w-full h-full bg-zinc-100 flex flex-col items-center justify-center">
+                <div className="text-center space-y-2 w-full h-full mobile:bg-zinc-100 flex flex-col items-center justify-center">
                   <QrCode className="mx-auto" color="black" size={40} />
 
                   <p className="text-sm max-w-[180px] mx-auto">
@@ -320,8 +323,8 @@ const DashbaordLinkForm = ({ defaultData }) => {
         </div>
 
         <div
-          className={` sticky bottom-0 py-6 flex items-center ${
-            isEditMode ? "justify-between" : "justify-end"
+          className={` relative mobile:sticky bottom-0 mobile:py-6 flex flex-col mobile:flex-row gap-8 mobile:items-center ${
+            isEditMode ? "justify-between pt-6 mobile:py-0" : "justify-end"
           } w-full h-fit  border-t border-t-zinc-300 bg-zinc-100`}
         >
           {isEditMode && (
@@ -338,10 +341,10 @@ const DashbaordLinkForm = ({ defaultData }) => {
             </div>
           )}
 
-          <div className="flex items-center gap-2">
+          <div className="flex w-full mobile:w-fit flex-col-reverse mobile:flex-row mobile:items-center gap-4 mobile:gap-2">
             <button
               type="button"
-              className="bg-zinc-200 border border-zinc-300 px-6 py-2 cursor-pointer"
+              className="bg-zinc-200 border border-zinc-300 px-6 py-4 mobile:py-3 cursor-pointer"
               onClick={handleCancle}
             >
               Reset to Default
@@ -354,7 +357,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
                 isDirty
                   ? "cursor-pointer bg-black"
                   : "cursor-not-allowed bg-zinc-500 border-zinc-500"
-              } bg-black text-white px-6 py-2 border border-black`}
+              } bg-black text-white px-6 py-4 mobile:py-3 border border-black`}
             >
               {loading ? (
                 <div className="flex items-center justify-center gap-3 mr-4">

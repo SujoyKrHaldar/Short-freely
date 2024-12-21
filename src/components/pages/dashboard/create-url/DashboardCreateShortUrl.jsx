@@ -21,7 +21,7 @@ function DashboardCreateShortUrl() {
     <section className="w-full h-full space-y-8">
       <div className="space-y-2">
         <DashboardBreadcrumb links={breadcrumbs} />
-        <h1 className="text-4xl font-bold">Create New Link</h1>
+        <h1 className="dashboard-h1-bold">Create New Link</h1>
       </div>
 
       <DashbaordCreateLinkForm />
