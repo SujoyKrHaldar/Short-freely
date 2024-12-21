@@ -5,13 +5,13 @@ import { Menu, Search, X } from "lucide-react";
 
 function DashboardHeader({ handleExpand, isExpand }) {
   return (
-    <header className="fixed w-full z-30">
+    <header className="fixed w-full z-30 pointer-events-none">
       <div className="px-16 flex items-center justify-between gap-8 py-4 ">
-        <Link to="/">
+        <Link className="pointer-events-auto" to="/">
           <Logo />
         </Link>
 
-        <nav className="flex items-center gap-2">
+        <nav className="flex items-center gap-2 pointer-events-auto">
           <Link
             to="/dashboard/search"
             className="bg-white h-full border p-3 border-zinc-300"
