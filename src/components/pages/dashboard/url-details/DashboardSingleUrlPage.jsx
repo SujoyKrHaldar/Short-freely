@@ -31,7 +31,6 @@ const SkeletonUi = () => {
 
       <section className="space-y-4">
         <div className=" bg-zinc-300 w-full h-[200px] animate-pulse"></div>
-
         <div className="bg-zinc-300 w-full h-[300px] animate-pulse"></div>
       </section>
     </section>

@@ -7,7 +7,12 @@ const databaseId = config.getKey("DATABASE_ID");
 const analyticCollectionId = config.getKey("ANALYTIC_COLLECTION_ID");
 const GET_LOCATION_API_URL = config.getKey("GET_LOCATION_API_URL");
 
-export const createLinkStats = async ({ urlId, originalUrl, urlTitle }) => {
+export const createLinkStats = async ({
+  urlId,
+  originalUrl,
+  urlTitle,
+  userId,
+}) => {
   const parser = new UAParser();
   const res = parser.getResult();
 
@@ -23,6 +28,7 @@ export const createLinkStats = async ({ urlId, originalUrl, urlTitle }) => {
     region,
     country,
     urlId,
+    userId,
     originalUrl,
     urlTitle,
     device,
@@ -40,12 +46,12 @@ export const createLinkStats = async ({ urlId, originalUrl, urlTitle }) => {
   return result;
 };
 
-export const getAllClickCounts = async () => {
+export const getAllClickCounts = async (userId) => {
   try {
     const response = await databases.listDocuments(
       databaseId,
       analyticCollectionId,
-      [Query.select(["$id"])]
+      [Query.select(["$id"]), Query.equal("userId", userId)]
     );
 
     return response.total;

@@ -94,7 +94,7 @@ export const getOriginalUrl = async (customSlug) => {
       urlCollectionId,
       [
         Query.equal("customSlug", customSlug),
-        Query.select(["$id", "originalUrl", "title"]),
+        Query.select(["$id", "originalUrl", "title", "userId"]),
       ]
     );
     return response.documents[0];

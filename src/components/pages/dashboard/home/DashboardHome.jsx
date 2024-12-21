@@ -10,13 +10,17 @@ import { Unlink, QrCode, MousePointerClick as Click } from "lucide-react";
 
 function DashboardHome() {
   const { userData } = useAuth();
+  const userId = userData?.$id;
   const DEFAULT_URL_LIMIT = 5;
+
   const {
     data,
     loading: dataLoading,
     error,
   } = useFetchUrls({ limit: DEFAULT_URL_LIMIT });
-  const { clickCount, loading: clickCountLoading } = useFetchAllClickCounts();
+
+  const { clickCount, loading: clickCountLoading } =
+    useFetchAllClickCounts(userId);
 
   return (
     <section className="w-full h-full space-y-2 relative z-10 pb-8">
@@ -116,7 +120,7 @@ function DashboardHome() {
   );
 }
 
-const useFetchAllClickCounts = (urlId) => {
+const useFetchAllClickCounts = (userId) => {
   const [clickCount, setClickCount] = useState();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -125,7 +129,7 @@ const useFetchAllClickCounts = (urlId) => {
     setLoading(true);
     setError(false);
     try {
-      const response = await getAllClickCounts();
+      const response = await getAllClickCounts(userId);
 
       setClickCount(response);
     } catch (_) {

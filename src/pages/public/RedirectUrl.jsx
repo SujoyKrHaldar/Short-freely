@@ -98,12 +98,14 @@ const useSaveLinkStats = (url, loading, error) => {
   const urlId = url?.$id;
   const originalUrl = url?.originalUrl;
   const urlTitle = url?.title;
+  const userId = url?.userId;
 
   const saveLinkStats = async () => {
     const response = await createLinkStats({
       urlId,
       originalUrl,
       urlTitle,
+      userId,
     });
 
     if (response) {
