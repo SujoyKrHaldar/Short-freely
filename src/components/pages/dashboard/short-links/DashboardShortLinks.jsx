@@ -30,7 +30,7 @@ function DashboardShortLinks() {
 
   return (
     <section className="w-full h-full space-y-6">
-      <div className="flex flex-col mobile:flex-row gap-8 items-end justify-between w-full h-full">
+      <div className="flex flex-col mobile:flex-row gap-8 mobile:items-end justify-between w-full h-full">
         <div className="space-y-4 mobile:space-y-2">
           <DashboardBreadcrumb links={breadcrumbs} />
           <h1 className="dashboard-h1-bold">All Short Links</h1>
