@@ -30,19 +30,16 @@ function DashboardShortLinks() {
 
   return (
     <section className="w-full h-full space-y-6">
-      <div className="flex items-end justify-between w-full h-full">
-        <div className="space-y-2">
+      <div className="flex flex-col mobile:flex-row gap-8 items-end justify-between w-full h-full">
+        <div className="space-y-4 mobile:space-y-2">
           <DashboardBreadcrumb links={breadcrumbs} />
-          <h1 className="text-4xl font-bold">All Short Links</h1>
+          <h1 className="dashboard-h1-bold">All Short Links</h1>
           <p className="text-lg">
             Create and manage all short links from here.
           </p>
         </div>
 
-        <Link
-          className="bg-white text-black px-5 py-2 border border-zinc-400 inline-block"
-          to="/dashboard/create"
-        >
+        <Link className="btn" to="/dashboard/create">
           Create Short Link
         </Link>
       </div>
@@ -156,18 +153,18 @@ const PaginationControl = ({ page, totalPages, currentPage }) => {
   };
 
   return (
-    <div className="sticky bottom-0 flex items-center justify-between py-6 border-t border-t-zinc-300 bg-zinc-100">
+    <div className=" relative tablet:sticky bottom-0 flex flex-col tablet:flex-row gap-4 items-center tablet:justify-between py-6 border-t border-t-zinc-300 bg-zinc-100">
       <p>
         Page {currentPage} of total {totalPages}
       </p>
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col tablet:flex-row items-center gap-2 w-full tablet:w-fit ">
         <button
-          className={` border ${
+          className={` border w-full ${
             currentPage <= 1
               ? "bg-zinc-100 border-transparent text-zinc-400"
               : "bg-white hover:border-black"
-          } text-black px-5 py-2 border-zinc-300 duration-150 `}
+          } text-black px-6 laptop:px-5 py-3 laptop:py-2 border-zinc-300 duration-150 `}
           disabled={currentPage <= 1}
           onClick={() => handlePageChange(page - 1)}
         >
@@ -176,11 +173,13 @@ const PaginationControl = ({ page, totalPages, currentPage }) => {
 
         {getPaginationLinks().map((page, index, array) => (
           <>
-            {index > 0 && page !== array[index - 1] + 1 && <span>...</span>}
+            {index > 0 && page !== array[index - 1] + 1 && (
+              <span className="hidden tablet:block">...</span>
+            )}
             <button
               key={page}
               onClick={() => handlePageChange(page)}
-              className={` px-4 py-2 border bg-white duration-150 hover:border-black ${
+              className={` px-5 py-3 laptop:py-2 border bg-white duration-150 hover:border-black hidden tablet:block ${
                 page === currentPage ? "border-black" : "border-zinc-300"
               }`}
             >
@@ -190,11 +189,11 @@ const PaginationControl = ({ page, totalPages, currentPage }) => {
         ))}
 
         <button
-          className={` border ${
+          className={` border w-full ${
             currentPage >= totalPages
               ? "bg-zinc-100 border-transparent text-zinc-400"
               : "bg-white hover:border-black"
-          } bg-white text-black px-5 py-2 border-zinc-300 duration-150 `}
+          } bg-white text-black px-6 laptop:px-5 py-3 laptop:py-2 border-zinc-300 duration-150 `}
           disabled={currentPage >= totalPages}
           onClick={() => handlePageChange(page + 1)}
         >

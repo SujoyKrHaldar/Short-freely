@@ -23,7 +23,7 @@ function DashboardHome() {
       <div className=" flex flex-col tablet:flex-row items-start gap-4 mobile:gap-8 tablet:items-end justify-between w-full h-full relative mobile:p-10 mobile:pt-20 mobile:bg-white overflow-hidden mobile:border border-zinc-300 -z-10">
         <div className="space-y-2">
           <p className="uppercase tracking-[0.5rem] text-sm">Greetings </p>
-          <h1 className="text-4xl font-bold">{userData?.name}</h1>
+          <h1 className="dashboard-h1-bold">{userData?.name}</h1>
           <p className="text-lg">Its good to see you.</p>
         </div>
 
