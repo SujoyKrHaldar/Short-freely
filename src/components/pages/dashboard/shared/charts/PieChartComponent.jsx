@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 
-const COLORS = ["#ef4444", "#991b1b", "#fca5a5", "#f87171"];
+const COLORS = ["27272a", "#52525b", "#a1a1aa", "#e4e4e7"];
 
 const PieChartComponent = ({ data, title }) => (
   <div className="w-full bg-white">
@@ -16,10 +16,10 @@ const PieChartComponent = ({ data, title }) => (
           nameKey="name"
           cx="50%"
           cy="50%"
-          innerRadius={50}
+          innerRadius={60}
           outerRadius={100}
           fill="#8884d8"
-          paddingAngle={5}
+          // paddingAngle={4}
           label
           labelLine
         >

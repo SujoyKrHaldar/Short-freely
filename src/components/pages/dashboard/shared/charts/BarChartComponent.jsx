@@ -23,7 +23,7 @@ function BarChartComponent({ data, title }) {
             <XAxis dataKey="location" />
             <YAxis dataKey="count" />
             <Tooltip />
-            <Bar dataKey="count" fill="#ef4444" />
+            <Bar dataKey="count" fill="#27272a" />
           </BarChart>
         </ResponsiveContainer>
       </div>

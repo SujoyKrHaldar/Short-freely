@@ -6,7 +6,6 @@ import {
   YAxis,
   LineChart,
   Line,
-  CartesianGrid,
 } from "recharts";
 
 const LineChartComponent = ({ data, title }) => (
@@ -18,14 +17,13 @@ const LineChartComponent = ({ data, title }) => (
     <div className="p-10 pl-0">
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
           <YAxis />
           <Tooltip />
           <Line
             type="monotone"
             dataKey="clicks"
-            stroke="#ef4444"
+            stroke="#27272a"
             activeDot={{ r: 8 }}
           />
         </LineChart>
