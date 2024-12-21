@@ -99,10 +99,10 @@ const SkeletonUi = () => {
   return (
     <section className="w-full h-full space-y-8">
       <section className="space-y-4">
-        <div className=" bg-zinc-300 w-full h-[120px] animate-pulse"></div>
-        <div className="bg-zinc-300 w-full h-[120px] animate-pulse"></div>
-        <div className="bg-zinc-300 w-full h-[120px] animate-pulse"></div>
-        <div className="bg-zinc-300 w-full h-[120px] animate-pulse"></div>
+        <div className=" bg-zinc-300 w-full h-[170px] animate-pulse"></div>
+        <div className="bg-zinc-300 w-full h-[170px] animate-pulse"></div>
+        <div className="bg-zinc-300 w-full h-[170px] animate-pulse"></div>
+        <div className="bg-zinc-300 w-full h-[170px] animate-pulse"></div>
       </section>
     </section>
   );
