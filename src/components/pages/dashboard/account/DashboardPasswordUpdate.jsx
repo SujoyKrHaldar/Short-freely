@@ -62,11 +62,11 @@ const PasswordUpdateForm = () => {
   };
 
   return (
-    <div className="w-full py-8 px-10 border-l border-zinc-300 flex justify-end items-center">
+    <div className="w-full pb-8 border-b tablet:py-8 tablet:px-10 tablet:border-t laptop:border-l border-zinc-300">
       {!isEditable ? (
         <button
           type="button"
-          className="bg-zinc-100 border border-zinc-300 px-5 py-2 cursor-pointer"
+          className="bg-white mobile:bg-zinc-100 border border-zinc-300 px-6 py-4 mobile:py-3 cursor-pointer w-full"
           onClick={() => setIsEditable(true)}
         >
           Update Password
@@ -110,7 +110,7 @@ const PasswordUpdateForm = () => {
           <div className="flex items-center justify-end gap-2 w-full h-fit border-t-0 border-zinc-300">
             <button
               type="button"
-              className="bg-zinc-100 border border-zinc-300 px-5 py-2 cursor-pointer"
+              className="bg-white mobile:bg-zinc-100 border border-zinc-300 px-6 py-4 mobile:py-3 cursor-pointer"
               onClick={onCancel}
             >
               Cancel
@@ -118,7 +118,7 @@ const PasswordUpdateForm = () => {
 
             <button
               type="submit"
-              className="bg-black text-white px-5 py-2 border border-black"
+              className="bg-black text-white px-6 py-4 mobile:py-3 border border-black"
             >
               {loading ? (
                 <div className="flex items-center justify-center gap-3 mr-4">

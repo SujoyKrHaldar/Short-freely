@@ -66,12 +66,12 @@ const SessionLists = () => {
   }, []);
 
   return (
-    <div className="space-y-6 w-full p-10 border-l border-zinc-300">
+    <div className="pb-8 border-b tablet:py-8 tablet:px-10 tablet:border-t laptop:border-l border-zinc-300">
       {loading ? (
         [...Array(2)].map((data, id) => (
           <div
             key={id}
-            className="w-full h-[155px] bg-gray-200 animate-pulse"
+            className="w-full h-[100px] mobile:h-[155px] bg-gray-200 animate-pulse"
           ></div>
         ))
       ) : (
@@ -92,7 +92,7 @@ const SessionLists = () => {
 const SessionCard = ({ data, handleClick }) => {
   return (
     <div
-      className={`py-4 px-6 bg-gray-100 flex items-start justify-between border 
+      className={`relative py-4 px-6 bg-gray-100 flex flex-col gap-4 mobile:flex-row items-start justify-between border 
                 ${
                   data.current
                     ? "border-green-500"
@@ -118,7 +118,10 @@ const SessionCard = ({ data, handleClick }) => {
           <p className="text-xs italic">Current Session</p>
         </div>
       ) : (
-        <div onClick={handleClick} className=" cursor-pointer">
+        <div
+          onClick={handleClick}
+          className="absolute top-2 right-2 mobile:relative cursor-pointer"
+        >
           <X color="black" size={20} />
         </div>
       )}
