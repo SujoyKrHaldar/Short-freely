@@ -44,7 +44,7 @@ function Navbar({ openMenu }) {
 
           <nav className="flex items-center gap-2">
             <NavLink
-              className="hidden  mobile:block duration-150 px-6 py-3 bg-zinc-200 laptop:hover:bg-zinc-100 "
+              className="hidden mobile:block duration-150 px-6 py-3 laptop:hover:bg-zinc-100 "
               to={authStatus ? "/dashboard/create" : "/login"}
             >
               {authStatus ? "Create Link" : "Login"}
