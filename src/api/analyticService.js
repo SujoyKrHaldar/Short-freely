@@ -16,12 +16,10 @@ export const createLinkStats = async ({ urlId, originalUrl, urlTitle }) => {
   const os = res.os.name;
 
   const response = await fetch(GET_LOCATION_API_URL);
-  const { ip, city, region, country_name: country } = await response.json();
+  const { city, country_name: country } = await response.json();
 
   const stats = {
-    ip,
     city,
-    region,
     country,
     urlId,
     originalUrl,
