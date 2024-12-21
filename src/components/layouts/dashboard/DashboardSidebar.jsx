@@ -14,7 +14,7 @@ function DashboardSidebar({ closeMenu, isMenuOpen }) {
       } fixed inset-0 w-screen h-screen bg-[#38383882] ease-in duration-200 pointer-events-none`}
     >
       <div
-        className={`flex items-center justify-center absolute h-full top-0 right-0 bg-white p-16 ease-in-out duration-200 ${
+        className={`flex items-center justify-center absolute w-[90%] tablet:w-[65%] laptop:w-[35%] h-full top-0 right-0 bg-white p-16 ease-in-out duration-200 ${
           isMenuOpen
             ? " translate-x-0 pointer-events-auto"
             : " translate-x-full pointer-events-none"
@@ -34,7 +34,7 @@ function DashboardSidebar({ closeMenu, isMenuOpen }) {
             {navLinks.map((link) => (
               <Link
                 onClick={closeMenu}
-                className="mob-nav-link block font-bold text-3xl"
+                className="mob-nav-link block font-bold text-3xl tablet:text-4xl"
                 key={link.name}
                 to={link.url}
               >
@@ -43,7 +43,7 @@ function DashboardSidebar({ closeMenu, isMenuOpen }) {
             ))}
 
             <Link
-              className="mob-nav-link block font-bold text-3xl"
+              className="mob-nav-link block font-bold text-3xl tablet:text-4xl"
               onClick={logout}
             >
               Logout
