@@ -48,41 +48,42 @@ function DashboardEditUrl() {
       )}
 
       <section className="w-full h-full space-y-8 relative">
-        <div className="flex items-end justify-between">
-          <div className="space-y-2">
-            <DashboardBreadcrumb links={breadcrumbs} />
-            <h1 className="text-4xl font-bold">
-              Edit Link{" "}
-              <span className="font-normal text-blue-700">
-                {data?.shortUrl && "/"} {data?.shortUrl}
-              </span>
-            </h1>
-            {data?.$id && (
-              <p className="text-normal font-normal">#{data?.$id}</p>
+        {!loading && (
+          <div className="flex flex-col mobile:flex-row gap-8 mobile:items-end justify-between">
+            <div className="space-y-2">
+              <DashboardBreadcrumb links={breadcrumbs} />
+              <h1 className="dashboard-h1-bold">
+                Edit Link{" "}
+                <span className="font-normal text-blue-700 block text-4xl">
+                  {data?.shortUrl}
+                </span>
+              </h1>
+              {data?.$id && (
+                <p className="text-normal font-normal">#{data?.$id}</p>
+              )}
+            </div>
+
+            {!error && (
+              <div className="flex flex-col mobile:flex-row items-center gap-4 mobile:gap-2">
+                <button
+                  className="bg-white cursor-pointer text-black px-6 py-4 mobile:py-3 border border-zinc-400 w-full mobile:w-fit inline-block"
+                  onClick={() => navigate(-1)}
+                >
+                  Cancle Edit
+                </button>
+                <button
+                  className="bg-red-700 border text-white border-red-700 px-6 py-4 mobile:py-3 w-full mobile:w-fit cursor-pointer"
+                  onClick={() => setEnableDeletePopup(true)}
+                >
+                  <p>Delete Url</p>
+                </button>
+
+                <p className=" block pb-8 pt-4 w-full border-b border-zinc-400 mobile:hidden">Or Edit below form</p>
+              </div>
             )}
           </div>
-
-          {!error && (
-            <div className="flex items-center gap-2">
-              <button
-                className="bg-white cursor-pointer text-black px-5 py-2 border border-zinc-400  inline-block"
-                onClick={() => navigate(-1)}
-              >
-                Cancle Edit
-              </button>
-              <button
-                className="bg-red-700 border text-white border-red-700 px-6 py-2 cursor-pointer"
-                onClick={() => setEnableDeletePopup(true)}
-              >
-                <p>Delete Url</p>
-              </button>
-            </div>
-          )}
-        </div>
-
-        {loading ? (
-          <SkeletonUi />
-        ) : error ? (
+        )}
+        {loading ? null : error ? (
           <ErrorFallbackUi
             title="Failed to load form"
             description="Something went wrong. Please try again."
@@ -95,14 +96,5 @@ function DashboardEditUrl() {
     </>
   );
 }
-
-const SkeletonUi = () => {
-  return (
-    <section className="flex items-start gap-4">
-      <div className=" bg-zinc-300 w-[60%] h-[350px] animate-pulse"></div>
-      <div className="bg-zinc-300 w-[40%] h-[350px] animate-pulse"></div>
-    </section>
-  );
-};
 
 export default DashboardEditUrl;

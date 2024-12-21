@@ -30,7 +30,7 @@
   }
 
   .dashboard-h1-bold {
-    @apply text-5xl font-bold;
+    @apply text-4xl mobile:text-5xl font-bold;
   }
 
   .dashboard-h2-bold {
