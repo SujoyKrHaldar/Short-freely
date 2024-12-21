@@ -25,6 +25,10 @@ export const dashboardSidebarNavlinks = [
     url: "/dashboard",
   },
   {
+    name: "Create Link",
+    url: "/dashboard/create",
+  },
+  {
     name: "Short Links",
     url: "/dashboard/links",
   },
