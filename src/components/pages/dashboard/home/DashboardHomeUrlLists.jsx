@@ -47,9 +47,9 @@ const SkeletonUi = () => {
   return (
     <section className="space-y-4">
       <section className="space-y-4">
-        <div className=" bg-zinc-300 w-full h-[170px] animate-pulse"></div>
-        <div className="bg-zinc-300 w-full h-[170px] animate-pulse"></div>
-        <div className="bg-zinc-300 w-full h-[170px] animate-pulse"></div>
+        <div className=" bg-zinc-300 w-full  h-[330px] tablet:h-[200px] laptop:h-[170px] animate-pulse"></div>
+        <div className="bg-zinc-300 w-full  h-[330px] tablet:h-[200px] laptop:h-[170px] animate-pulse"></div>
+        <div className="bg-zinc-300 w-full  h-[330px] tablet:h-[200px] laptop:h-[170px] animate-pulse"></div>
       </section>
     </section>
   );
