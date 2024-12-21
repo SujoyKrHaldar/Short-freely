@@ -45,7 +45,7 @@ function DeshboardSearch() {
   };
 
   return (
-    <section className="w-full h-full space-y-6 pb-8">
+    <section className="w-full h-full space-y-6 pb-8 min-h-screen">
       <div className="flex items-end justify-between w-full h-full">
         <div className="space-y-4 w-full">
           <DashboardBreadcrumb links={breadcrumbs} />
@@ -53,7 +53,7 @@ function DeshboardSearch() {
             onSubmit={handleSearch}
             className="w-full bg-white border border-zinc-300 flex items-center"
           >
-            <div className="p-4 border-r border-zinc-300">
+            <div className="p-5 border-r border-zinc-300 hidden tablet:block">
               <Search color="black" size={20} />
             </div>
             <input
@@ -64,12 +64,12 @@ function DeshboardSearch() {
               type="text"
               required={true}
               placeholder="Search by title or custom slug"
-              className="py-4 px-5 outline-none w-full h-full"
+              className="p-5 outline-none w-full h-full"
             />
             {searchText.length > 0 && (
               <div
                 onClick={clearSearch}
-                className="p-4 cursor-pointer border-l border-zinc-300"
+                className="p-2 tablet:p-5 cursor-pointer tablet:border-l border-zinc-300"
               >
                 <Close color="black" size={20} />
               </div>
@@ -84,7 +84,7 @@ function DeshboardSearch() {
         )}
 
         {!searchQuery ? (
-          <div className="text-center py-16 pr-8 opacity-50">
+          <div className="text-center py-16 opacity-50">
             <div className="w-[200px] mx-auto h-auto">
               <img src={searchImgUrl} draggable={false} alt="end of the list" />
             </div>
