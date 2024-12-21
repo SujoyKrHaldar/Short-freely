@@ -56,7 +56,7 @@ function DashboardHome() {
               </div>
               <div className="space-y-1">
                 <p className="text-5xl font-bold">
-                  {dataLoading ? 0 : data?.total}
+                  {dataLoading ? 0 : error ? 0 : data?.total}
                 </p>
                 <p>Links created</p>
               </div>
@@ -80,7 +80,7 @@ function DashboardHome() {
               </div>
               <div className="space-y-1">
                 <p className="text-5xl font-bold">
-                  {dataLoading ? 0 : data?.total}
+                  {dataLoading ? 0 : error ? 0 : data?.total}
                 </p>
                 <p>QR generated</p>
               </div>
@@ -105,7 +105,7 @@ function DashboardHome() {
               </div>
               <div className="space-y-1">
                 <p className="text-5xl font-bold">
-                  {clickCountLoading ? 0 : clickCount}
+                  {clickCountLoading ? 0 : error ? 0 : clickCount}
                 </p>
                 <p>Clicks counted</p>
               </div>
