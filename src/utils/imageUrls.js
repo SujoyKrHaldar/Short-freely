@@ -22,8 +22,10 @@ import underlineImgUrl from "../assets/illustrations/underline.png";
 import companyListImgUrl from "../assets/illustrations/company-list.png";
 import emailImgUrl from "../assets/illustrations/email.png";
 import browserWindowImgUrl from "../assets/illustrations/browser-window.svg";
+import metricImgUrl from "../assets/illustrations/metrics.png";
 
 export {
+  metricImgUrl,
   searchImgUrl,
   completedImgUrl,
   workingMenImgUrl,
