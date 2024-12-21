@@ -102,6 +102,9 @@ The goal is to build a modern, user-friendly full-stack URL shortener applicatio
 
 ![QR Code](/src/assets/previews/url-list.png)
 
+### Popups
+
+![QR Code](/src/assets/previews/popups.png)
 ---
 
 ## 🚀 <a name="quick-start"> Setup and Installation</a>
