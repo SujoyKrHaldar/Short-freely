@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/svgs/Logo";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 
-function DashboardHeader({ handleExpand, isExpand }) {
+function DashboardHeader({ openMenu }) {
   return (
-    <header className="fixed w-full z-30 pointer-events-none">
-      <div className="px-16 flex items-center justify-between gap-8 py-4 ">
+    <header className="fixed w-full z-20 pointer-events-none bg-zinc-100">
+      <div className="container flex items-center justify-between gap-8 py-4 ">
         <Link className="pointer-events-auto" to="/">
           <Logo />
         </Link>
@@ -14,13 +14,13 @@ function DashboardHeader({ handleExpand, isExpand }) {
         <nav className="flex items-center gap-2 pointer-events-auto">
           <Link
             to="/dashboard/search"
-            className="bg-white h-full border p-3 border-zinc-300"
+            className="p-[0.65rem] bg-white border border-zinc-400"
           >
-            <Search color="black" size={20} />
+            <Search color="black" size={25} className="opacity-60" />
           </Link>
 
           <Link
-            className="bg-white text-black px-5 py-3 border border-zinc-300"
+            className="px-5 py-3 bg-white border text-black border-zinc-400 hidden mobile:block"
             to="/dashboard/create"
           >
             <p className="text-[0.9rem]">
@@ -28,16 +28,12 @@ function DashboardHeader({ handleExpand, isExpand }) {
             </p>
           </Link>
 
-          <div
-            onClick={handleExpand}
-            className="bg-white h-full border p-3 border-zinc-300 cursor-pointer"
+          <button
+            onClick={openMenu}
+            className="p-[0.65rem] bg-white border border-zinc-400"
           >
-            {isExpand ? (
-              <Menu color="black" size={20} />
-            ) : (
-              <X color="black" size={20} />
-            )}
-          </div>
+            <Menu color="black" size={25} />
+          </button>
         </nav>
       </div>
     </header>

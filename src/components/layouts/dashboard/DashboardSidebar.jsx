@@ -1,44 +1,57 @@
-import { Link, useLocation } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import { dashboardSidebarNavlinks as navLinks } from "../../../utils/constants";
 import { useLogout } from "../../../hooks";
+import { X as Close } from "lucide-react";
 
-function DashboardSidebar() {
-  const { pathname } = useLocation();
+function DashboardSidebar({ closeMenu, isMenuOpen }) {
   const { logout } = useLogout();
 
   return (
-    <aside className="fixed inset-y-0 left-0 w-80 max-lg:hidden pt-24 flex flex-col justify-between bg-white">
-      <div className="space-y-8 px-16 pt-8 h-full">
-        <p className="uppercase tracking-[0.5rem] text-xs text-zinc-500">
-          Menu
-        </p>
+    <section
+      className={`z-30 ${
+        isMenuOpen ? " opacity-100" : " opacity-0"
+      } fixed inset-0 w-screen h-screen bg-[#38383882] ease-in duration-200 pointer-events-none`}
+    >
+      <div
+        className={`flex items-center justify-center absolute max-w-[500px] h-full top-0 right-0 bg-white p-16 ease-in-out duration-200 ${
+          isMenuOpen
+            ? " translate-x-0 pointer-events-auto"
+            : " translate-x-full pointer-events-none"
+        }`}
+      >
+        <button
+          onClick={closeMenu}
+          className="absolute top-4 right-4 p-[0.70rem] bg-black"
+        >
+          <Close size={25} color="white" />
+        </button>
+        <div className="p-2 tablet:p-8 w-full h-fit space-y-8">
+          <p className="uppercase tracking-[0.5rem] text-sm font-medium">
+            Menu
+          </p>
+          <nav className="space-y-4">
+            {navLinks.map((link) => (
+              <Link
+                onClick={closeMenu}
+                className="mob-nav-link block font-bold text-3xl tablet:text-4xl"
+                key={link.name}
+                to={link.url}
+              >
+                {link.name}
+              </Link>
+            ))}
 
-        <nav className="space-y-4">
-          {navLinks.map((link) => (
             <Link
-              className={`block text-lg duration-200 ${
-                pathname === link.url ? "text-black font-bold" : "text-zinc-600"
-              }`}
-              key={link.name}
-              to={link.url}
+              className="mob-nav-link block font-bold text-3xl tablet:text-4xl"
+              onClick={logout}
             >
-              {link.name}
+              Logout
             </Link>
-          ))}
-
-          <button
-            onClick={logout}
-            className="block text-lg cursor-pointer text-zinc-600"
-          >
-            Logout
-          </button>
-        </nav>
+          </nav>
+        </div>
       </div>
-
-      <p className="text-sm  text-zinc-500  px-16 py-8">
-        &copy; 2025 - All rights reserved.
-      </p>
-    </aside>
+    </section>
   );
 }
 
