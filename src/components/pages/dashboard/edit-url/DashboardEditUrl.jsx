@@ -32,9 +32,9 @@ function DashboardEditUrl() {
     <>
       {!error && (
         <section
-          className={`fixed inset-0 w-full h-full flex items-center justify-center z-50 bg-white duration-300 ${
+          className={`fixed inset-0 w-full h-full flex items-center justify-center z-50 duration-300 ${
             isEnableDeletePopup
-              ? "z-50 opacity-100 pointer-events-auto bg-[#ffffffcc] backdrop-blur-md"
+              ? "z-50 opacity-100 pointer-events-auto bg-[#ffffff4d] backdrop-blur-md"
               : "z-0 opacity-0 pointer-events-none"
           }`}
         >

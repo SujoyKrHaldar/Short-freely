@@ -94,7 +94,7 @@ function SignupForm({ className }) {
   return (
     <>
       <section
-        className={`fixed inset-0 flex items-center justify-center z-50 duration-200 ${
+        className={`fixed inset-0 flex items-center justify-center z-50 duration-300 ${
           errorPopup
             ? "z-50 opacity-100 pointer-events-auto bg-[#ffffffcc] backdrop-blur-md"
             : "z-0 opacity-0 pointer-events-none"
