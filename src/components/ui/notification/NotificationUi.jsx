@@ -12,7 +12,7 @@ function NotificationUi() {
   useAutoRemoveNotifications({ notifications, dispatch });
 
   return (
-    <section className="z-40 fixed inset-0 w-full h-screen pointer-events-none flex items-end">
+    <section className="z-40 fixed inset-0 w-full h-dvh pointer-events-none flex items-end">
       <div className="relative w-full flex flex-col gap-1">
         <AnimatePresence>
           {notifications.map(({ id, message, type }) => (
