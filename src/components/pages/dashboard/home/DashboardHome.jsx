@@ -40,8 +40,8 @@ function DashboardHome() {
         </div>
       </div>
 
-      <section className="grid gap-2 grid-cols-3 pb-8 border-b border-zinc-300">
-        <div className="px-0  small-mobile:px-6 desktop:px-10 py-6 h-auto laptop:h-[125px] bg-white border border-zinc-300 laptop:flex items-start gap-4 relative overflow-hidden">
+      <section className="grid gap-2 grid-cols-3 pb-2 border-b border-zinc-300">
+        <div className="px-1 py-2 small-mobile:px-6 desktop:px-10 small-mobile:py-6 h-auto laptop:h-[125px] bg-white border border-zinc-300 laptop:flex items-start gap-4 relative overflow-hidden">
           {dataLoading ? (
             <div
               className={`absolute w-full h-full bg-black inset-0 ${
@@ -65,7 +65,7 @@ function DashboardHome() {
           )}
         </div>
 
-        <div className=" px-0  small-mobile:px-6  desktop:px-10 py-6 h-auto laptop:h-[125px] bg-white border border-zinc-300 laptop:flex items-start gap-4 relative overflow-hidden">
+        <div className=" px-1 py-2 small-mobile:px-6 desktop:px-10 small-mobile:py-6 h-auto laptop:h-[125px] bg-white border border-zinc-300 laptop:flex items-start gap-4 relative overflow-hidden">
           {dataLoading ? (
             <div
               className={`absolute w-full h-full bg-black inset-0 ${
@@ -89,7 +89,7 @@ function DashboardHome() {
           )}
         </div>
 
-        <div className=" px-0  small-mobile:px-6 desktop:px-10 py-6 h-auto laptop:h-[125px] bg-white border border-zinc-300 laptop:flex items-start gap-4 relative overflow-hidden">
+        <div className=" px-1 py-2 small-mobile:px-6 desktop:px-10 small-mobile:py-6 h-auto laptop:h-[125px] bg-white border border-zinc-300 laptop:flex items-start gap-4 relative overflow-hidden">
           {dataLoading ? (
             <div
               className={`absolute w-full h-full bg-black inset-0 ${
