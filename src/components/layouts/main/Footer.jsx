@@ -26,7 +26,7 @@ function Footer() {
               >
                 <span className="sr-only">Instagram</span>
 
-                <svga
+                <svg
                   className="size-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
