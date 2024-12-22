@@ -28,7 +28,7 @@ function DashboardUrlDetails({ data }) {
         />
       </div>
       <DashboardUrlOptions postTitle={data?.title} PostId={data?.$id} />
-      <section className="space-y-4 my-6">
+      <section className="space-y-1 mobile:space-y-4 my-6">
         <UrlDetails {...data} openPopup={() => setOpenPopup(true)} />
         <DashboardUrlAnalytics data={data?.analyticsCount} />
       </section>
@@ -54,7 +54,7 @@ const UrlDetails = ({
       <div className="w-full flex items-start justify-between p-4 tablet:p-6 laptop:p-10 bg-white border border-zinc-400">
         {/* LEFT SECTION */}
 
-        <div className="space-y-4">
+        <div className="space-y-4 overflow-hidden">
           <div className="flex flex-col laptop:flex-row laptop:items-center gap-4 laptop:gap-8">
             <div className="w-[50px] tablet:w-[70px] laptop:w-[90px] h-auto rounded-full bg-zinc-200 p-1 border border-zinc-200 overflow-hidden mt-1">
               <img
@@ -81,7 +81,7 @@ const UrlDetails = ({
                 <Link
                   to={`${SHORT_URL_PREFIX}/${customSlug}`}
                   target="_blank"
-                  className="text-xl font-medium cursor-pointer hover:underline text-blue-700 block"
+                  className="text-xl font-medium cursor-pointer laptop:hover:underline text-blue-700 block"
                 >
                   {shortUrl}
                 </Link>
@@ -96,7 +96,7 @@ const UrlDetails = ({
               className="group font-bold block"
             >
               Destination URL:{" "}
-              <span className="text-zinc-400 group-hover:underline font-medium">
+              <span className="text-zinc-400 laptop:group-hover:underline font-medium">
                 {originalUrl}
               </span>
             </Link>
