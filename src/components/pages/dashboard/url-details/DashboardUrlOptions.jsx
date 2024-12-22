@@ -28,15 +28,15 @@ const DashboardUrlOptions = ({ postTitle, PostId }) => {
     <div className="flex items-end justify-between w-full h-full">
       <DashboardBreadcrumb links={breadcrumbs} />
 
-      <div className="space-x-2">
-        <p
+      <div className="hidden tablet:block space-x-2">
+        <button
           onClick={handleClick}
-          className="bg-white cursor-pointer text-black px-5 py-2 border border-zinc-400  inline-block"
+          className="bg-white cursor-pointer text-black px-5 py-4 mobile:py-3 border border-zinc-400  inline-block"
         >
           Go Back
-        </p>
+        </button>
         <Link
-          className="bg-black text-white px-5 py-2 border border-black  inline-block"
+          className="bg-black text-white px-5 py-4 mobile:py-3 border border-black  inline-block"
           to="/dashboard/links"
         >
           Back to List

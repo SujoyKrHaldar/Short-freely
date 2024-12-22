@@ -50,13 +50,13 @@ const UrlDetails = ({
   openPopup,
 }) => {
   return (
-    <div className="border border-zinc-400 bg-white">
-      <div className="w-full flex items-start justify-between p-10">
+    <div>
+      <div className="w-full flex items-start justify-between p-4 tablet:p-6 laptop:p-10 bg-white border border-zinc-400">
         {/* LEFT SECTION */}
 
         <div className="space-y-4">
-          <div className="flex items-center gap-8">
-            <div className="w-[90px] h-auto rounded-full bg-zinc-200 p-1 border border-zinc-200 overflow-hidden mt-1">
+          <div className="flex flex-col laptop:flex-row laptop:items-center gap-4 laptop:gap-8">
+            <div className="w-[50px] tablet:w-[70px] laptop:w-[90px] h-auto rounded-full bg-zinc-200 p-1 border border-zinc-200 overflow-hidden mt-1">
               <img
                 alt={originalUrlDomain}
                 draggable="false"
@@ -68,7 +68,7 @@ const UrlDetails = ({
             </div>
 
             <div className="space-y-2">
-              <h1 className="text-5xl font-bold first-letter:uppercase max-w-md">
+              <h1 className="dashboard-h1-bold first-letter:uppercase max-w-md">
                 {title}
               </h1>
 
@@ -97,7 +97,6 @@ const UrlDetails = ({
             >
               Destination URL:{" "}
               <span className="text-zinc-400 group-hover:underline font-medium">
-                {" "}
                 {originalUrl}
               </span>
             </Link>
@@ -116,24 +115,24 @@ const UrlDetails = ({
 
         {/* RIGHT SECTION */}
 
-        <div className="relative w-[180px] h-auto">
+        <div className="relative w-0 tablet:w-[120px] laptop:w-[180px] h-auto">
           <img src={qrCode} draggable={false} alt={title} loading="lazy" />
         </div>
       </div>
 
-      <div className="px-10 py-4 bg-white border-t border-zinc-400 flex items-center justify-between">
-        <h2 className="text-2xl font-bold">Actions</h2>
-        <div className="flex items-center gap-2">
+      <div className="p-0 tablet:px-6 laptop:px-10 py-4 tablet:bg-white border-t-0 flex items-center justify-between tablet:border border-zinc-400">
+        <h2 className="text-2xl font-bold hidden tablet:block">Actions</h2>
+        <div className="flex flex-col tablet:flex-row tablet:items-center gap-2 w-full tablet:w-fit">
           <button
             onClick={openPopup}
-            className="bg-white border border-black p-2 px-5 pl-4 flex items-center justify-between gap-2"
+            className="bg-white border border-black px-5 py-4 mobile:py-3 pl-4 flex items-center justify-center tablet:justify-between gap-2"
           >
             <Share color="black" size={15} />
             <p>Share</p>
           </button>
 
           <Link
-            className="bg-black text-white border border-black px-5 py-2"
+            className="bg-black text-white border text-center border-black px-5 py-4 mobile:py-3"
             to={`/dashboard/edit/${urlId}`}
           >
             Edit / Delete Link

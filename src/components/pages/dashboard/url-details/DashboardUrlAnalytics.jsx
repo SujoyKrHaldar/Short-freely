@@ -13,18 +13,24 @@ function DashboardUrlAnalytics({ data }) {
 
   return (
     <div id="analytics" className="border border-zinc-400 bg-zinc-100">
-      <div className=" flex items-center justify-between bg-white border-b border-zinc-400">
-        <h2 className="text-2xl font-bold px-10 py-3">Web Analytics</h2>
+      <div className=" flex flex-col tablet:flex-row items-center justify-between bg-white border-b border-zinc-400">
+        <h2 className="text-2xl border-b border-zinc-400 w-full tablet:w-fit tablet:border-0 font-bold p-4 tablet:px-6 laptop:px-10 py-4">
+          Web Analytics
+        </h2>
 
-        <div className="flex items-center bg-white">
-          <p className="px-10 py-3 border-x border-zinc-400">
+        <div className="flex flex-col mobile:flex-row items-center bg-white w-full mobile:w-fit">
+          <p className="p-4 tablet:px-10 py-3 border-b mobile:border-r tablet:border-x border-zinc-400 w-full mobile:w-fit">
             Todays clicks{" "}
-            <span className="font-medium block text-3xl">{todayCount}</span>
+            <span className="font-medium tablet:block tablet:text-3xl">
+              {todayCount}
+            </span>
           </p>
 
-          <p className="px-10 py-3">
+          <p className="p-4 tablet:px-10 py-3 w-full mobile:w-fit">
             Total clicks{" "}
-            <span className="font-medium block text-3xl">{data.length}</span>
+            <span className="font-medium tablet:block tablet:text-3xl">
+              {data.length}
+            </span>
           </p>
         </div>
       </div>
@@ -38,7 +44,10 @@ function DashboardUrlAnalytics({ data }) {
             <PieChartComponent data={os} title="Operating Systems" />
             <PieChartComponent data={browser} title="Browsers" />
           </div>
-          <BarChartComponent data={locations} title="Locations (City, Region, Country)" />
+          <BarChartComponent
+            data={locations}
+            title="Locations (City, Region, Country)"
+          />
         </>
       ) : (
         <ErrorFallbackUi
