@@ -104,7 +104,7 @@ const DashbaordLinkForm = ({ defaultData }) => {
 
   //* CREATE NEW DOCUMENT
   const createNewLinkUrl = async (data) => {
-    const SHORT_URL_DOMAIN = "short.ly";
+    const SHORT_URL_DOMAIN = "short.freely";
 
     if (data.customSlug === "") {
       const slug = generateSlug();
