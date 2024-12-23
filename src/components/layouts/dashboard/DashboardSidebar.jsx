@@ -42,12 +42,12 @@ function DashboardSidebar({ closeMenu, isMenuOpen }) {
               </Link>
             ))}
 
-            <Link
+            <button
               className="mob-nav-link block font-bold text-3xl tablet:text-4xl"
               onClick={logout}
             >
               Logout
-            </Link>
+            </button>
           </nav>
         </div>
       </div>
