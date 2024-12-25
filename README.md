@@ -29,7 +29,8 @@
 6. [Usage](#usage)
 7. [Routes & Endpoints](#routes-endpoints)
 8. [Data Modeling](#data-modeling)
-9. [Deployment](#deployment)
+9. [Directory structure](#directory-structure)
+10. [Deployment](#deployment)
 
 ## 🚀 <a name="introduction"> Introduction</a>
 
@@ -280,6 +281,152 @@ Tracks analytics data for each click on a shortened URL.
 
 ---
 
+## 🚀 <a name="directory-structure"> Directory structure </a>
+
+Directory structure/
+    ├── .env.example
+    ├── index.html
+    ├── eslint.config.js
+    ├── public/
+    ├── postcss.config.js
+    ├── vercel.json
+    ├── package.json
+    ├── vite.config.js
+    ├── README.md
+    ├── tailwind.config.js
+    └── src/
+        ├── api/
+        │   ├── urlService.js
+        │   ├── authService.js
+        │   ├── analyticService.js
+        │   └── initServer.js
+        ├── App.jsx
+        ├── state/
+        │   ├── auth/
+        │   │   ├── authSlice.js
+        │   │   └── authAction.js
+        │   ├── notification/
+        │   │   ├── notificationSlice.js
+        │   │   └── notificationAction.js
+        │   ├── rootReducer.js
+        │   ├── index.js
+        │   └── store.js
+        ├── assets/
+        │   ├── svgs/
+        │   │   └── Logo.jsx
+        │   ├── illustrations/
+        ├── components/
+        │   ├── layouts/
+        │   │   ├── index.jsx
+        │   │   ├── main/
+        │   │   │   ├── MobNavbar.jsx
+        │   │   │   ├── MainLayout.jsx
+        │   │   │   ├── Header.jsx
+        │   │   │   ├── Footer.jsx
+        │   │   │   └── Navbar.jsx
+        │   │   └── dashboard/
+        │   │       ├── DashboardLayout.jsx
+        │   │       ├── DashboardHeader.jsx
+        │   │       └── DashboardSidebar.jsx
+        │   ├── shared/
+        │   │   ├── index.jsx
+        │   │   └── MetaTags.jsx
+        │   ├── ui/
+        │   │   ├── index.jsx
+        │   │   ├── forms/
+        │   │   │   ├── Input.jsx
+        │   │   │   ├── SignupForm.jsx
+        │   │   │   └── LoginForm.jsx
+        │   │   └── notification/
+        │   │       ├── NotificationCard.jsx
+        │   │       └── NotificationUi.jsx
+        │   └── pages/
+        │       ├── dashboard/
+        │       │   ├── index.jsx
+        │       │   ├── search/
+        │       │   │   └── DeshboardSearch.jsx
+        │       │   ├── short-links/
+        │       │   │   └── DashboardShortLinks.jsx
+        │       │   ├── create-url/
+        │       │   │   └── DashboardCreateShortUrl.jsx
+        │       │   ├── url-details/
+        │       │   │   ├── DashboardUrlDetails.jsx
+        │       │   │   ├── DashboardUrlAnalytics.jsx
+        │       │   │   ├── DashboardUrlOptions.jsx
+        │       │   │   └── DashboardSingleUrlPage.jsx
+        │       │   ├── shared/
+        │       │   │   ├── DashboardLinkCard.jsx
+        │       │   │   ├── DashboardBreadcrumb.jsx
+        │       │   │   ├── charts/
+        │       │   │   │   ├── LineChartComponent.jsx
+        │       │   │   │   ├── PieChartComponent.jsx
+        │       │   │   │   └── BarChartComponent.jsx
+        │       │   │   ├── ShareLinkPopup.jsx
+        │       │   │   ├── NoResultFallbackUi.jsx
+        │       │   │   ├── LinkDeletePopup.jsx
+        │       │   │   ├── ErrorFallbackUi.jsx
+        │       │   │   └── DashbaordLinkForm.jsx
+        │       │   ├── edit-url/
+        │       │   │   └── DashboardEditUrl.jsx
+        │       │   ├── home/
+        │       │   │   ├── DashboardHomeUrlLists.jsx
+        │       │   │   └── DashboardHome.jsx
+        │       │   └── account/
+        │       │       ├── DashboardProfileEdit.jsx
+        │       │       ├── DashboardAccount.jsx
+        │       │       ├── DashboardSessions.jsx
+        │       │       ├── DashboardAccountEditTemplate.jsx
+        │       │       └── DashboardPasswordUpdate.jsx
+        │       └── home/
+        │           ├── HomeTestimonialSection.jsx
+        │           ├── index.jsx
+        │           ├── HomeLandingSection.jsx
+        │           ├── HomeFeatureSection.jsx
+        │           ├── HomeProductUsedBySection.jsx
+        │           ├── HomeFooterSection.jsx
+        │           ├── HomeFaqSection.jsx
+        │           └── HomeAboutSection.jsx
+        ├── styles/
+        │   └── index.css
+        ├── hooks/
+        │   ├── index.jsx
+        │   ├── useQueryParams.jsx
+        │   ├── useAuth.jsx
+        │   ├── useFetchUrlById.jsx
+        │   ├── useLogout.jsx
+        │   ├── useFetchUrls.jsx
+        │   └── useNotification.jsx
+        ├── main.jsx
+        ├── config/
+        │   └── index.js
+        ├── routes/
+        │   ├── index.jsx
+        │   ├── PrivateRoutes.jsx
+        │   ├── PublicRoutes.jsx
+        │   └── AuthRoutes.jsx
+        ├── pages/
+        │   ├── index.jsx
+        │   ├── auth/
+        │   │   ├── Login.jsx
+        │   │   └── Signup.jsx
+        │   ├── public/
+        │   │   ├── RedirectUrl.jsx
+        │   │   ├── Home.jsx
+        │   │   └── PageNotFound.jsx
+        │   └── private/
+        │       ├── SearchLinks.jsx
+        │       ├── Account.jsx
+        │       ├── EditShortUrl.jsx
+        │       ├── CreateShortUrl.jsx
+        │       ├── AllShortLinks.jsx
+        │       ├── Dashboard.jsx
+        │       └── UrlDetails.jsx
+        ├── router.jsx
+        └── utils/
+            ├── imageUrls.js
+            └── constants.js
+
+---
 
 ## 🚀 <a name="deployment"> Deployment</a>
 
