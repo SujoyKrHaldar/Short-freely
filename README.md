@@ -283,6 +283,7 @@ Tracks analytics data for each click on a shortened URL.
 
 ## 🚀 <a name="directory-structure"> Directory structure </a>
 
+```
 Directory structure/
     ├── .env.example
     ├── index.html
@@ -425,7 +426,7 @@ Directory structure/
         └── utils/
             ├── imageUrls.js
             └── constants.js
-
+```
 ---
 
 ## 🚀 <a name="deployment"> Deployment</a>
